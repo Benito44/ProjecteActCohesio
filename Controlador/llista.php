@@ -3,12 +3,10 @@
 session_start();
 
 if (isset($_SESSION['administrador'])) {
-    
+    require '../Model/Activitat.php';
+    include '../Vista/Llista.vista.php';
 } else {
-    echo "<script>alert('You cannot enter if you\'re not an admin. Please login.');</script>";
-    header("Location: ../Vista/login.html");
+    echo "<script>alert('No podeu accedir si no sou un administrador. Si us plau, inicieu sessió.');</script>";
+    header('refresh:0.01; url=../Vista/login.html');
 }
-    
-
-
 ?>
