@@ -15,7 +15,7 @@ DROP SCHEMA IF EXISTS `activitats_cohesio` ;
 -- -----------------------------------------------------
 -- Schema activitats_cohesio
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `activitats_cohesio` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+CREATE SCHEMA IF NOT EXISTS `activitats_cohesio` DEFAULT CHARACTER SET utf8 ;
 USE `activitats_cohesio` ;
 
 -- -----------------------------------------------------
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `activitats_cohesio`.`alumne` (
   `email` VARCHAR(45) NULL,
   `grup_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_user_group_idx` (`grup_id` ASC) VISIBLE,
+  INDEX `fk_user_group_idx` (`grup_id` ASC),
   CONSTRAINT `fk_usuari_grup`
     FOREIGN KEY (`grup_id`)
     REFERENCES `activitats_cohesio`.`grup` (`id`)
@@ -80,8 +80,8 @@ CREATE TABLE IF NOT EXISTS `activitats_cohesio`.`activitat` (
   `localitzacio_text` VARCHAR(45) NULL,
   `localitzacio_coord` POINT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_activitat_professor1_idx` (`professor_puntuador` ASC) VISIBLE,
-  INDEX `fk_activitat_professor2_idx` (`professor_assistencia` ASC) VISIBLE,
+  INDEX `fk_activitat_professor1_idx` (`professor_puntuador` ASC),
+  INDEX `fk_activitat_professor2_idx` (`professor_assistencia` ASC),
   CONSTRAINT `fk_activitat_professor1`
     FOREIGN KEY (`professor_puntuador`)
     REFERENCES `activitats_cohesio`.`professor` (`id`)
@@ -105,8 +105,8 @@ CREATE TABLE IF NOT EXISTS `activitats_cohesio`.`alumne_assisteix_activitat` (
   `activitat_id` INT NOT NULL,
   `data` DATETIME NOT NULL DEFAULT NOW(),
   PRIMARY KEY (`alumne_id`, `activitat_id`),
-  INDEX `fk_alumne_has_activitat_activitat1_idx` (`activitat_id` ASC) VISIBLE,
-  INDEX `fk_alumne_has_activitat_alumne1_idx` (`alumne_id` ASC) VISIBLE,
+  INDEX `fk_alumne_has_activitat_activitat1_idx` (`activitat_id` ASC),
+  INDEX `fk_alumne_has_activitat_alumne1_idx` (`alumne_id` ASC),
   CONSTRAINT `fk_alumne_has_activitat_alumne1`
     FOREIGN KEY (`alumne_id`)
     REFERENCES `activitats_cohesio`.`alumne` (`id`)
@@ -130,8 +130,8 @@ CREATE TABLE IF NOT EXISTS `activitats_cohesio`.`grup_puntua_activitat` (
   `activitat_id` INT NOT NULL,
   `puntuacio` INT NOT NULL,
   PRIMARY KEY (`grup_id`, `activitat_id`),
-  INDEX `fk_grup_has_activitat_activitat1_idx` (`activitat_id` ASC) VISIBLE,
-  INDEX `fk_grup_has_activitat_grup1_idx` (`grup_id` ASC) VISIBLE,
+  INDEX `fk_grup_has_activitat_activitat1_idx` (`activitat_id` ASC),
+  INDEX `fk_grup_has_activitat_grup1_idx` (`grup_id` ASC),
   CONSTRAINT `fk_grup_has_activitat_grup1`
     FOREIGN KEY (`grup_id`)
     REFERENCES `activitats_cohesio`.`grup` (`id`)
