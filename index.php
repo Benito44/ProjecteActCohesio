@@ -12,7 +12,7 @@ else if (isset($_SESSION['alumne'])) {
     header("Location: espera.php");
 }
 else {
-    header("Location: Vista/login.html");
+    header("Location: Vista/login.php");
 }
 
 ?>
