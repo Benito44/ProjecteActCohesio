@@ -22,6 +22,19 @@ function LlistaUsuaris()
     return $alumnes;
 }
     
+function nombreDeGrups()
+{
+    require '../database/pdo.php';
+    $connexio = connexion();
+
+    $query = "SELECT COUNT(*) AS total_grups, GROUP_CONCAT(nom SEPARATOR ', ') AS noms_grups FROM grup";
+    $stmt = $connexio->prepare($query);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result;
+}
 
 
 ?>
