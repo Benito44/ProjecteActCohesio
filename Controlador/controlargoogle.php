@@ -3,10 +3,12 @@
 session_start();
 
   require 'autentificacion.php';
-  require '../Model/mainfunction.php';  
+  //require '../Model/mainfunction.php';  
   
   $usuari =  $google_account_info->name;
   $email = $google_account_info->email = $email;
+  echo $usuari;
+  echo $email;
 /*
   try {
     if ( comprovarEmail($email)){
