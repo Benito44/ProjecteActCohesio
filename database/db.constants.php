@@ -5,5 +5,3 @@ $USER = "root";
 $PASS = "";
 $DB = "activitats_cohesio";
 ?>
-
-?>

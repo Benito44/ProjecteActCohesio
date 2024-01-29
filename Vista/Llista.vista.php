@@ -14,14 +14,19 @@
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Inici</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
-                <a class="nav-link" href="#">Afegir grups</a>
+                <a class="nav-link" href="llista.php">Llista de grups</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="llistaAlumn.php">Llista d'alumness</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="afegir.php">Afegir grups</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Modificar grups</a>
@@ -48,15 +53,12 @@
       <div class="col-12">
         <table class="table table-striped">
           <thead>
-            <tr>
-              <th>Total de grups</th>
-              <th>Noms dels grups</th>
-            </tr>
           </thead>
           <tbody>
             <tr>
-              <td><?= $grups['total_grups'] ?></td>
+              <td>Total de grups: <?= $grups['total_grups'] ?></td>
               <td><?= $grups['noms_grups'] ?></td>
+              <td></td>
             </tr>
           </tbody>
         </table>

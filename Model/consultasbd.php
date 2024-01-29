@@ -1,27 +1,5 @@
 <?php
 
-function LlistaUsuaris()
-{
-    require_once '../database/pdo.php';
-    $connexio = connexion();
-
-    $query = "SELECT nom, cognoms, grup_id FROM alumne";
-    $stmt = $connexio->prepare($query);
-    $stmt->execute();
-
-    $alumnes = array();
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        $alumne = array(
-            'nom' => $row['nom'],
-            'cognoms' => $row['cognoms'],
-            'grup_id' => $row['grup_id']
-        );
-        $alumnes[] = $alumne;
-    }
-
-    return $alumnes;
-}
-    
 function nomDelsGrups()
 {
     require_once '../database/pdo.php';
@@ -56,6 +34,31 @@ function nombreDeGrups()
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
     return $result;
+}
+
+
+function dadesAlumnes()
+{
+    require_once '../database/pdo.php';
+    $connexio = connexion();
+
+    $query = "SELECT nom, cognoms, email, grup_id, Clase FROM alumne";
+    $stmt = $connexio->prepare($query);
+    $stmt->execute();
+
+    $alumnes = array();
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $alumne = array(
+            'nom' => $row['nom'],
+            'cognoms' => $row['cognoms'],
+            'email' => $row['email'],
+            'grup_id' => $row['grup_id'],
+            'Clase' => $row['Clase']
+        );
+        $alumnes[] = $alumne;
+    }
+
+    return $alumnes;
 }
 
 ?>
