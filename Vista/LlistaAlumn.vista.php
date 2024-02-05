@@ -40,6 +40,18 @@
             </nav>
         </div>
     </header>
+    <br>
+    <div class="container btn-warning text-center">
+        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Generar grups
+        </button>
+        
+        <p style="color: red;">S'hi recomana que abans de generar els grups, s'hagin afegit tots els alumnes primer correctament*</p>
+    </div>
+    <br>
+
+    <br>
+    <br>
     <?php if (empty($alumnes)) : ?>
         <div class="container">
             <div class="row">
