@@ -158,11 +158,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `activitats_cohesio`.`alumne_has_grup`
+-- Table `activitats_cohesio`.`alumne_pertany_grup`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `activitats_cohesio`.`alumne_has_grup` ;
+DROP TABLE IF EXISTS `activitats_cohesio`.`alumne_pertany_grup` ;
 
-CREATE TABLE IF NOT EXISTS `activitats_cohesio`.`alumne_has_grup` (
+CREATE TABLE IF NOT EXISTS `activitats_cohesio`.`alumne_pertany_grup` (
   `alumne_id` INT(11) NOT NULL,
   `grup_id` INT(11) NOT NULL,
   PRIMARY KEY (`alumne_id`, `grup_id`),
