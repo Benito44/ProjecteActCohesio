@@ -15,6 +15,7 @@
         <div class="row justify-content-center offset-sm-4 col-lg-4 col-sm-4"> 
             <div class="container-fluid">
                 <h1>Iniciar sessió</h1>
+                <!--<form action= "../Controlador/llista.php">
                 <div class="form-floating mb-3">
                     <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                     <label for="floatingInput">Email address</label>
@@ -23,13 +24,15 @@
                     <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
                     <label for="floatingPassword">Password</label>
                 </div>
-                <div class="enlace">
+                <br>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+                        </form>-->
+                        <div class="enlace">
                     <?php require ('../Controlador/autentificacion.php')?>
                     <a href="<?php echo $client->createAuthUrl() ?>">Iniciar sesión amb Google</a>
                 </div>
-                <br>
-                <button type="submit" class="btn btn-primary">Enviar</button>
-            </div>
+                    </div>
+
         </div>
     </div>
 </header>
