@@ -42,7 +42,7 @@ function dadesAlumnes()
     require_once '../database/pdo.php';
     $connexio = connexion();
 
-    $query = "SELECT nom, cognoms, email, grup_id, Clase FROM alumne";
+    $query = "SELECT nom, cognoms, email, grup_id, Clase FROM alumne ORDER BY Clase";
     $stmt = $connexio->prepare($query);
     $stmt->execute();
 

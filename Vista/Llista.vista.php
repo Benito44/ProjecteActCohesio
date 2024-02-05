@@ -26,7 +26,7 @@
                 <a class="nav-link" href="llistaAlumn.php">Llista d'alumness</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="afegir.php">Afegir grups</a>
+                <a class="nav-link" href="afegir.php">Afegir alumnes</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Modificar grups</a>

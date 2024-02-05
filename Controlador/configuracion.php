@@ -5,7 +5,6 @@
   $clientSecret = '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';
   $redirectUri = 'http://localhost/Backend/cohesio/ProjecteActCohesio/Controlador/llista.php';
 
-  // create Client Request to access Google API
   $client = new Google\Client();
   $client->setClientId($clientID);
   $client->setClientSecret($clientSecret);
