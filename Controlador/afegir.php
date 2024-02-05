@@ -1,34 +1,31 @@
 <?php
-
 session_start();
 
 require_once '../Model/consultasbd.php';
 
-$tipus = $_FILES['arxiuAlumnes']['type'];
-$nom = $_FILES['arxiuAlumnes']['name'];
-$extensio = pathinfo($nom, PATHINFO_EXTENSION);
+$nom_arxiu = '';
+$tipus_arxiu = '';
+$mida_arxiu = 0;
 
-if ($tipus == 'application/vnd.ms-excel' && $extensio == 'csv') {
-    $arxiu = $_FILES['arxiuAlumnes']['tmp_name'];
-    $fitxer = fopen($arxiu, 'r');
-    $connexio = connexion();
-    while (($dades = fgetcsv($fitxer, 1000, ',')) !== FALSE) {
-        $query = "INSERT INTO alumne (nom, cognoms, email, Clase) VALUES (:nom, :cognoms, :email, :Clase)";
-        $stmt = $connexio->prepare($query);
-        $stmt->bindParam(':nom', $dades[0]);
-        $stmt->bindParam(':cognoms', $dades[1]);
-        $stmt->bindParam(':email', $dades[2]);
-        $stmt->bindParam(':Clase', $dades[3]);
-        $stmt->execute();
-    }
-    fclose($fitxer);
-    header('Location: llista.php');
-} else {
-    echo "El fitxer no és un arxiu CSV";
+if (isset($_FILES['arxiuAlumnes'])) {
+    $nom_arxiu = $_FILES['arxiuAlumnes']['name'];
+    $tipus_arxiu = $_FILES['arxiuAlumnes']['type'];
+    $mida_arxiu = $_FILES['arxiuAlumnes']['size'];
 }
 
+if ($tipus_arxiu == 'text/csv') {
+    if ($mida_arxiu < 2000000) {
+        move_uploaded_file($_FILES['arxiuAlumnes']['tmp_name'], '../' . $nom_arxiu);
+        $arxiu = fopen('../' . $nom_arxiu, 'r');
+        while (($linia = fgetcsv($arxiu, 1000, ',')) !== FALSE) {
+            afegirAlumne($linia[0], $linia[1], $linia[2], $linia[3]);
+        }
+        fclose($arxiu);
+        echo "<script>alert('Alumnes afegits correctament')</script>";
+    } else {
+        echo "<script>alert('L'arxiu és massa gran o no és un arxiu CSV')</script>";
+    }
+}
 
-
-include '../Vista/Afegir.vista.php'
-
+include '../Vista/Afegir.vista.php';
 ?>

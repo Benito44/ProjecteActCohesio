@@ -23,7 +23,7 @@
                                 <a class="nav-link" href="llista.php">Llista de grups</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="llista.php">Llista d'alumness</a>
+                                <a class="nav-link" href="llistaAlumn.php">Llista d'alumness</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="afegir.php">Afegir alumnes</a>
@@ -41,7 +41,7 @@
         </div>
     </header>
     <div class="container">
-    <form method="POST" action="../Controlador/afegir.php">
+    <form method="POST" action="../Controlador/afegir.php" enctype="multipart/form-data">
         <div class="mb-3">
             <label class="form-label" for="arxiuAlumnes">Selecciona un arxiu CSV amb els alumnes</label>
             <input class="form-control" type="file" name="arxiuAlumnes" id="arxiuAlumnes" accept=".csv">

@@ -61,4 +61,37 @@ function dadesAlumnes()
     return $alumnes;
 }
 
+
+function afegirAlumne($nom, $cognoms, $email, $clase)
+{
+    require_once '../database/pdo.php';
+    $connexio = connexion();
+
+    if (!jaExisteix($email)) {
+        $query = "INSERT INTO alumne (nom, cognoms, email, Clase) VALUES (:nom, :cognoms, :email, :clase)";
+        $stmt = $connexio->prepare($query);
+        $stmt->bindParam(':nom', $nom);
+        $stmt->bindParam(':cognoms', $cognoms);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':clase', $clase);
+        $stmt->execute();
+    }
+}
+
+function jaExisteix($email)
+{
+    require_once '../database/pdo.php';
+    $connexio = connexion();
+
+    $query = "SELECT COUNT(*) AS total FROM alumne WHERE email = :email";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':email', $email);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result['total'] > 0;
+}
+
+
 ?>
