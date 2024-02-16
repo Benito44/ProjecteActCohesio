@@ -13,7 +13,7 @@ if (isset($_FILES['arxiuAlumnes'])) {
     $mida_arxiu = $_FILES['arxiuAlumnes']['size'];
 }
 
-if ($tipus_arxiu == 'text/csv') {
+if ($tipus_arxiu == 'text/csv' || $tipus_arxiu == 'application/vnd.ms-excel') {
     if ($mida_arxiu < 2000000) {
         move_uploaded_file($_FILES['arxiuAlumnes']['tmp_name'], '../' . $nom_arxiu);
         $arxiu = fopen('../' . $nom_arxiu, 'r');
