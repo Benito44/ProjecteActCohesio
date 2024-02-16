@@ -7,6 +7,8 @@
     <title>Afegir alumnes</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="../Estils/estils.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="module" src="../Controlador/validacions.js"></script>
 </head>
 
 <body>
@@ -42,9 +44,13 @@
     </header>
     <br>
     <div class="container btn-warning text-center">
-        <button type="button" class="btn btn-secondary" onclick="window.location.href = '../Controlador/generarGrups.php';">
+        <button id="btnGenerar" type="button" class="btn btn-secondary">
             Generar grups
         </button>
+        <button type="button" class="btn btn-secondary" onclick="window.location.href = 'reiniciar.php'">
+        Reiniciar grups
+        </button>
+
         <p style="color: red;">S'hi recomana que abans de generar els grups, s'hagin afegit tots els alumnes primer correctament*</p>
     </div>
     <br>

@@ -182,7 +182,7 @@ function alumnes1ASIX()
     require_once '../database/pdo.php';
     $connexio = connexion();
 
-    $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = '1ASIX'";
+    $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = 'ASIX1'";
     $stmt = $connexio->prepare($query);
     $stmt->execute();
 
@@ -196,7 +196,7 @@ function alumnes2ASIX()
     require_once '../database/pdo.php';
     $connexio = connexion();
 
-    $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = '2ASIX'";
+    $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = 'ASIX2'";
     $stmt = $connexio->prepare($query);
     $stmt->execute();
 
@@ -210,7 +210,7 @@ function alumnes1DAW()
     require_once '../database/pdo.php';
     $connexio = connexion();
 
-    $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = '1DAW'";
+    $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = 'DAW1'";
     $stmt = $connexio->prepare($query);
     $stmt->execute();
 
@@ -224,7 +224,7 @@ function alumnes2DAW()
     require_once '../database/pdo.php';
     $connexio = connexion();
 
-    $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = '2DAW'";
+    $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = 'DAW2'";
     $stmt = $connexio->prepare($query);
     $stmt->execute();
 
@@ -244,8 +244,85 @@ function generarGrup($nomgrup)
     $stmt->execute();
 }
 
-function agafarAlumnes($grup){
-    
+function buscarGrup($grup){
+    require_once '../database/pdo.php';
+    $connexio = connexion();
+
+    $query = "SELECT id FROM grup WHERE nom = :nom";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':nom', $grup);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result['id'];
+
 }
 
+function buscarAlumnes($clase){
+    require_once '../database/pdo.php';
+    $connexio = connexion();
+
+    $query = "SELECT email FROM alumne WHERE Clase = :clase";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':clase', $clase);
+    $stmt->execute();
+
+    $alumnes = array();
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $alumne = array(
+            'email' => $row['email']
+        );
+        $alumnes[] = $alumne;
+    }
+
+    return $alumnes;
+}
+
+function setIdAlumne($grup, $mail)
+{
+    require_once '../database/pdo.php';
+    $connexio = connexion();
+
+    $query = "UPDATE alumne SET grup_id = :grup WHERE email = :mail";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':grup', $grup);
+    $stmt->bindParam(':mail', $mail);
+    $stmt->execute();
+}
+
+
+function grupoCreado()
+{
+    require_once '../database/pdo.php';
+    $connexio = connexion();
+
+    $query = "SELECT COUNT(*) AS total FROM grup";
+    $stmt = $connexio->prepare($query);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result['total'];
+}
+
+function eliminarGrups()
+{
+    require_once '../database/pdo.php';
+    $connexio = connexion();
+
+    $query = "DELETE FROM grup";
+    $stmt = $connexio->prepare($query);
+    $stmt->execute();
+}
+
+function netejarAlumnes()
+{
+    require_once '../database/pdo.php';
+    $connexio = connexion();
+
+    $query = "UPDATE alumne SET grup_id = 0";
+    $stmt = $connexio->prepare($query);
+    $stmt->execute();
+}
 ?>
