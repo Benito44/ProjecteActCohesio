@@ -22,6 +22,7 @@ if ($tipus_arxiu == 'text/csv') {
         }
         fclose($arxiu);
         echo "<script>alert('Alumnes afegits correctament')</script>";
+        
     } else {
         echo "<script>alert('L'arxiu és massa gran o no és un arxiu CSV')</script>";
     }

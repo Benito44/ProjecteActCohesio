@@ -93,5 +93,159 @@ function jaExisteix($email)
     return $result['total'] > 0;
 }
 
+function alumnesSMX1_1()
+{
+    require_once '../database/pdo.php';
+    $connexio = connexion();
+
+    $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = 'SMX1-1'";
+    $stmt = $connexio->prepare($query);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result['total'];
+}
+
+function alumnesSMX1_2()
+{
+    require_once '../database/pdo.php';
+    $connexio = connexion();
+
+    $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = 'SMX1-2'";
+    $stmt = $connexio->prepare($query);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result['total'];
+}
+
+function alumnesSMX1_3()
+{
+    require_once '../database/pdo.php';
+    $connexio = connexion();
+
+    $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = 'SMX1-3'";
+    $stmt = $connexio->prepare($query);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result['total'];
+}
+
+function alumnesSMX1_4()
+{
+    require_once '../database/pdo.php';
+    $connexio = connexion();
+
+    $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = 'SMX1-4'";
+    $stmt = $connexio->prepare($query);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result['total'];
+}
+
+function alumnesSMX2_1()
+{
+    require_once '../database/pdo.php';
+    $connexio = connexion();
+
+    $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = 'SMX2-1'";
+    $stmt = $connexio->prepare($query);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result['total'];
+}
+
+function alumnesSMX2_2()
+{
+    require_once '../database/pdo.php';
+    $connexio = connexion();
+
+    $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = 'SMX2-2'";
+    $stmt = $connexio->prepare($query);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result['total'];
+}
+
+function alumnes1ASIX()
+{
+    require_once '../database/pdo.php';
+    $connexio = connexion();
+
+    $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = '1ASIX'";
+    $stmt = $connexio->prepare($query);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result['total'];
+}
+
+function alumnes2ASIX()
+{
+    require_once '../database/pdo.php';
+    $connexio = connexion();
+
+    $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = '2ASIX'";
+    $stmt = $connexio->prepare($query);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result['total'];
+}
+
+function alumnes1DAW()
+{
+    require_once '../database/pdo.php';
+    $connexio = connexion();
+
+    $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = '1DAW'";
+    $stmt = $connexio->prepare($query);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result['total'];
+}
+
+function alumnes2DAW()
+{
+    require_once '../database/pdo.php';
+    $connexio = connexion();
+
+    $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = '2DAW'";
+    $stmt = $connexio->prepare($query);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result['total'];
+}
+
+function generarGrup($nomgrup)
+{
+    require_once '../database/pdo.php';
+    $connexio = connexion();
+
+    $query = "INSERT INTO grup (nom) VALUES (:nom)";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':nom', $nomgrup);
+    $stmt->execute();
+}
+
+function agafarAlumnes($grup){
+    
+}
 
 ?>

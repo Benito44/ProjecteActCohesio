@@ -42,10 +42,9 @@
     </header>
     <br>
     <div class="container btn-warning text-center">
-        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" class="btn btn-secondary" onclick="window.location.href = '../Controlador/generarGrups.php';">
             Generar grups
         </button>
-        
         <p style="color: red;">S'hi recomana que abans de generar els grups, s'hagin afegit tots els alumnes primer correctament*</p>
     </div>
     <br>
