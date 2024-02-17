@@ -29,7 +29,7 @@
                                 <a class="nav-link" href="afegir.php">Afegir alumnes</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Modificar grups</a>
+                                <a class="nav-link" href="modificarGrupAlumne.php">Modificar grups</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Iniciar Joc</a>
@@ -41,13 +41,13 @@
         </div>
     </header>
     <div class="container">
-    <form method="POST" action="../Controlador/afegir.php" enctype="multipart/form-data">
-        <div class="mb-3">
-            <label class="form-label" for="arxiuAlumnes">Selecciona un arxiu CSV amb els alumnes</label>
-            <input class="form-control" type="file" name="arxiuAlumnes" id="arxiuAlumnes" accept=".csv">
-        </div>
-        <button type="submit">Afegir alumnes</button>
-    </form>
+        <form method="POST" action="../Controlador/afegir.php" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label class="form-label" for="arxiuAlumnes">Selecciona un arxiu CSV amb els alumnes</label>
+                <input class="form-control" type="file" name="arxiuAlumnes" id="arxiuAlumnes" accept=".csv">
+            </div>
+            <button type="submit">Afegir alumnes</button>
+        </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>

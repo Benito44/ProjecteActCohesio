@@ -29,7 +29,7 @@
                 <a class="nav-link" href="afegir.php">Afegir alumnes</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Modificar grups</a>
+                <a class="nav-link" href="modificarGrupAlumne.php">Modificar grups</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Iniciar Joc</a>

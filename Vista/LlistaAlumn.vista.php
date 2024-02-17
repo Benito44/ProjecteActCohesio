@@ -31,7 +31,7 @@
                                 <a class="nav-link" href="afegir.php">Afegir alumnes</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Modificar grups</a>
+                                <a class="nav-link" href="modificarGrupAlumne.php">Modificar grups</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Iniciar Joc</a>
@@ -48,7 +48,7 @@
             Generar grups
         </button>
         <button type="button" class="btn btn-secondary" onclick="window.location.href = 'reiniciar.php'">
-        Reiniciar grups
+            Reiniciar grups
         </button>
 
         <p style="color: red;">S'hi recomana que abans de generar els grups, s'hagin afegit tots els alumnes primer correctament*</p>
