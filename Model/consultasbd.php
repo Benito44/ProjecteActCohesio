@@ -42,13 +42,14 @@ function dadesAlumnes()
     require_once '../database/pdo.php';
     $connexio = connexion();
 
-    $query = "SELECT nom, cognoms, email, grup_id, Clase FROM alumne ORDER BY Clase";
+    $query = "SELECT id, nom, cognoms, email, grup_id, Clase FROM alumne ORDER BY Clase";
     $stmt = $connexio->prepare($query);
     $stmt->execute();
 
     $alumnes = array();
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $alumne = array(
+            'id' => $row['id'],
             'nom' => $row['nom'],
             'cognoms' => $row['cognoms'],
             'email' => $row['email'],
@@ -244,7 +245,8 @@ function generarGrup($nomgrup)
     $stmt->execute();
 }
 
-function buscarGrup($grup){
+function buscarGrup($grup)
+{
     require_once '../database/pdo.php';
     $connexio = connexion();
 
@@ -256,10 +258,10 @@ function buscarGrup($grup){
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
     return $result['id'];
-
 }
 
-function buscarAlumnes($clase){
+function buscarAlumnes($clase)
+{
     require_once '../database/pdo.php';
     $connexio = connexion();
 
@@ -325,4 +327,56 @@ function netejarAlumnes()
     $stmt = $connexio->prepare($query);
     $stmt->execute();
 }
-?>
+
+function canviarGrup($alumne, $grup)
+{
+    require_once '../database/pdo.php';
+    $connexio = connexion();
+
+    $query = "UPDATE alumne SET grup_id = :grup WHERE id = :alumne";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':grup', $grup);
+    $stmt->bindParam(':alumne', $alumne);
+    $stmt->execute();
+};
+
+function alumnesPerGrup($grup)
+{
+    require_once '../database/pdo.php';
+    $connexio = connexion();
+
+    $query = "SELECT id, nom, cognoms, email, grup_id, Clase FROM alumne WHERE grup_id = :grup";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':grup', $grup);
+    $stmt->execute();
+
+    $alumnes = array();
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $alumne = array(
+            'id' => $row['id'],
+            'nom' => $row['nom'],
+            'cognoms' => $row['cognoms'],
+            'email' => $row['email'],
+            'grup_id' => $row['grup_id'],
+            'Clase' => $row['Clase']
+        );
+        $alumnes[] = $alumne;
+    }
+
+    return $alumnes;
+}
+
+function grupPerId($id)
+{
+    require_once '../database/pdo.php';
+    $connexio = connexion();
+
+    $query = "SELECT nom FROM grup WHERE id = :id";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result['nom'];
+}
