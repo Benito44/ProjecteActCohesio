@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 session_start();
 
@@ -7,11 +7,13 @@ if ($_SESSION['rol'] != "admin") {
     header('refresh:0.01;url=../Vista/espera.php');
     
 } else {
-require_once '../Model/consultasbd.php';
 
-$alumnes = dadesAlumnes();
+    require_once '../Model/consultasbd.php';
 
-include '../Vista/LlistaAlumn.vista.php';
+    $grups = nombreDeGrups();
+    $alumnes = dadesAlumnes();
+    $nomGrups = nomDelsGrups();
+
+    include '../Vista/Llista.vista.php';
+
 }
-
-?>
