@@ -94,6 +94,36 @@ function jaExisteix($email)
     return $result['total'] > 0;
 }
 
+function profeExists($email)
+{
+    require_once '../database/pdo.php';
+    $connexio = connexion();
+
+    $query = "SELECT COUNT(*) AS total FROM professor WHERE email = :email";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':email', $email);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result['total'] > 0;
+}
+
+function profeIsAdmin($email)
+{
+    require_once '../database/pdo.php';
+    $connexio = connexion();
+
+    $query = "SELECT COUNT(*) AS total FROM professor WHERE email = :email AND administrador = 1";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':email', $email);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result['total'] > 0;
+}
+
 function alumnesSMX1_1()
 {
     require_once '../database/pdo.php';

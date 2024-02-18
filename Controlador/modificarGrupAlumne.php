@@ -1,8 +1,11 @@
 <?php
 
+session_start();
 
-
-
+if ($_SESSION['rol'] != "admin") {
+    echo "<script type='text/javascript'>alert('No pots accedir a aquesta pàgina si no ets administrador.');</script>";
+    header('refresh:0.01;url=../Vista/espera.php');
+} else {
 require_once '../Model/consultasbd.php';
 if (!empty($_POST["originalGroup"])) {
     $originalGroupId = $_POST["originalGroup"];
@@ -22,3 +25,4 @@ if (!empty($_POST['grup']) && !empty($_POST['alumne'])) {
 $grups = nomDelsGrups();
 
 include '../Vista/modificarGrupAlumne.vista.php';
+}
