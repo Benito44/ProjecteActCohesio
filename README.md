@@ -31,3 +31,9 @@ F <- G <- H <- I <- J		G <- H <- I <- J <- F
 Puntuació ()
 Per cada victoria el grup guanyara 1 punt i per cada empat 0,5 cada grup.
 Primer entra en la llista de grups, després anirà a la llista d'alumnes i aquí on es generen els grups dels alumnes. Després anirem a la llista de grups, on es podran veure els alumnes allistats als grups corresponents i podràs modificar els grups anant a la pàgina on la seva utilitat serà ajuntar els alumnes en grups i posar tantes proves com meitat del total de grups generats
+
+
+# Requisits d'entorn
+- PHP 8.2.4
+- MariaDB x.x.x
+- Apache2 x.x.x

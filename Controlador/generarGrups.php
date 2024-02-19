@@ -26,7 +26,7 @@ if (grupoCreado() !== 0) {
     } else {
 
         echo "<script type='text/javascript'>alert('No s'han sobreescrit els grups ');</script>";
-        header('refresh:0.01; url=llista.php');
+        header('refresh:0.01; url=sessio.php');
     }
 }
 else generarGrups();
