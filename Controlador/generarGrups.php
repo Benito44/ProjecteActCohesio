@@ -1,8 +1,7 @@
 <?php
 
-session_start();
 
-require_once '../Model/consultasbd.php';
+require '../Model/consultasbd.php';
 
 $overwrite = $_GET['overwrite'] ?? '';
 
@@ -33,7 +32,7 @@ if (grupoCreado() !== 0) {
 else generarGrups();
 
 
-include "llista.php";
+include "sessio.php";
 
 
 function generarGrups()
