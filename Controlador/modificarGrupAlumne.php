@@ -17,7 +17,7 @@ if (!empty($_POST['grup']) && !empty($_POST['alumne'])) {
     $alumne = $_POST['alumne'];
     $grup = $_POST['grup'];
     canviarGrup($alumne, $grup);
-    return header('Location: llista.php');
+    return header('Location: sessio.php');
 }
 
 // $grups = nombreDeGrups();
