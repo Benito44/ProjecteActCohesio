@@ -1,8 +1,8 @@
 <?php
+require_once '../database/pdo.php';
 
-function nomDelsGrups()
-{
-    require_once '../database/pdo.php';
+function nomDelsGrups(){
+    
     $connexio = connexion();
 
     $query = "SELECT nom, id FROM grup";
@@ -24,7 +24,7 @@ function nomDelsGrups()
 
 function nombreDeGrups()
 {
-    require_once '../database/pdo.php';
+    
     $connexio = connexion();
 
     $query = "SELECT COUNT(*) AS total_grups, GROUP_CONCAT(nom SEPARATOR ', ') AS noms_grups, id FROM grup";
@@ -39,7 +39,7 @@ function nombreDeGrups()
 
 function dadesAlumnes()
 {
-    require_once '../database/pdo.php';
+    
     $connexio = connexion();
 
     $query = "SELECT id, nom, cognoms, email, grup_id, Clase FROM alumne ORDER BY Clase";
@@ -65,7 +65,7 @@ function dadesAlumnes()
 
 function afegirAlumne($nom, $cognoms, $email, $clase)
 {
-    require_once '../database/pdo.php';
+    
     $connexio = connexion();
 
     if (!jaExisteix($email)) {
@@ -81,7 +81,7 @@ function afegirAlumne($nom, $cognoms, $email, $clase)
 
 function jaExisteix($email)
 {
-    require_once '../database/pdo.php';
+    
     $connexio = connexion();
 
     $query = "SELECT COUNT(*) AS total FROM alumne WHERE email = :email";
@@ -96,7 +96,7 @@ function jaExisteix($email)
 
 function profeExists($email)
 {
-    require_once '../database/pdo.php';
+    
     $connexio = connexion();
 
     $query = "SELECT COUNT(*) AS total FROM professor WHERE email = :email";
@@ -111,7 +111,7 @@ function profeExists($email)
 
 function profeIsAdmin($email)
 {
-    require_once '../database/pdo.php';
+    
     $connexio = connexion();
 
     $query = "SELECT COUNT(*) AS total FROM professor WHERE email = :email AND administrador = 1";
@@ -126,7 +126,7 @@ function profeIsAdmin($email)
 
 function alumnesSMX1_1()
 {
-    require_once '../database/pdo.php';
+    
     $connexio = connexion();
 
     $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = 'SMX1-1'";
@@ -140,7 +140,7 @@ function alumnesSMX1_1()
 
 function alumnesSMX1_2()
 {
-    require_once '../database/pdo.php';
+    
     $connexio = connexion();
 
     $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = 'SMX1-2'";
@@ -154,7 +154,7 @@ function alumnesSMX1_2()
 
 function alumnesSMX1_3()
 {
-    require_once '../database/pdo.php';
+    
     $connexio = connexion();
 
     $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = 'SMX1-3'";
@@ -168,7 +168,7 @@ function alumnesSMX1_3()
 
 function alumnesSMX1_4()
 {
-    require_once '../database/pdo.php';
+    
     $connexio = connexion();
 
     $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = 'SMX1-4'";
@@ -182,7 +182,7 @@ function alumnesSMX1_4()
 
 function alumnesSMX2_1()
 {
-    require_once '../database/pdo.php';
+    
     $connexio = connexion();
 
     $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = 'SMX2-1'";
@@ -196,7 +196,7 @@ function alumnesSMX2_1()
 
 function alumnesSMX2_2()
 {
-    require_once '../database/pdo.php';
+    
     $connexio = connexion();
 
     $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = 'SMX2-2'";
@@ -210,7 +210,7 @@ function alumnesSMX2_2()
 
 function alumnes1ASIX()
 {
-    require_once '../database/pdo.php';
+    
     $connexio = connexion();
 
     $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = 'ASIX1'";
@@ -224,7 +224,7 @@ function alumnes1ASIX()
 
 function alumnes2ASIX()
 {
-    require_once '../database/pdo.php';
+    
     $connexio = connexion();
 
     $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = 'ASIX2'";
@@ -238,7 +238,7 @@ function alumnes2ASIX()
 
 function alumnes1DAW()
 {
-    require_once '../database/pdo.php';
+    
     $connexio = connexion();
 
     $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = 'DAW1'";
@@ -252,7 +252,7 @@ function alumnes1DAW()
 
 function alumnes2DAW()
 {
-    require_once '../database/pdo.php';
+    
     $connexio = connexion();
 
     $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = 'DAW2'";
@@ -266,7 +266,7 @@ function alumnes2DAW()
 
 function generarGrup($nomgrup)
 {
-    require_once '../database/pdo.php';
+    
     $connexio = connexion();
 
     $query = "INSERT INTO grup (nom) VALUES (:nom)";
@@ -277,7 +277,7 @@ function generarGrup($nomgrup)
 
 function buscarGrup($grup)
 {
-    require_once '../database/pdo.php';
+    
     $connexio = connexion();
 
     $query = "SELECT id FROM grup WHERE nom = :nom";
@@ -292,7 +292,7 @@ function buscarGrup($grup)
 
 function buscarAlumnes($clase)
 {
-    require_once '../database/pdo.php';
+    
     $connexio = connexion();
 
     $query = "SELECT email FROM alumne WHERE Clase = :clase";
@@ -313,7 +313,7 @@ function buscarAlumnes($clase)
 
 function setIdAlumne($grup, $mail)
 {
-    require_once '../database/pdo.php';
+    
     $connexio = connexion();
 
     $query = "UPDATE alumne SET grup_id = :grup WHERE email = :mail";
@@ -326,7 +326,7 @@ function setIdAlumne($grup, $mail)
 
 function grupoCreado()
 {
-    require_once '../database/pdo.php';
+    
     $connexio = connexion();
 
     $query = "SELECT COUNT(*) AS total FROM grup";
@@ -340,7 +340,7 @@ function grupoCreado()
 
 function eliminarGrups()
 {
-    require_once '../database/pdo.php';
+    
     $connexio = connexion();
 
     $query = "DELETE FROM grup";
@@ -350,7 +350,7 @@ function eliminarGrups()
 
 function netejarAlumnes()
 {
-    require_once '../database/pdo.php';
+    
     $connexio = connexion();
 
     $query = "UPDATE alumne SET grup_id = 0";
@@ -360,7 +360,7 @@ function netejarAlumnes()
 
 function canviarGrup($alumne, $grup)
 {
-    require_once '../database/pdo.php';
+    
     $connexio = connexion();
 
     $query = "UPDATE alumne SET grup_id = :grup WHERE id = :alumne";
@@ -372,7 +372,7 @@ function canviarGrup($alumne, $grup)
 
 function alumnesPerGrup($grup)
 {
-    require_once '../database/pdo.php';
+    
     $connexio = connexion();
 
     $query = "SELECT id, nom, cognoms, email, grup_id, Clase FROM alumne WHERE grup_id = :grup";
@@ -398,7 +398,7 @@ function alumnesPerGrup($grup)
 
 function grupPerId($id)
 {
-    require_once '../database/pdo.php';
+    
     $connexio = connexion();
 
     $query = "SELECT nom FROM grup WHERE id = :id";
