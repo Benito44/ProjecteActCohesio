@@ -32,3 +32,8 @@ h1 {
   .student-list li:last-child {
     border-bottom: none; 
   }
+
+  .custom-btn {
+    width: 300px; 
+    margin-bottom: 10px; 
+}
