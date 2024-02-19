@@ -20,7 +20,7 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
-                <a class="nav-link" href="llista.php">Llista de grups</a>
+                <a class="nav-link" href="sessio.php">Llista de grups</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="llistaAlumn.php">Llista d'alumness</a>
