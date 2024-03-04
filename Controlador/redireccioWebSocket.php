@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/vendor/autoload.php';
+require '../vendor/autoload.php';
 
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
@@ -24,7 +24,7 @@ class GameServer implements MessageComponentInterface {
         if ($msg === "iniciar juego") {
             // Redirigir a todos los clientes a la página del juego
             foreach ($this->clients as $client) {
-                $client->send("redireccion: pagina_del_juego.html");
+                $client->send("redireccion: hola.html");
             }
         }
     }
@@ -53,3 +53,5 @@ $server = IoServer::factory(
 echo "Servidor WebSocket iniciado en el puerto 8080\n";
 
 $server->run();
+
+include "../Vista/Iniciar.php";

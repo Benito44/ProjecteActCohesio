@@ -34,7 +34,7 @@
                                 <a class="nav-link" href="modificarGrupAlumne.php">Modificar grups</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../Vista/Iniciar.html">Iniciar Joc</a>
+                                <a class="nav-link" href="../Controlador/redireccioWebSocket.php">Iniciar Joc</a>
                             </li>
                         </ul>
                     </div>
