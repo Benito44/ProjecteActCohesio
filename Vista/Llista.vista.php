@@ -32,7 +32,12 @@
                 <a class="nav-link" href="modificarGrupAlumne.php">Modificar grups</a>
               </li>
               <li class="nav-item">
+<<<<<<< HEAD
                 <a class="nav-link" href="../Controlador/redireccioWebSocket.php">Iniciar Joc</a>
+=======
+                <a class="nav-link" href="gruposCohesio.php">Grupos cohesion</a>
+                <a class="nav-link" href="../Vista/Iniciar.html">Iniciar Joc</a>
+>>>>>>> c9c6cd29c7b30e8d10ab8cb3edd0914e97219471
               </li>
             </ul>
           </div>

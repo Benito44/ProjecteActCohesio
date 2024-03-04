@@ -36,10 +36,19 @@ function nombreDeGrups()
     return $result;
 }
 
-
+    // Función para generar parejas aleatorias
+    function generarParejas($grupos) {
+        // Mezclar el array de grupos
+        shuffle($grupos);
+        
+        // Dividir el array en pares
+        $parejas = array_chunk($grupos, 2);
+        
+        return $parejas;
+    }
+    
 function dadesAlumnes()
 {
-    
     $connexio = connexion();
 
     $query = "SELECT id, nom, cognoms, email, grup_id, Clase FROM alumne ORDER BY Clase";
@@ -409,4 +418,18 @@ function grupPerId($id)
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
     return $result['nom'];
+}
+function seleccionarGrup()
+{
+    
+    $connexio = connexion();
+
+    $query = "SELECT nom FROM grup";
+    $stmt = $connexio->prepare($query);
+    $stmt->execute();
+
+    // Obtener todos los nombres y almacenarlos en un array
+    $result = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+    return ($result);
 }
