@@ -33,7 +33,6 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="gruposCohesio.php">Iniciar Joc</a>
-                <a class="nav-link" href="../Vista/Iniciar.html">Iniciar Joc</a>
               </li>
             </ul>
           </div>
