@@ -11,7 +11,7 @@ if (!empty($_POST["originalGroup"])) {
     $originalGroupId = $_POST["originalGroup"];
     $originalGroupName = grupPerId($originalGroupId);
     $alumnes = alumnesPerGrup($originalGroupId);
-    // $nouGrups = nomDelsGrups();
+
 }
 if (!empty($_POST['grup']) && !empty($_POST['alumne'])) {
     $alumne = $_POST['alumne'];
