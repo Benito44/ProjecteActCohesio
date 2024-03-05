@@ -43,7 +43,8 @@ $(document).ready(function () {
     interval = setInterval(actualitzarCronometre, 1000);
     $("#pausa").prop("disabled", false);
     $("#end").prop("disabled", false);
-    socket.send("iniciar juego");
+    let rol = "<?php echo $_SESSION['rol']; ?>";
+    socket.send("Iniciar joc", rol);
   });
 
   $("#pausa").click(function () {
