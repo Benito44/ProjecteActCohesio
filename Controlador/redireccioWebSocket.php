@@ -1,5 +1,5 @@
 <?php
-/*require dirname(__DIR__) .  '/vendor/autoload.php';
+require dirname(__DIR__) .  '/vendor/autoload.php';
 
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
@@ -68,4 +68,3 @@ echo "Servidor WebSocket iniciado en el puerto 8080\n";
 $server->run();
 
 include "../Vista/Iniciar.php";
-*/
