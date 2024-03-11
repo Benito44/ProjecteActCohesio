@@ -24,6 +24,7 @@ if (profeExists($email2)) {
     } else {
         $_SESSION['rol'] = "profe";
         header('Location: ../Vista/espera.php');
+        
     }
 } else {
     $_SESSION['rol'] = "alumne";

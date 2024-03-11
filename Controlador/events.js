@@ -2,20 +2,6 @@ $(document).ready(function () {
   let tempsRestant = 600;
   let interval;
 
-  var socket = new WebSocket("ws://localhost:8080");
-
-  socket.onopen = function (event) {
-    console.log("Conexión establecida con el servidor websocket.");
-  };
-
-  socket.onmessage = function (event) {
-    var message = event.data;
-    if (message.startsWith("redireccion:")) {
-      var url = message.split(":")[1].trim();
-      window.location.href = url;
-    }
-  };
-
   function actualitzarCronometre() {
     let minuts = Math.floor(tempsRestant / 60);
     let segons = tempsRestant % 60;
@@ -39,12 +25,17 @@ $(document).ready(function () {
   }
 
   $("#inicii").click(function () {
-    // Iniciar el intervalo para actualizar el cronómetro cada segundo
+    
     interval = setInterval(actualitzarCronometre, 1000);
     $("#pausa").prop("disabled", false);
     $("#end").prop("disabled", false);
+    $("#inicii").prop("disabled", true);
     let rol = "<?php echo $_SESSION['rol']; ?>";
-    socket.send("Iniciar joc", rol);
+    $.ajax({
+      type: "POST",
+      url: "http://localhost/ProjecteActCohesio/Controlador/definirEvent.php",
+      data: { estat: "Iniciar"}
+    });
   });
 
   $("#pausa").click(function () {
