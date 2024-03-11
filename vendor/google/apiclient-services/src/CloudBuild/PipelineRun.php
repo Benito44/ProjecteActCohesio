@@ -24,20 +24,12 @@ class PipelineRun extends \Google\Collection
    * @var string[]
    */
   public $annotations;
-  /**
-   * @var ChildStatusReference[]
-   */
-  public $childReferences;
   protected $childReferencesType = ChildStatusReference::class;
   protected $childReferencesDataType = 'array';
   /**
    * @var string
    */
   public $completionTime;
-  /**
-   * @var GoogleDevtoolsCloudbuildV2Condition[]
-   */
-  public $conditions;
   protected $conditionsType = GoogleDevtoolsCloudbuildV2Condition::class;
   protected $conditionsDataType = 'array';
   /**
@@ -53,55 +45,45 @@ class PipelineRun extends \Google\Collection
    */
   public $finallyStartTime;
   /**
+   * @var string[]
+   */
+  public $gcbParams;
+  /**
    * @var string
    */
   public $name;
-  /**
-   * @var Param[]
-   */
-  public $params;
   protected $paramsType = Param::class;
   protected $paramsDataType = 'array';
-  /**
-   * @var PipelineRef
-   */
-  public $pipelineRef;
   protected $pipelineRefType = PipelineRef::class;
   protected $pipelineRefDataType = '';
   /**
    * @var string
    */
   public $pipelineRunStatus;
-  /**
-   * @var PipelineSpec
-   */
-  public $pipelineSpec;
   protected $pipelineSpecType = PipelineSpec::class;
   protected $pipelineSpecDataType = '';
+  protected $provenanceType = Provenance::class;
+  protected $provenanceDataType = '';
   /**
-   * @var PipelineSpec
+   * @var string
    */
-  public $resolvedPipelineSpec;
+  public $record;
   protected $resolvedPipelineSpecType = PipelineSpec::class;
   protected $resolvedPipelineSpecDataType = '';
+  protected $resultsType = PipelineRunResult::class;
+  protected $resultsDataType = 'array';
+  protected $securityType = Security::class;
+  protected $securityDataType = '';
   /**
    * @var string
    */
   public $serviceAccount;
-  /**
-   * @var SkippedTask[]
-   */
-  public $skippedTasks;
   protected $skippedTasksType = SkippedTask::class;
   protected $skippedTasksDataType = 'array';
   /**
    * @var string
    */
   public $startTime;
-  /**
-   * @var TimeoutFields
-   */
-  public $timeouts;
   protected $timeoutsType = TimeoutFields::class;
   protected $timeoutsDataType = '';
   /**
@@ -112,6 +94,8 @@ class PipelineRun extends \Google\Collection
    * @var string
    */
   public $updateTime;
+  protected $workerType = Worker::class;
+  protected $workerDataType = '';
   /**
    * @var string
    */
@@ -120,10 +104,6 @@ class PipelineRun extends \Google\Collection
    * @var string
    */
   public $workflow;
-  /**
-   * @var WorkspaceBinding[]
-   */
-  public $workspaces;
   protected $workspacesType = WorkspaceBinding::class;
   protected $workspacesDataType = 'array';
 
@@ -226,6 +206,20 @@ class PipelineRun extends \Google\Collection
     return $this->finallyStartTime;
   }
   /**
+   * @param string[]
+   */
+  public function setGcbParams($gcbParams)
+  {
+    $this->gcbParams = $gcbParams;
+  }
+  /**
+   * @return string[]
+   */
+  public function getGcbParams()
+  {
+    return $this->gcbParams;
+  }
+  /**
    * @param string
    */
   public function setName($name)
@@ -296,6 +290,34 @@ class PipelineRun extends \Google\Collection
     return $this->pipelineSpec;
   }
   /**
+   * @param Provenance
+   */
+  public function setProvenance(Provenance $provenance)
+  {
+    $this->provenance = $provenance;
+  }
+  /**
+   * @return Provenance
+   */
+  public function getProvenance()
+  {
+    return $this->provenance;
+  }
+  /**
+   * @param string
+   */
+  public function setRecord($record)
+  {
+    $this->record = $record;
+  }
+  /**
+   * @return string
+   */
+  public function getRecord()
+  {
+    return $this->record;
+  }
+  /**
    * @param PipelineSpec
    */
   public function setResolvedPipelineSpec(PipelineSpec $resolvedPipelineSpec)
@@ -308,6 +330,34 @@ class PipelineRun extends \Google\Collection
   public function getResolvedPipelineSpec()
   {
     return $this->resolvedPipelineSpec;
+  }
+  /**
+   * @param PipelineRunResult[]
+   */
+  public function setResults($results)
+  {
+    $this->results = $results;
+  }
+  /**
+   * @return PipelineRunResult[]
+   */
+  public function getResults()
+  {
+    return $this->results;
+  }
+  /**
+   * @param Security
+   */
+  public function setSecurity(Security $security)
+  {
+    $this->security = $security;
+  }
+  /**
+   * @return Security
+   */
+  public function getSecurity()
+  {
+    return $this->security;
   }
   /**
    * @param string
@@ -392,6 +442,20 @@ class PipelineRun extends \Google\Collection
   public function getUpdateTime()
   {
     return $this->updateTime;
+  }
+  /**
+   * @param Worker
+   */
+  public function setWorker(Worker $worker)
+  {
+    $this->worker = $worker;
+  }
+  /**
+   * @return Worker
+   */
+  public function getWorker()
+  {
+    return $this->worker;
   }
   /**
    * @param string

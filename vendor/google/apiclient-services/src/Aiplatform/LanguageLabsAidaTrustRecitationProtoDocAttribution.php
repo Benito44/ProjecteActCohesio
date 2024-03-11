@@ -38,6 +38,10 @@ class LanguageLabsAidaTrustRecitationProtoDocAttribution extends \Google\Model
   /**
    * @var string
    */
+  public $biorxivId;
+  /**
+   * @var string
+   */
   public $bookTitle;
   /**
    * @var string
@@ -103,10 +107,6 @@ class LanguageLabsAidaTrustRecitationProtoDocAttribution extends \Google\Model
    * @var string
    */
   public $podcastUtteranceId;
-  /**
-   * @var GoogleTypeDate
-   */
-  public $publicationDate;
   protected $publicationDateType = GoogleTypeDate::class;
   protected $publicationDateDataType = '';
   public $qualityScoreExperimentOnly;
@@ -126,6 +126,10 @@ class LanguageLabsAidaTrustRecitationProtoDocAttribution extends \Google\Model
    * @var string
    */
   public $wikipediaArticleTitle;
+  /**
+   * @var string
+   */
+  public $youtubeVideoId;
 
   /**
    * @param string
@@ -182,6 +186,20 @@ class LanguageLabsAidaTrustRecitationProtoDocAttribution extends \Google\Model
   public function getBibkey()
   {
     return $this->bibkey;
+  }
+  /**
+   * @param string
+   */
+  public function setBiorxivId($biorxivId)
+  {
+    $this->biorxivId = $biorxivId;
+  }
+  /**
+   * @return string
+   */
+  public function getBiorxivId()
+  {
+    return $this->biorxivId;
   }
   /**
    * @param string
@@ -498,6 +516,20 @@ class LanguageLabsAidaTrustRecitationProtoDocAttribution extends \Google\Model
   public function getWikipediaArticleTitle()
   {
     return $this->wikipediaArticleTitle;
+  }
+  /**
+   * @param string
+   */
+  public function setYoutubeVideoId($youtubeVideoId)
+  {
+    $this->youtubeVideoId = $youtubeVideoId;
+  }
+  /**
+   * @return string
+   */
+  public function getYoutubeVideoId()
+  {
+    return $this->youtubeVideoId;
   }
 }
 

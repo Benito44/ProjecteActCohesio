@@ -20,16 +20,8 @@ namespace Google\Service\Aiplatform;
 class GoogleCloudAiplatformV1Candidate extends \Google\Collection
 {
   protected $collection_key = 'safetyRatings';
-  /**
-   * @var GoogleCloudAiplatformV1CitationMetadata
-   */
-  public $citationMetadata;
   protected $citationMetadataType = GoogleCloudAiplatformV1CitationMetadata::class;
   protected $citationMetadataDataType = '';
-  /**
-   * @var GoogleCloudAiplatformV1Content
-   */
-  public $content;
   protected $contentType = GoogleCloudAiplatformV1Content::class;
   protected $contentDataType = '';
   /**
@@ -40,14 +32,12 @@ class GoogleCloudAiplatformV1Candidate extends \Google\Collection
    * @var string
    */
   public $finishReason;
+  protected $groundingMetadataType = GoogleCloudAiplatformV1GroundingMetadata::class;
+  protected $groundingMetadataDataType = '';
   /**
    * @var int
    */
   public $index;
-  /**
-   * @var GoogleCloudAiplatformV1SafetyRating[]
-   */
-  public $safetyRatings;
   protected $safetyRatingsType = GoogleCloudAiplatformV1SafetyRating::class;
   protected $safetyRatingsDataType = 'array';
 
@@ -106,6 +96,20 @@ class GoogleCloudAiplatformV1Candidate extends \Google\Collection
   public function getFinishReason()
   {
     return $this->finishReason;
+  }
+  /**
+   * @param GoogleCloudAiplatformV1GroundingMetadata
+   */
+  public function setGroundingMetadata(GoogleCloudAiplatformV1GroundingMetadata $groundingMetadata)
+  {
+    $this->groundingMetadata = $groundingMetadata;
+  }
+  /**
+   * @return GoogleCloudAiplatformV1GroundingMetadata
+   */
+  public function getGroundingMetadata()
+  {
+    return $this->groundingMetadata;
   }
   /**
    * @param int

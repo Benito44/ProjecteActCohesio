@@ -67,6 +67,7 @@ class SpacesMessages extends \Google\Service\Resource
    * For example usage, see [Start or reply to a message thread](https://developer
    * s.google.com/chat/api/guides/v1/messages/create#create-message-thread).
    * @return Message
+   * @throws \Google\Service\Exception
    */
   public function create($parent, Message $postBody, $optParams = [])
   {
@@ -100,6 +101,7 @@ class SpacesMessages extends \Google\Service\Resource
    * effect when [authenticating as a Chat app]
    * (https://developers.google.com/chat/api/guides/auth/service-accounts).
    * @return ChatEmpty
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
@@ -125,6 +127,7 @@ class SpacesMessages extends \Google\Service\Resource
    * /chat/api/guides/v1/messages/create#name_a_created_message).
    * @param array $optParams Optional parameters.
    * @return Message
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -168,9 +171,9 @@ class SpacesMessages extends \Google\Service\Resource
    * ASC`.
    * @opt_param int pageSize The maximum number of messages returned. The service
    * might return fewer messages than this value. If unspecified, at most 25 are
-   * returned. The maximum value is 1,000. If you use a value more than 1,000,
-   * it's automatically changed to 1,000. Negative values return an
-   * `INVALID_ARGUMENT` error.
+   * returned. The maximum value is 1000. If you use a value more than 1000, it's
+   * automatically changed to 1000. Negative values return an `INVALID_ARGUMENT`
+   * error.
    * @opt_param string pageToken Optional, if resuming from a previous query. A
    * page token received from a previous list messages call. Provide this
    * parameter to retrieve the subsequent page. When paginating, all other
@@ -181,6 +184,7 @@ class SpacesMessages extends \Google\Service\Resource
    * messages include deleted time and metadata about their deletion, but message
    * content is unavailable.
    * @return ListMessagesResponse
+   * @throws \Google\Service\Exception
    */
   public function listSpacesMessages($parent, $optParams = [])
   {
@@ -228,6 +232,7 @@ class SpacesMessages extends \Google\Service\Resource
    * Developer Preview: `accessory_widgets` (Requires [app
    * authentication](/chat/api/guides/auth/service-accounts).)
    * @return Message
+   * @throws \Google\Service\Exception
    */
   public function patch($name, Message $postBody, $optParams = [])
   {
@@ -275,6 +280,7 @@ class SpacesMessages extends \Google\Service\Resource
    * Developer Preview: `accessory_widgets` (Requires [app
    * authentication](/chat/api/guides/auth/service-accounts).)
    * @return Message
+   * @throws \Google\Service\Exception
    */
   public function update($name, Message $postBody, $optParams = [])
   {

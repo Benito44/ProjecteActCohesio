@@ -36,7 +36,7 @@ class ProjectsLocationsFeatureOnlineStores extends \Google\Service\Resource
    * (featureOnlineStores.create)
    *
    * @param string $parent Required. The resource name of the Location to create
-   * FeatureOnlineStores. Format: `projects/{project}/locations/{location}'`
+   * FeatureOnlineStores. Format: `projects/{project}/locations/{location}`
    * @param GoogleCloudAiplatformV1FeatureOnlineStore $postBody
    * @param array $optParams Optional parameters.
    *
@@ -46,6 +46,7 @@ class ProjectsLocationsFeatureOnlineStores extends \Google\Service\Resource
    * and valid characters are `[a-z0-9_]`. The first character cannot be a number.
    * The value must be unique within the project and location.
    * @return GoogleLongrunningOperation
+   * @throws \Google\Service\Exception
    */
   public function create($parent, GoogleCloudAiplatformV1FeatureOnlineStore $postBody, $optParams = [])
   {
@@ -66,6 +67,7 @@ class ProjectsLocationsFeatureOnlineStores extends \Google\Service\Resource
    * FeatureOnlineStore will also be deleted. (Otherwise, the request will only
    * work if the FeatureOnlineStore has no FeatureViews.)
    * @return GoogleLongrunningOperation
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
@@ -79,6 +81,7 @@ class ProjectsLocationsFeatureOnlineStores extends \Google\Service\Resource
    * @param string $name Required. The name of the FeatureOnlineStore resource.
    * @param array $optParams Optional parameters.
    * @return GoogleCloudAiplatformV1FeatureOnlineStore
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -116,6 +119,7 @@ class ProjectsLocationsFeatureOnlineStores extends \Google\Service\Resource
    * to FeatureOnlineStoreAdminService.ListFeatureOnlineStores must match the call
    * that provided the page token.
    * @return GoogleCloudAiplatformV1ListFeatureOnlineStoresResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsLocationsFeatureOnlineStores($parent, $optParams = [])
   {
@@ -138,8 +142,9 @@ class ProjectsLocationsFeatureOnlineStores extends \Google\Service\Resource
    * request. A field will be overwritten if it is in the mask. If the user does
    * not provide a mask then only the non-empty fields present in the request will
    * be overwritten. Set the update_mask to `*` to override all fields. Updatable
-   * fields: * `big_query_source` * `labels` * `sync_config`
+   * fields: * `big_query_source` * `bigtable` * `labels` * `sync_config`
    * @return GoogleLongrunningOperation
+   * @throws \Google\Service\Exception
    */
   public function patch($name, GoogleCloudAiplatformV1FeatureOnlineStore $postBody, $optParams = [])
   {

@@ -20,12 +20,10 @@ namespace Google\Service\Aiplatform;
 class LearningServingLlmMessageMetadata extends \Google\Collection
 {
   protected $collection_key = 'translatedUserPrompts';
-  /**
-   * @var LearningGenaiRootClassifierOutputSummary
-   */
-  public $classifierSummary;
   protected $classifierSummaryType = LearningGenaiRootClassifierOutputSummary::class;
   protected $classifierSummaryDataType = '';
+  protected $codeyOutputType = LearningGenaiRootCodeyOutput::class;
+  protected $codeyOutputDataType = '';
   /**
    * @var string
    */
@@ -34,30 +32,24 @@ class LearningServingLlmMessageMetadata extends \Google\Collection
    * @var bool
    */
   public $deleted;
-  /**
-   * @var LearningGenaiRootFilterMetadata[]
-   */
-  public $filterMeta;
   protected $filterMetaType = LearningGenaiRootFilterMetadata::class;
   protected $filterMetaDataType = 'array';
-  /**
-   * @var LearningGenaiRootScore
-   */
-  public $finalMessageScore;
   protected $finalMessageScoreType = LearningGenaiRootScore::class;
   protected $finalMessageScoreDataType = '';
   /**
    * @var string
    */
   public $finishReason;
+  protected $groundingMetadataType = LearningGenaiRootGroundingMetadata::class;
+  protected $groundingMetadataDataType = '';
+  /**
+   * @var bool
+   */
+  public $isCode;
   /**
    * @var bool
    */
   public $isFallback;
-  /**
-   * @var NlpSaftLangIdResult
-   */
-  public $langidResult;
   protected $langidResultType = NlpSaftLangIdResult::class;
   protected $langidResultDataType = '';
   /**
@@ -76,26 +68,14 @@ class LearningServingLlmMessageMetadata extends \Google\Collection
    * @var int
    */
   public $perStreamDecodedTokenCount;
-  /**
-   * @var LearningGenaiRootRAIOutput[]
-   */
-  public $raiOutputs;
   protected $raiOutputsType = LearningGenaiRootRAIOutput::class;
   protected $raiOutputsDataType = 'array';
-  /**
-   * @var LearningGenaiRecitationRecitationResult
-   */
-  public $recitationResult;
   protected $recitationResultType = LearningGenaiRecitationRecitationResult::class;
   protected $recitationResultDataType = '';
   /**
    * @var int
    */
   public $returnTokenCount;
-  /**
-   * @var LearningGenaiRootScore[]
-   */
-  public $scores;
   protected $scoresType = LearningGenaiRootScore::class;
   protected $scoresDataType = 'array';
   /**
@@ -110,10 +90,6 @@ class LearningServingLlmMessageMetadata extends \Google\Collection
    * @var string[]
    */
   public $translatedUserPrompts;
-  /**
-   * @var CloudAiNlLlmProtoServiceRaiResult
-   */
-  public $vertexRaiResult;
   protected $vertexRaiResultType = CloudAiNlLlmProtoServiceRaiResult::class;
   protected $vertexRaiResultDataType = '';
 
@@ -130,6 +106,20 @@ class LearningServingLlmMessageMetadata extends \Google\Collection
   public function getClassifierSummary()
   {
     return $this->classifierSummary;
+  }
+  /**
+   * @param LearningGenaiRootCodeyOutput
+   */
+  public function setCodeyOutput(LearningGenaiRootCodeyOutput $codeyOutput)
+  {
+    $this->codeyOutput = $codeyOutput;
+  }
+  /**
+   * @return LearningGenaiRootCodeyOutput
+   */
+  public function getCodeyOutput()
+  {
+    return $this->codeyOutput;
   }
   /**
    * @param string
@@ -200,6 +190,34 @@ class LearningServingLlmMessageMetadata extends \Google\Collection
   public function getFinishReason()
   {
     return $this->finishReason;
+  }
+  /**
+   * @param LearningGenaiRootGroundingMetadata
+   */
+  public function setGroundingMetadata(LearningGenaiRootGroundingMetadata $groundingMetadata)
+  {
+    $this->groundingMetadata = $groundingMetadata;
+  }
+  /**
+   * @return LearningGenaiRootGroundingMetadata
+   */
+  public function getGroundingMetadata()
+  {
+    return $this->groundingMetadata;
+  }
+  /**
+   * @param bool
+   */
+  public function setIsCode($isCode)
+  {
+    $this->isCode = $isCode;
+  }
+  /**
+   * @return bool
+   */
+  public function getIsCode()
+  {
+    return $this->isCode;
   }
   /**
    * @param bool

@@ -20,16 +20,8 @@ namespace Google\Service\Aiplatform;
 class CloudAiNlLlmProtoServiceCandidate extends \Google\Collection
 {
   protected $collection_key = 'safetyRatings';
-  /**
-   * @var CloudAiNlLlmProtoServiceCitationMetadata
-   */
-  public $citationMetadata;
   protected $citationMetadataType = CloudAiNlLlmProtoServiceCitationMetadata::class;
   protected $citationMetadataDataType = '';
-  /**
-   * @var CloudAiNlLlmProtoServiceContent
-   */
-  public $content;
   protected $contentType = CloudAiNlLlmProtoServiceContent::class;
   protected $contentDataType = '';
   /**
@@ -40,14 +32,12 @@ class CloudAiNlLlmProtoServiceCandidate extends \Google\Collection
    * @var string
    */
   public $finishReason;
+  protected $groundingMetadataType = LearningGenaiRootGroundingMetadata::class;
+  protected $groundingMetadataDataType = '';
   /**
    * @var int
    */
   public $index;
-  /**
-   * @var CloudAiNlLlmProtoServiceSafetyRating[]
-   */
-  public $safetyRatings;
   protected $safetyRatingsType = CloudAiNlLlmProtoServiceSafetyRating::class;
   protected $safetyRatingsDataType = 'array';
 
@@ -106,6 +96,20 @@ class CloudAiNlLlmProtoServiceCandidate extends \Google\Collection
   public function getFinishReason()
   {
     return $this->finishReason;
+  }
+  /**
+   * @param LearningGenaiRootGroundingMetadata
+   */
+  public function setGroundingMetadata(LearningGenaiRootGroundingMetadata $groundingMetadata)
+  {
+    $this->groundingMetadata = $groundingMetadata;
+  }
+  /**
+   * @return LearningGenaiRootGroundingMetadata
+   */
+  public function getGroundingMetadata()
+  {
+    return $this->groundingMetadata;
   }
   /**
    * @param int

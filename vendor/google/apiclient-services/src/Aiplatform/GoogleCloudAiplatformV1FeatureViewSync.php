@@ -23,22 +23,16 @@ class GoogleCloudAiplatformV1FeatureViewSync extends \Google\Model
    * @var string
    */
   public $createTime;
-  /**
-   * @var GoogleRpcStatus
-   */
-  public $finalStatus;
   protected $finalStatusType = GoogleRpcStatus::class;
   protected $finalStatusDataType = '';
   /**
    * @var string
    */
   public $name;
-  /**
-   * @var GoogleTypeInterval
-   */
-  public $runTime;
   protected $runTimeType = GoogleTypeInterval::class;
   protected $runTimeDataType = '';
+  protected $syncSummaryType = GoogleCloudAiplatformV1FeatureViewSyncSyncSummary::class;
+  protected $syncSummaryDataType = '';
 
   /**
    * @param string
@@ -95,6 +89,20 @@ class GoogleCloudAiplatformV1FeatureViewSync extends \Google\Model
   public function getRunTime()
   {
     return $this->runTime;
+  }
+  /**
+   * @param GoogleCloudAiplatformV1FeatureViewSyncSyncSummary
+   */
+  public function setSyncSummary(GoogleCloudAiplatformV1FeatureViewSyncSyncSummary $syncSummary)
+  {
+    $this->syncSummary = $syncSummary;
+  }
+  /**
+   * @return GoogleCloudAiplatformV1FeatureViewSyncSyncSummary
+   */
+  public function getSyncSummary()
+  {
+    return $this->syncSummary;
   }
 }
 

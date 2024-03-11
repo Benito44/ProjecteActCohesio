@@ -20,10 +20,6 @@ namespace Google\Service\Aiplatform;
 class CloudAiNlLlmProtoServiceRaiResult extends \Google\Collection
 {
   protected $collection_key = 'raiSignals';
-  /**
-   * @var LanguageLabsAidaTrustRecitationProtoRecitationResult
-   */
-  public $aidaRecitationResult;
   protected $aidaRecitationResultType = LanguageLabsAidaTrustRecitationProtoRecitationResult::class;
   protected $aidaRecitationResultDataType = '';
   /**
@@ -38,16 +34,8 @@ class CloudAiNlLlmProtoServiceRaiResult extends \Google\Collection
    * @var bool
    */
   public $filtered;
-  /**
-   * @var LearningServingLlmLanguageFilterResult
-   */
-  public $languageFilterResult;
-  protected $languageFilterResultType = LearningServingLlmLanguageFilterResult::class;
+  protected $languageFilterResultType = LearningGenaiRootLanguageFilterResult::class;
   protected $languageFilterResultDataType = '';
-  /**
-   * @var CloudAiNlLlmProtoServiceRaiSignal[]
-   */
-  public $raiSignals;
   protected $raiSignalsType = CloudAiNlLlmProtoServiceRaiSignal::class;
   protected $raiSignalsDataType = 'array';
   /**
@@ -120,14 +108,14 @@ class CloudAiNlLlmProtoServiceRaiResult extends \Google\Collection
     return $this->filtered;
   }
   /**
-   * @param LearningServingLlmLanguageFilterResult
+   * @param LearningGenaiRootLanguageFilterResult
    */
-  public function setLanguageFilterResult(LearningServingLlmLanguageFilterResult $languageFilterResult)
+  public function setLanguageFilterResult(LearningGenaiRootLanguageFilterResult $languageFilterResult)
   {
     $this->languageFilterResult = $languageFilterResult;
   }
   /**
-   * @return LearningServingLlmLanguageFilterResult
+   * @return LearningGenaiRootLanguageFilterResult
    */
   public function getLanguageFilterResult()
   {

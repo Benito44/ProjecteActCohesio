@@ -27,22 +27,12 @@ class StorageDatabasecenterPartnerapiV1mainDatabaseResourceFeed extends \Google\
    * @var string
    */
   public $feedType;
-  /**
-   * @var StorageDatabasecenterPartnerapiV1mainDatabaseResourceHealthSignalData
-   */
-  public $resourceHealthSignalData;
+  protected $recommendationSignalDataType = StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData::class;
+  protected $recommendationSignalDataDataType = '';
   protected $resourceHealthSignalDataType = StorageDatabasecenterPartnerapiV1mainDatabaseResourceHealthSignalData::class;
   protected $resourceHealthSignalDataDataType = '';
-  /**
-   * @var StorageDatabasecenterPartnerapiV1mainDatabaseResourceId
-   */
-  public $resourceId;
   protected $resourceIdType = StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::class;
   protected $resourceIdDataType = '';
-  /**
-   * @var StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata
-   */
-  public $resourceMetadata;
   protected $resourceMetadataType = StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata::class;
   protected $resourceMetadataDataType = '';
 
@@ -73,6 +63,20 @@ class StorageDatabasecenterPartnerapiV1mainDatabaseResourceFeed extends \Google\
   public function getFeedType()
   {
     return $this->feedType;
+  }
+  /**
+   * @param StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData
+   */
+  public function setRecommendationSignalData(StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData $recommendationSignalData)
+  {
+    $this->recommendationSignalData = $recommendationSignalData;
+  }
+  /**
+   * @return StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData
+   */
+  public function getRecommendationSignalData()
+  {
+    return $this->recommendationSignalData;
   }
   /**
    * @param StorageDatabasecenterPartnerapiV1mainDatabaseResourceHealthSignalData

@@ -19,35 +19,17 @@ namespace Google\Service\Aiplatform;
 
 class CloudAiNlLlmProtoServiceGenerateMultiModalResponse extends \Google\Collection
 {
-  protected $collection_key = 'candidates';
-  /**
-   * @var CloudAiNlLlmProtoServiceCandidate[]
-   */
-  public $candidates;
+  protected $collection_key = 'facts';
   protected $candidatesType = CloudAiNlLlmProtoServiceCandidate::class;
   protected $candidatesDataType = 'array';
-  /**
-   * @var CloudAiNlLlmProtoServiceMessageMetadata
-   */
-  public $debugMetadata;
   protected $debugMetadataType = CloudAiNlLlmProtoServiceMessageMetadata::class;
   protected $debugMetadataDataType = '';
-  /**
-   * @var CloudAiNlLlmProtoServicePromptFeedback
-   */
-  public $promptFeedback;
+  protected $factsType = CloudAiNlLlmProtoServiceFact::class;
+  protected $factsDataType = 'array';
   protected $promptFeedbackType = CloudAiNlLlmProtoServicePromptFeedback::class;
   protected $promptFeedbackDataType = '';
-  /**
-   * @var IntelligenceCloudAutomlXpsReportingMetrics
-   */
-  public $reportingMetrics;
   protected $reportingMetricsType = IntelligenceCloudAutomlXpsReportingMetrics::class;
   protected $reportingMetricsDataType = '';
-  /**
-   * @var CloudAiNlLlmProtoServiceUsageMetadata
-   */
-  public $usageMetadata;
   protected $usageMetadataType = CloudAiNlLlmProtoServiceUsageMetadata::class;
   protected $usageMetadataDataType = '';
 
@@ -78,6 +60,20 @@ class CloudAiNlLlmProtoServiceGenerateMultiModalResponse extends \Google\Collect
   public function getDebugMetadata()
   {
     return $this->debugMetadata;
+  }
+  /**
+   * @param CloudAiNlLlmProtoServiceFact[]
+   */
+  public function setFacts($facts)
+  {
+    $this->facts = $facts;
+  }
+  /**
+   * @return CloudAiNlLlmProtoServiceFact[]
+   */
+  public function getFacts()
+  {
+    return $this->facts;
   }
   /**
    * @param CloudAiNlLlmProtoServicePromptFeedback
