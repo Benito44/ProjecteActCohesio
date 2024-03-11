@@ -433,3 +433,13 @@ function seleccionarGrup()
 
     return ($result);
 }
+
+function editarAccio($accio){
+    $connexio = connexion();
+
+    $query = "UPDATE config SET value = :accio";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':accio', $accio);
+    $stmt->execute();
+}
+

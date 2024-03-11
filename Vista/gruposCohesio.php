@@ -31,7 +31,7 @@
                 <a class="nav-link" href="modificarGrupAlumne.php">Modificar grups</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="redireccioWebSocket.php">Iniciar Joc</a>
+                <a class="nav-link" href="../Vista/Iniciar.php">Iniciar Joc</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="../Controlador/cerrar_session.php">Cerrar sesión</a>
