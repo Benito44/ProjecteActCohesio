@@ -7,7 +7,7 @@ if ($_SESSION['rol'] != "admin") {
     header('refresh:0.01;url=../Vista/espera.php');
     
 } else {
-
+    include '../Vista/gruposCohesio.php';
     require_once '../Model/consultasbd.php';
     $grupos = seleccionarGrup();
 

@@ -34,6 +34,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="../Vista/Iniciar.php">Iniciar Joc</a>
               </li>
+              <li class="nav-item">
+              <a class="nav-link" href="../Controlador/cerrar_session.php">Cerrar sesión</a>
+              </li>
             </ul>
           </div>
         </div>
