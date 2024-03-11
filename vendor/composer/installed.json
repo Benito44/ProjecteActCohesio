@@ -28,7 +28,7 @@
             },
             "time": "2020-07-07T15:50:14+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Ratchet\\": "src/Ratchet"
@@ -88,7 +88,7 @@
             },
             "time": "2023-08-08T05:53:35+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Evenement\\": "src/"
@@ -1002,7 +1002,7 @@
             },
             "time": "2020-05-15T18:31:24+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Ratchet\\RFC6455\\": "src"
@@ -1061,7 +1061,7 @@
             },
             "time": "2022-11-30T15:59:55+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "React\\Cache\\": "src/"
@@ -1140,7 +1140,7 @@
             },
             "time": "2023-11-29T12:41:06+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "React\\Dns\\": "src/"
@@ -1217,7 +1217,7 @@
             },
             "time": "2023-11-13T13:48:05+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "React\\EventLoop\\": "src/"
@@ -1290,7 +1290,7 @@
             },
             "time": "2023-11-16T16:21:57+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "src/functions_include.php"
@@ -1373,7 +1373,7 @@
             },
             "time": "2023-12-15T11:02:10+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "React\\Socket\\": "src/"
@@ -1451,7 +1451,7 @@
             },
             "time": "2023-06-16T10:52:11+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "React\\Stream\\": "src/"
@@ -1535,7 +1535,7 @@
                     "url": "https://github.com/symfony/contracts"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "function.php"
@@ -1611,7 +1611,7 @@
             },
             "time": "2024-01-23T13:51:25+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\HttpFoundation\\": ""
@@ -1687,7 +1687,7 @@
                     "url": "https://github.com/symfony/polyfill"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "bootstrap.php"
@@ -1764,7 +1764,7 @@
                     "url": "https://github.com/symfony/polyfill"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "bootstrap.php"
@@ -1864,7 +1864,7 @@
             },
             "time": "2024-01-30T13:10:15+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\Routing\\": ""
