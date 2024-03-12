@@ -1,7 +1,7 @@
 $(document).ready(function () {
   let tempsRestant = 600;
   let interval;
-
+  let ronda = 1;
   function actualitzarCronometre() {
     let minuts = Math.floor(tempsRestant / 60);
     let segons = tempsRestant % 60;
@@ -34,16 +34,29 @@ $(document).ready(function () {
     $.ajax({
       type: "POST",
       url: "http://localhost/ProjecteActCohesio/Controlador/definirEvent.php",
-      data: { estat: "Iniciar"}
+      data: { estat: "R1"}
+    });
+  });
+
+  $("#next").click(function () {
+    ronda++;
+    $("#next").prop("disabled", true);
+    $.ajax({
+      type: "POST",
+      url: "http://localhost/ProjecteActCohesio/Controlador/definirEvent.php",
+      data: { estat: "R"+ronda}
     });
   });
 
   $("#pausa").click(function () {
     // Pausar el intervalo
     clearInterval(interval);
-  });
-
+  });                                                                                                                                                                                                                                                                                                         
   $("#next").prop("disabled", true);
   $("#pausa").prop("disabled", true);
   $("#end").prop("disabled", true);
+
+  setInterval(function(){
+
+  }, 5000);
 });
