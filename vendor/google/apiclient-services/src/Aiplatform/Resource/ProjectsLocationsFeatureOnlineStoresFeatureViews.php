@@ -21,6 +21,8 @@ use Google\Service\Aiplatform\GoogleCloudAiplatformV1FeatureView;
 use Google\Service\Aiplatform\GoogleCloudAiplatformV1FetchFeatureValuesRequest;
 use Google\Service\Aiplatform\GoogleCloudAiplatformV1FetchFeatureValuesResponse;
 use Google\Service\Aiplatform\GoogleCloudAiplatformV1ListFeatureViewsResponse;
+use Google\Service\Aiplatform\GoogleCloudAiplatformV1SearchNearestEntitiesRequest;
+use Google\Service\Aiplatform\GoogleCloudAiplatformV1SearchNearestEntitiesResponse;
 use Google\Service\Aiplatform\GoogleCloudAiplatformV1SyncFeatureViewRequest;
 use Google\Service\Aiplatform\GoogleCloudAiplatformV1SyncFeatureViewResponse;
 use Google\Service\Aiplatform\GoogleLongrunningOperation;
@@ -54,6 +56,7 @@ class ProjectsLocationsFeatureOnlineStoresFeatureViews extends \Google\Service\R
    * sync will be run immediately, regardless whether the FeatureView.sync_config
    * is configured or not.
    * @return GoogleLongrunningOperation
+   * @throws \Google\Service\Exception
    */
   public function create($parent, GoogleCloudAiplatformV1FeatureView $postBody, $optParams = [])
   {
@@ -69,6 +72,7 @@ class ProjectsLocationsFeatureOnlineStoresFeatureViews extends \Google\Service\R
    * _online_store}/featureViews/{feature_view}`
    * @param array $optParams Optional parameters.
    * @return GoogleLongrunningOperation
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
@@ -85,6 +89,7 @@ class ProjectsLocationsFeatureOnlineStoresFeatureViews extends \Google\Service\R
    * @param GoogleCloudAiplatformV1FetchFeatureValuesRequest $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleCloudAiplatformV1FetchFeatureValuesResponse
+   * @throws \Google\Service\Exception
    */
   public function fetchFeatureValues($featureView, GoogleCloudAiplatformV1FetchFeatureValuesRequest $postBody, $optParams = [])
   {
@@ -100,6 +105,7 @@ class ProjectsLocationsFeatureOnlineStoresFeatureViews extends \Google\Service\R
    * tore}/featureViews/{feature_view}`
    * @param array $optParams Optional parameters.
    * @return GoogleCloudAiplatformV1FeatureView
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -140,6 +146,7 @@ class ProjectsLocationsFeatureOnlineStoresFeatureViews extends \Google\Service\R
    * to FeatureOnlineStoreAdminService.ListFeatureViews must match the call that
    * provided the page token.
    * @return GoogleCloudAiplatformV1ListFeatureViewsResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsLocationsFeatureOnlineStoresFeatureViews($parent, $optParams = [])
   {
@@ -162,14 +169,34 @@ class ProjectsLocationsFeatureOnlineStoresFeatureViews extends \Google\Service\R
    * field will be overwritten if it is in the mask. If the user does not provide
    * a mask then only the non-empty fields present in the request will be
    * overwritten. Set the update_mask to `*` to override all fields. Updatable
-   * fields: * `labels`
+   * fields: * `labels` * `serviceAgentType`
    * @return GoogleLongrunningOperation
+   * @throws \Google\Service\Exception
    */
   public function patch($name, GoogleCloudAiplatformV1FeatureView $postBody, $optParams = [])
   {
     $params = ['name' => $name, 'postBody' => $postBody];
     $params = array_merge($params, $optParams);
     return $this->call('patch', [$params], GoogleLongrunningOperation::class);
+  }
+  /**
+   * Search the nearest entities under a FeatureView. Search only works for
+   * indexable feature view; if a feature view isn't indexable, returns Invalid
+   * argument response. (featureViews.searchNearestEntities)
+   *
+   * @param string $featureView Required. FeatureView resource format `projects/{p
+   * roject}/locations/{location}/featureOnlineStores/{featureOnlineStore}/feature
+   * Views/{featureView}`
+   * @param GoogleCloudAiplatformV1SearchNearestEntitiesRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return GoogleCloudAiplatformV1SearchNearestEntitiesResponse
+   * @throws \Google\Service\Exception
+   */
+  public function searchNearestEntities($featureView, GoogleCloudAiplatformV1SearchNearestEntitiesRequest $postBody, $optParams = [])
+  {
+    $params = ['featureView' => $featureView, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('searchNearestEntities', [$params], GoogleCloudAiplatformV1SearchNearestEntitiesResponse::class);
   }
   /**
    * Triggers on-demand sync for the FeatureView. (featureViews.sync)
@@ -180,6 +207,7 @@ class ProjectsLocationsFeatureOnlineStoresFeatureViews extends \Google\Service\R
    * @param GoogleCloudAiplatformV1SyncFeatureViewRequest $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleCloudAiplatformV1SyncFeatureViewResponse
+   * @throws \Google\Service\Exception
    */
   public function sync($featureView, GoogleCloudAiplatformV1SyncFeatureViewRequest $postBody, $optParams = [])
   {

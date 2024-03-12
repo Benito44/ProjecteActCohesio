@@ -27,24 +27,16 @@ class CloudAiLargeModelsVisionImage extends \Google\Model
    * @var string
    */
   public $image;
-  /**
-   * @var CloudAiLargeModelsVisionImageRAIScores
-   */
-  public $imageRaiScores;
   protected $imageRaiScoresType = CloudAiLargeModelsVisionImageRAIScores::class;
   protected $imageRaiScoresDataType = '';
-  /**
-   * @var CloudAiLargeModelsVisionRaiInfo
-   */
-  public $raiInfo;
   protected $raiInfoType = CloudAiLargeModelsVisionRaiInfo::class;
   protected $raiInfoDataType = '';
-  /**
-   * @var CloudAiLargeModelsVisionSemanticFilterResponse
-   */
-  public $semanticFilterResponse;
   protected $semanticFilterResponseType = CloudAiLargeModelsVisionSemanticFilterResponse::class;
   protected $semanticFilterResponseDataType = '';
+  /**
+   * @var string
+   */
+  public $text;
   /**
    * @var string
    */
@@ -119,6 +111,20 @@ class CloudAiLargeModelsVisionImage extends \Google\Model
   public function getSemanticFilterResponse()
   {
     return $this->semanticFilterResponse;
+  }
+  /**
+   * @param string
+   */
+  public function setText($text)
+  {
+    $this->text = $text;
+  }
+  /**
+   * @return string
+   */
+  public function getText()
+  {
+    return $this->text;
   }
   /**
    * @param string

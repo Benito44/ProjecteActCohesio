@@ -20,22 +20,14 @@ namespace Google\Service\Appengine;
 class Runtime extends \Google\Collection
 {
   protected $collection_key = 'warnings';
-  /**
-   * @var Date
-   */
-  public $decommissionedDate;
   protected $decommissionedDateType = Date::class;
   protected $decommissionedDateDataType = '';
-  /**
-   * @var Date
-   */
-  public $deprecationDate;
   protected $deprecationDateType = Date::class;
   protected $deprecationDateDataType = '';
   /**
-   * @var Date
+   * @var string
    */
-  public $endOfSupportDate;
+  public $displayName;
   protected $endOfSupportDateType = Date::class;
   protected $endOfSupportDateDataType = '';
   /**
@@ -50,6 +42,10 @@ class Runtime extends \Google\Collection
    * @var string
    */
   public $stage;
+  /**
+   * @var string[]
+   */
+  public $supportedOperatingSystems;
   /**
    * @var string[]
    */
@@ -82,6 +78,20 @@ class Runtime extends \Google\Collection
   public function getDeprecationDate()
   {
     return $this->deprecationDate;
+  }
+  /**
+   * @param string
+   */
+  public function setDisplayName($displayName)
+  {
+    $this->displayName = $displayName;
+  }
+  /**
+   * @return string
+   */
+  public function getDisplayName()
+  {
+    return $this->displayName;
   }
   /**
    * @param Date
@@ -138,6 +148,20 @@ class Runtime extends \Google\Collection
   public function getStage()
   {
     return $this->stage;
+  }
+  /**
+   * @param string[]
+   */
+  public function setSupportedOperatingSystems($supportedOperatingSystems)
+  {
+    $this->supportedOperatingSystems = $supportedOperatingSystems;
+  }
+  /**
+   * @return string[]
+   */
+  public function getSupportedOperatingSystems()
+  {
+    return $this->supportedOperatingSystems;
   }
   /**
    * @param string[]

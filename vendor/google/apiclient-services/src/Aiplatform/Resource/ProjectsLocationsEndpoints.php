@@ -37,6 +37,7 @@ use Google\Service\Aiplatform\GoogleCloudAiplatformV1MutateDeployedModelRequest;
 use Google\Service\Aiplatform\GoogleCloudAiplatformV1PredictRequest;
 use Google\Service\Aiplatform\GoogleCloudAiplatformV1PredictResponse;
 use Google\Service\Aiplatform\GoogleCloudAiplatformV1RawPredictRequest;
+use Google\Service\Aiplatform\GoogleCloudAiplatformV1StreamRawPredictRequest;
 use Google\Service\Aiplatform\GoogleCloudAiplatformV1StreamingPredictRequest;
 use Google\Service\Aiplatform\GoogleCloudAiplatformV1StreamingPredictResponse;
 use Google\Service\Aiplatform\GoogleCloudAiplatformV1UndeployModelRequest;
@@ -60,6 +61,7 @@ class ProjectsLocationsEndpoints extends \Google\Service\Resource
    * @param GoogleCloudAiplatformV1ComputeTokensRequest $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleCloudAiplatformV1ComputeTokensResponse
+   * @throws \Google\Service\Exception
    */
   public function computeTokens($endpoint, GoogleCloudAiplatformV1ComputeTokensRequest $postBody, $optParams = [])
   {
@@ -76,6 +78,7 @@ class ProjectsLocationsEndpoints extends \Google\Service\Resource
    * @param GoogleCloudAiplatformV1CountTokensRequest $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleCloudAiplatformV1CountTokensResponse
+   * @throws \Google\Service\Exception
    */
   public function countTokens($endpoint, GoogleCloudAiplatformV1CountTokensRequest $postBody, $optParams = [])
   {
@@ -102,6 +105,7 @@ class ProjectsLocationsEndpoints extends \Google\Service\Resource
    * `?endpoint_id=12345`. This is the fallback for fields that are not included
    * in either the URI or the body.
    * @return GoogleLongrunningOperation
+   * @throws \Google\Service\Exception
    */
   public function create($parent, GoogleCloudAiplatformV1Endpoint $postBody, $optParams = [])
   {
@@ -117,6 +121,7 @@ class ProjectsLocationsEndpoints extends \Google\Service\Resource
    * `projects/{project}/locations/{location}/endpoints/{endpoint}`
    * @param array $optParams Optional parameters.
    * @return GoogleLongrunningOperation
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
@@ -134,6 +139,7 @@ class ProjectsLocationsEndpoints extends \Google\Service\Resource
    * @param GoogleCloudAiplatformV1DeployModelRequest $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleLongrunningOperation
+   * @throws \Google\Service\Exception
    */
   public function deployModel($endpoint, GoogleCloudAiplatformV1DeployModelRequest $postBody, $optParams = [])
   {
@@ -142,8 +148,8 @@ class ProjectsLocationsEndpoints extends \Google\Service\Resource
     return $this->call('deployModel', [$params], GoogleLongrunningOperation::class);
   }
   /**
-   * Perform an unary online prediction request for Vertex first-party products
-   * and frameworks. (endpoints.directPredict)
+   * Perform an unary online prediction request to a gRPC model server for Vertex
+   * first-party products and frameworks. (endpoints.directPredict)
    *
    * @param string $endpoint Required. The name of the Endpoint requested to serve
    * the prediction. Format:
@@ -151,6 +157,7 @@ class ProjectsLocationsEndpoints extends \Google\Service\Resource
    * @param GoogleCloudAiplatformV1DirectPredictRequest $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleCloudAiplatformV1DirectPredictResponse
+   * @throws \Google\Service\Exception
    */
   public function directPredict($endpoint, GoogleCloudAiplatformV1DirectPredictRequest $postBody, $optParams = [])
   {
@@ -159,8 +166,8 @@ class ProjectsLocationsEndpoints extends \Google\Service\Resource
     return $this->call('directPredict', [$params], GoogleCloudAiplatformV1DirectPredictResponse::class);
   }
   /**
-   * Perform an online prediction request through gRPC.
-   * (endpoints.directRawPredict)
+   * Perform an unary online prediction request to a gRPC model server for custom
+   * containers. (endpoints.directRawPredict)
    *
    * @param string $endpoint Required. The name of the Endpoint requested to serve
    * the prediction. Format:
@@ -168,6 +175,7 @@ class ProjectsLocationsEndpoints extends \Google\Service\Resource
    * @param GoogleCloudAiplatformV1DirectRawPredictRequest $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleCloudAiplatformV1DirectRawPredictResponse
+   * @throws \Google\Service\Exception
    */
   public function directRawPredict($endpoint, GoogleCloudAiplatformV1DirectRawPredictRequest $postBody, $optParams = [])
   {
@@ -187,6 +195,7 @@ class ProjectsLocationsEndpoints extends \Google\Service\Resource
    * @param GoogleCloudAiplatformV1ExplainRequest $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleCloudAiplatformV1ExplainResponse
+   * @throws \Google\Service\Exception
    */
   public function explain($endpoint, GoogleCloudAiplatformV1ExplainRequest $postBody, $optParams = [])
   {
@@ -195,12 +204,30 @@ class ProjectsLocationsEndpoints extends \Google\Service\Resource
     return $this->call('explain', [$params], GoogleCloudAiplatformV1ExplainResponse::class);
   }
   /**
+   * Generate content with multimodal inputs. (endpoints.generateContent)
+   *
+   * @param string $model Required. The name of the publisher model requested to
+   * serve the prediction. Format:
+   * `projects/{project}/locations/{location}/publishers/models`
+   * @param GoogleCloudAiplatformV1GenerateContentRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return GoogleCloudAiplatformV1GenerateContentResponse
+   * @throws \Google\Service\Exception
+   */
+  public function generateContent($model, GoogleCloudAiplatformV1GenerateContentRequest $postBody, $optParams = [])
+  {
+    $params = ['model' => $model, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('generateContent', [$params], GoogleCloudAiplatformV1GenerateContentResponse::class);
+  }
+  /**
    * Gets an Endpoint. (endpoints.get)
    *
    * @param string $name Required. The name of the Endpoint resource. Format:
    * `projects/{project}/locations/{location}/endpoints/{endpoint}`
    * @param array $optParams Optional parameters.
    * @return GoogleCloudAiplatformV1Endpoint
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -234,6 +261,7 @@ class ProjectsLocationsEndpoints extends \Google\Service\Resource
    * EndpointService.ListEndpoints call.
    * @opt_param string readMask Optional. Mask specifying which fields to read.
    * @return GoogleCloudAiplatformV1ListEndpointsResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsLocationsEndpoints($parent, $optParams = [])
   {
@@ -253,6 +281,7 @@ class ProjectsLocationsEndpoints extends \Google\Service\Resource
    * @param GoogleCloudAiplatformV1MutateDeployedModelRequest $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleLongrunningOperation
+   * @throws \Google\Service\Exception
    */
   public function mutateDeployedModel($endpoint, GoogleCloudAiplatformV1MutateDeployedModelRequest $postBody, $optParams = [])
   {
@@ -270,6 +299,7 @@ class ProjectsLocationsEndpoints extends \Google\Service\Resource
    * @opt_param string updateMask Required. The update mask applies to the
    * resource. See google.protobuf.FieldMask.
    * @return GoogleCloudAiplatformV1Endpoint
+   * @throws \Google\Service\Exception
    */
   public function patch($name, GoogleCloudAiplatformV1Endpoint $postBody, $optParams = [])
   {
@@ -286,6 +316,7 @@ class ProjectsLocationsEndpoints extends \Google\Service\Resource
    * @param GoogleCloudAiplatformV1PredictRequest $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleCloudAiplatformV1PredictResponse
+   * @throws \Google\Service\Exception
    */
   public function predict($endpoint, GoogleCloudAiplatformV1PredictRequest $postBody, $optParams = [])
   {
@@ -306,6 +337,7 @@ class ProjectsLocationsEndpoints extends \Google\Service\Resource
    * @param GoogleCloudAiplatformV1RawPredictRequest $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleApiHttpBody
+   * @throws \Google\Service\Exception
    */
   public function rawPredict($endpoint, GoogleCloudAiplatformV1RawPredictRequest $postBody, $optParams = [])
   {
@@ -323,6 +355,7 @@ class ProjectsLocationsEndpoints extends \Google\Service\Resource
    * @param GoogleCloudAiplatformV1StreamingPredictRequest $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleCloudAiplatformV1StreamingPredictResponse
+   * @throws \Google\Service\Exception
    */
   public function serverStreamingPredict($endpoint, GoogleCloudAiplatformV1StreamingPredictRequest $postBody, $optParams = [])
   {
@@ -340,12 +373,31 @@ class ProjectsLocationsEndpoints extends \Google\Service\Resource
    * @param GoogleCloudAiplatformV1GenerateContentRequest $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleCloudAiplatformV1GenerateContentResponse
+   * @throws \Google\Service\Exception
    */
   public function streamGenerateContent($model, GoogleCloudAiplatformV1GenerateContentRequest $postBody, $optParams = [])
   {
     $params = ['model' => $model, 'postBody' => $postBody];
     $params = array_merge($params, $optParams);
     return $this->call('streamGenerateContent', [$params], GoogleCloudAiplatformV1GenerateContentResponse::class);
+  }
+  /**
+   * Perform a streaming online prediction with an arbitrary HTTP payload.
+   * (endpoints.streamRawPredict)
+   *
+   * @param string $endpoint Required. The name of the Endpoint requested to serve
+   * the prediction. Format:
+   * `projects/{project}/locations/{location}/endpoints/{endpoint}`
+   * @param GoogleCloudAiplatformV1StreamRawPredictRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return GoogleApiHttpBody
+   * @throws \Google\Service\Exception
+   */
+  public function streamRawPredict($endpoint, GoogleCloudAiplatformV1StreamRawPredictRequest $postBody, $optParams = [])
+  {
+    $params = ['endpoint' => $endpoint, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('streamRawPredict', [$params], GoogleApiHttpBody::class);
   }
   /**
    * Undeploys a Model from an Endpoint, removing a DeployedModel from it, and
@@ -357,6 +409,7 @@ class ProjectsLocationsEndpoints extends \Google\Service\Resource
    * @param GoogleCloudAiplatformV1UndeployModelRequest $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleLongrunningOperation
+   * @throws \Google\Service\Exception
    */
   public function undeployModel($endpoint, GoogleCloudAiplatformV1UndeployModelRequest $postBody, $optParams = [])
   {
