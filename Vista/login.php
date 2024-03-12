@@ -13,12 +13,12 @@
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-lg-4">
-                <h1 class="text-center mb-4">Iniciar Sesión</h1>
-                <h2><?php echo phpversion() ?></h2>
+                <h1 class="text-center mb-4">Iniciar Sessió</h1>
+                <!-- <h2><?php //echo phpversion() ?></h2> -->
                 <div class="text-center">
                     <!-- Enlace de inicio de sesión con Google -->
                     <?php require('../Controlador/autentificacion.php'); ?>
-                    <a href="<?php echo $client->createAuthUrl(); ?>" class="btn btn-primary">Iniciar sesión con Google</a>
+                    <a href="<?php echo $client->createAuthUrl(); ?>" class="btn btn-primary">Iniciar sessió amb Google</a>
                 </div>
             </div>
         </div>

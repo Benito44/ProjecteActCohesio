@@ -34,19 +34,19 @@
                 <a class="nav-link" href="../Vista/Iniciar.php">Iniciar Joc</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="../Controlador/cerrar_session.php">Cerrar sesión</a>
+                <a class="nav-link" href="../Controlador/gruposCohesio.php">Enfrontaments</a>
               </li>
               <li class="nav-item">
-                                <a class="nav-link" href="../Controlador/gruposCohesio.php">Generar parejas</a>
-                            </li>
+                <a class="nav-link sessio" href="../Controlador/cerrar_session.php">Tancar Sessió</a>
+              </li>
             </ul>
           </div>
         </div>
     </header>
     <div class="centrar">
-    <h2>Generar Parejas</h2>
+    <h2>Generar Enfrontaments</h2>
     <form method='post' action='../Controlador/gruposCohesio.php'>
-        <input type='submit' name='emparejar' value='Generar Parejas'>
+        <input type='submit' name='emparejar' value='Generar'>
     </form>
 </div>
 

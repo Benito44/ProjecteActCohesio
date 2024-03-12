@@ -35,11 +35,11 @@
                                 <a class="nav-link" href="../Controlador/redireccioWebSocket.php">Iniciar Joc</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../Controlador/cerrar_session.php">Cerrar sesión</a>
+                                <a class="nav-link" href="../Controlador/gruposCohesio.php">Enfrontaments</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../Controlador/gruposCohesio.php">Generar parejas</a>
-                            </li>
+                <a class="nav-link sessio" href="../Controlador/cerrar_session.php">Tancar Sessió</a>
+              </li>
                         </ul>
                     </div>
                 </div>
