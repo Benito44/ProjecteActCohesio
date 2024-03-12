@@ -36,14 +36,22 @@
               <li class="nav-item">
                 <a class="nav-link" href="../Controlador/cerrar_session.php">Cerrar sesión</a>
               </li>
+              <li class="nav-item">
+                                <a class="nav-link" href="../Controlador/gruposCohesio.php">Generar parejas</a>
+                            </li>
             </ul>
           </div>
         </div>
     </header>
-
-<h2>Generar Parejas</h2>
+    <div class="centrar">
+    <h2>Generar Parejas</h2>
     <form method='post' action='../Controlador/gruposCohesio.php'>
-   <input type='submit' name='emparejar' value='Generar Parejas'>
+        <input type='submit' name='emparejar' value='Generar Parejas'>
     </form>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
 </body>
 </html>

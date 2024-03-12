@@ -7,16 +7,18 @@ if ($_SESSION['rol'] != "admin") {
     header('refresh:0.01;url=../Vista/espera.php');
     
 } else {
-    include '../Vista/gruposCohesio.php';
+
     require_once '../Model/consultasbd.php';
     $grupos = seleccionarGrup();
 
     // Verificar si se ha enviado el formulario
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['emparejar'])) {
+        include '../Vista/gruposCohesio.php';
         // Generar nuevas parejas
         $parejas = generarParejas($grupos);
         
         // Mostrar las nuevas parejas
+        echo "<div class='centrar'></div>";
         echo "<h2>Parejas Generadas:</h2>";
         echo "<ul>";
         foreach ($parejas as $pareja) {
@@ -29,6 +31,8 @@ if ($_SESSION['rol'] != "admin") {
         echo "<form method='post' action='{$_SERVER["PHP_SELF"]}'>";
         echo "<input type='submit' name='emparejar' value='Generar Parejas'>";
         echo "</form>";
+        echo "</div>";
+
     } else {
         include "../Vista/gruposCohesio.php";
     }

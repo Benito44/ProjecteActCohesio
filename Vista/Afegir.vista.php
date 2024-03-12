@@ -37,6 +37,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="../Controlador/cerrar_session.php">Cerrar sesión</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../Controlador/gruposCohesio.php">Generar parejas</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
