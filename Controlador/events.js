@@ -41,10 +41,10 @@ $(document).ready(function () {
 
   $("#next").click(function () {
     ronda++;
-    $("#next").prop("disabled", true);
-    $("#end").prop("disabled", true);
-    $("#inicii").prop("disabled", false);
-    $("#pausa").prop("disabled", true);
+    $("#next").prop("disabled", false);
+    $("#end").prop("disabled", false);
+    $("#inicii").prop("disabled", true);
+    $("#pausa").prop("disabled", false);
     clearInterval(interval);
     tempsRestant = 600; // Reiniciar el temporizador a 600 segundos
     let minuts = Math.floor(tempsRestant / 60);
@@ -52,7 +52,8 @@ $(document).ready(function () {
     let minutsStr = minuts < 10 ? "0" + minuts : minuts;
     let segonsStr = segons < 10 ? "0" + segons : segons;
     $("#cronometre").text("Temps restant: " + minutsStr + ":" + segonsStr);
-
+    interval = setInterval(actualitzarCronometre, 1000);
+alert("Activitat començada");
     $.ajax({
       type: "POST",
       url: "http://localhost/ProjecteActCohesio/Controlador/definirEvent.php",
