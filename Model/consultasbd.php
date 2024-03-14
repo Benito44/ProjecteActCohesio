@@ -1,8 +1,9 @@
 <?php
 require_once '../database/pdo.php';
 
-function nomDelsGrups(){
-    
+function nomDelsGrups()
+{
+
     $connexio = connexion();
 
     $query = "SELECT nom, id FROM grup";
@@ -24,7 +25,7 @@ function nomDelsGrups(){
 
 function nombreDeGrups()
 {
-    
+
     $connexio = connexion();
 
     $query = "SELECT COUNT(*) AS total_grups, GROUP_CONCAT(nom SEPARATOR ', ') AS noms_grups, id FROM grup";
@@ -36,17 +37,18 @@ function nombreDeGrups()
     return $result;
 }
 
-    // Función para generar parejas aleatorias
-    function generarParejas($grupos) {
-        // Mezclar el array de grupos
-        shuffle($grupos);
-        
-        // Dividir el array en pares
-        $parejas = array_chunk($grupos, 2);
-        
-        return $parejas;
-    }
-    
+// Función para generar parejas aleatorias
+function generarParejas($grupos)
+{
+    // Mezclar el array de grupos
+    shuffle($grupos);
+
+    // Dividir el array en pares
+    $parejas = array_chunk($grupos, 2);
+
+    return $parejas;
+}
+
 function dadesAlumnes()
 {
     $connexio = connexion();
@@ -74,7 +76,7 @@ function dadesAlumnes()
 
 function afegirAlumne($nom, $cognoms, $email, $clase)
 {
-    
+
     $connexio = connexion();
 
     if (!jaExisteix($email)) {
@@ -90,7 +92,7 @@ function afegirAlumne($nom, $cognoms, $email, $clase)
 
 function jaExisteix($email)
 {
-    
+
     $connexio = connexion();
 
     $query = "SELECT COUNT(*) AS total FROM alumne WHERE email = :email";
@@ -105,7 +107,7 @@ function jaExisteix($email)
 
 function profeExists($email)
 {
-    
+
     $connexio = connexion();
 
     $query = "SELECT COUNT(*) AS total FROM professor WHERE email = :email";
@@ -120,7 +122,7 @@ function profeExists($email)
 
 function profeIsAdmin($email)
 {
-    
+
     $connexio = connexion();
 
     $query = "SELECT COUNT(*) AS total FROM professor WHERE email = :email AND administrador = 1";
@@ -135,7 +137,7 @@ function profeIsAdmin($email)
 
 function alumnesSMX1_1()
 {
-    
+
     $connexio = connexion();
 
     $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = 'SMX1-1'";
@@ -149,7 +151,7 @@ function alumnesSMX1_1()
 
 function alumnesSMX1_2()
 {
-    
+
     $connexio = connexion();
 
     $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = 'SMX1-2'";
@@ -163,7 +165,7 @@ function alumnesSMX1_2()
 
 function alumnesSMX1_3()
 {
-    
+
     $connexio = connexion();
 
     $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = 'SMX1-3'";
@@ -177,7 +179,7 @@ function alumnesSMX1_3()
 
 function alumnesSMX1_4()
 {
-    
+
     $connexio = connexion();
 
     $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = 'SMX1-4'";
@@ -191,7 +193,7 @@ function alumnesSMX1_4()
 
 function alumnesSMX2_1()
 {
-    
+
     $connexio = connexion();
 
     $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = 'SMX2-1'";
@@ -205,7 +207,7 @@ function alumnesSMX2_1()
 
 function alumnesSMX2_2()
 {
-    
+
     $connexio = connexion();
 
     $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = 'SMX2-2'";
@@ -219,7 +221,7 @@ function alumnesSMX2_2()
 
 function alumnes1ASIX()
 {
-    
+
     $connexio = connexion();
 
     $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = 'ASIX1'";
@@ -233,7 +235,7 @@ function alumnes1ASIX()
 
 function alumnes2ASIX()
 {
-    
+
     $connexio = connexion();
 
     $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = 'ASIX2'";
@@ -247,7 +249,7 @@ function alumnes2ASIX()
 
 function alumnes1DAW()
 {
-    
+
     $connexio = connexion();
 
     $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = 'DAW1'";
@@ -261,7 +263,7 @@ function alumnes1DAW()
 
 function alumnes2DAW()
 {
-    
+
     $connexio = connexion();
 
     $query = "SELECT COUNT(*) AS total FROM alumne WHERE Clase = 'DAW2'";
@@ -275,7 +277,7 @@ function alumnes2DAW()
 
 function generarGrup($nomgrup)
 {
-    
+
     $connexio = connexion();
 
     $query = "INSERT INTO grup (nom) VALUES (:nom)";
@@ -286,7 +288,7 @@ function generarGrup($nomgrup)
 
 function buscarGrup($grup)
 {
-    
+
     $connexio = connexion();
 
     $query = "SELECT id FROM grup WHERE nom = :nom";
@@ -301,7 +303,7 @@ function buscarGrup($grup)
 
 function buscarAlumnes($clase)
 {
-    
+
     $connexio = connexion();
 
     $query = "SELECT email FROM alumne WHERE Clase = :clase";
@@ -322,7 +324,7 @@ function buscarAlumnes($clase)
 
 function setIdAlumne($grup, $mail)
 {
-    
+
     $connexio = connexion();
 
     $query = "UPDATE alumne SET grup_id = :grup WHERE email = :mail";
@@ -335,7 +337,7 @@ function setIdAlumne($grup, $mail)
 
 function grupoCreado()
 {
-    
+
     $connexio = connexion();
 
     $query = "SELECT COUNT(*) AS total FROM grup";
@@ -349,7 +351,7 @@ function grupoCreado()
 
 function eliminarGrups()
 {
-    
+
     $connexio = connexion();
 
     $query = "DELETE FROM grup";
@@ -359,7 +361,7 @@ function eliminarGrups()
 
 function netejarAlumnes()
 {
-    
+
     $connexio = connexion();
 
     $query = "UPDATE alumne SET grup_id = 0";
@@ -369,7 +371,7 @@ function netejarAlumnes()
 
 function canviarGrup($alumne, $grup)
 {
-    
+
     $connexio = connexion();
 
     $query = "UPDATE alumne SET grup_id = :grup WHERE id = :alumne";
@@ -381,7 +383,7 @@ function canviarGrup($alumne, $grup)
 
 function alumnesPerGrup($grup)
 {
-    
+
     $connexio = connexion();
 
     $query = "SELECT id, nom, cognoms, email, grup_id, Clase FROM alumne WHERE grup_id = :grup";
@@ -407,7 +409,7 @@ function alumnesPerGrup($grup)
 
 function grupPerId($id)
 {
-    
+
     $connexio = connexion();
 
     $query = "SELECT nom FROM grup WHERE id = :id";
@@ -421,7 +423,7 @@ function grupPerId($id)
 }
 function seleccionarGrup()
 {
-    
+
     $connexio = connexion();
 
     $query = "SELECT nom FROM grup";
@@ -434,12 +436,51 @@ function seleccionarGrup()
     return ($result);
 }
 
-function editarAccio($accio){
+function inserirConfig($config, $valor)
+{
     $connexio = connexion();
 
-    $query = "UPDATE config SET value = :accio";
+    $query = "INSERT INTO config (option, value) VALUES (:config, :valor)";
     $stmt = $connexio->prepare($query);
-    $stmt->bindParam(':accio', $accio);
+    $stmt->bindParam(':config', $config);
+    $stmt->bindParam(':valor', $valor);
     $stmt->execute();
 }
 
+function guardarConfig($config, $valor)
+{
+    $connexio = connexion();
+    if (llegirConfig($config) == null) {
+        inserirConfig($config, "Pausat");
+        return;
+    }
+    $query = "UPDATE config SET value = :valor WHERE option = :config";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':config', $config);
+    $stmt->bindParam(':valor', $valor);
+    $stmt->execute();
+}
+
+function editarConfig($config)
+{
+    $connexio = connexion();
+
+    $query = "UPDATE config SET value = :config";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':config', $config);
+    $stmt->execute();
+}
+
+function llegirConfig($config)
+{
+    $connexio = connexion();
+
+    $query = "SELECT value FROM config WHERE option = :config";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':config', $config);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result['value'];
+}

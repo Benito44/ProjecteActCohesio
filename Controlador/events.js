@@ -35,7 +35,7 @@ $(document).ready(function () {
     $.ajax({
       type: "POST",
       url: "http://localhost/ProjecteActCohesio/Controlador/definirEvent.php",
-      data: { estat: "R1"}
+      data: { estat: "R1" }
     });
   });
 
@@ -56,7 +56,7 @@ $(document).ready(function () {
     $.ajax({
       type: "POST",
       url: "http://localhost/ProjecteActCohesio/Controlador/definirEvent.php",
-      data: { estat: "R" + ronda}
+      data: { estat: "R" + ronda }
     });
   });
   $("#end").click(function () {
@@ -71,27 +71,33 @@ $(document).ready(function () {
     let minutsStr = minuts < 10 ? "0" + minuts : minuts;
     let segonsStr = segons < 10 ? "0" + segons : segons;
     $("#cronometre").text("Temps restant: " + minutsStr + ":" + segonsStr);
-  
+
     $.ajax({
       type: "POST",
       url: "http://localhost/ProjecteActCohesio/Controlador/definirEvent.php",
       data: { estat: "R" + ronda }
     });
   });
-  
+
 
   $("#pausa").click(function () {
     // Pausar el intervalo
     clearInterval(interval);
-    $("#inicii").prop("disabled", false);  
+    $("#inicii").prop("disabled", false);
     $("#pausa").prop("disabled", true);
+
+    $.ajax({
+      type: "POST",
+      url: "http://localhost/ProjecteActCohesio/Controlador/definirEvent.php",
+      data: { estat: "Pausa" }
+    });
   });
 
-                                                                                                                                                                                                                                                                                                       
+
   $("#next").prop("disabled", true);
   $("#pausa").prop("disabled", true);
   $("#end").prop("disabled", true);
-  setInterval(function(){
+  setInterval(function () {
 
   }, 5000);
 });
