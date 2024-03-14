@@ -62,11 +62,10 @@
                         cohesió</button>
                 </div>
                 <div class="col-12 text-center">
-                    <button id="pausa" name="pausa" class="btn btn-primary btn-lg custom-btn">Pausar jornada de
-                        cohesió</button>
+                    <button id="pausa" name="pausa" class="btn btn-primary btn-lg custom-btn">Pausar cronomotre</button>
                 </div>
                 <div class="col-12 text-center">
-                    <button id="next" name="next" class="btn btn-primary btn-lg custom-btn">Seguënt ronda</button>
+                    <button id="next" name="next" class="btn btn-primary btn-lg custom-btn">Seguent ronda</button>
                 </div>
                 <div class="col-12 text-center">
                     <button id="end" name="end" class="btn btn-primary btn-lg custom-btn">Finalitzar jornada de
