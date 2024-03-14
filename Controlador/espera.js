@@ -1,14 +1,14 @@
 $(document).ready(function () {
 
-    setInterval(function() {
+    setInterval(function () {
 
         $.ajax({
-            url: 'http://localhost/ProjecteActCohesio/Controlador/definirEvent.php',
+            url: 'http://localhost/ProjecteActCohesio/Controlador/estat.php',
             method: 'GET',
-            success: function(response) {
+            success: function (response) {
                 console.log(response);
             },
-            error: function(error) {
+            error: function (error) {
                 console.error(error);
             }
         });
