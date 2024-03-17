@@ -20,10 +20,10 @@
                               <a class="nav-link" href="modificarGrupAlumne.php">Modificar grups</a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link" href="llistaProves.php">Llista de proves</a>
+                              <a class="nav-link" href="llistaActivitats.php">Llista d'activitats</a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link" href="afegirProva.php">Afegir prova</a>
+                              <a class="nav-link" href="afegirActivitat.php">Afegir activitat</a>
                           </li>
                           <li class="nav-item">
                               <a class="nav-link" href="../Vista/Iniciar.php">Iniciar Joc</a>

@@ -484,3 +484,107 @@ function llegirConfig($config)
 
     return $result['value'];
 }
+
+
+function dadesProfessors()
+{
+    $connexio = connexion();
+
+    $query = "SELECT * FROM professor";
+    $stmt = $connexio->prepare($query);
+    $stmt->execute();
+
+    $professors = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    return $professors;
+}
+
+function dadesProfessor($id)
+{
+    $connexio = connexion();
+
+    $query = "SELECT * FROM professor WHERE id = :id";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+
+    $professor = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $professor;
+}
+
+function dadesActivitats()
+{
+    $connexio = connexion();
+
+    $query = "SELECT * FROM activitat";
+    $stmt = $connexio->prepare($query);
+    $stmt->execute();
+
+    $activitats = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    return $activitats;
+}
+
+function dadesActivitat($id)
+{
+    $connexio = connexion();
+
+    $query = "SELECT * FROM activitat WHERE id = :id";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+
+    $activitat = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $activitat;
+}
+
+function afegirActivitat($activitat)
+{
+    $connexio = connexion();
+
+    // Modifica la consulta para insertar el punto en lugar de las coordenadas directamente
+    $query = "INSERT INTO activitat (nom, descripcio, professor_puntuador, professor_assistencia, localitzacio, latitud, longitud)
+VALUES (:nom, :descripcio, :professor_puntuador, :professor_assistencia, :localitzacio, :latitud, :longitud)";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':nom', $activitat['nom']);
+    $stmt->bindParam(':descripcio', $activitat['descripcio']);
+    $stmt->bindParam(':professor_puntuador', $activitat['professor_puntuador']);
+    $stmt->bindParam(':professor_assistencia', $activitat['professor_assistencia']);
+    $stmt->bindParam(':localitzacio', $activitat['localitzacio']);
+    $stmt->bindParam(':latitud', $activitat['latitud']);
+    $stmt->bindParam(':longitud', $activitat['longitud']);
+
+    $stmt->execute();
+
+    return $connexio->lastInsertId();
+}
+
+function modificarActivitat($activitat)
+{
+    $connexio = connexion();
+
+    $query = "UPDATE activitat SET nom = :nom, descripcio = :descripcio, professor_puntuador = :professor_puntuador, professor_assistencia = :professor_assistencia, localitzacio = :localitzacio, latitud = :latitud, longitud = :longitud WHERE id = :id";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':nom', $activitat['nom']);
+    $stmt->bindParam(':descripcio', $activitat['descripcio']);
+    $stmt->bindParam(':professor_puntuador', $activitat['professor_puntuador']);
+    $stmt->bindParam(':professor_assistencia', $activitat['professor_assistencia']);
+    $stmt->bindParam(':localitzacio', $activitat['localitzacio']);
+    $stmt->bindParam(':latitud', $activitat['latitud']);
+    $stmt->bindParam(':longitud', $activitat['longitud']);
+    $stmt->bindParam(':id', $activitat['id']);
+
+    $stmt->execute();
+}
+
+function eliminarActivitat($id)
+{
+    $connexio = connexion();
+
+    $query = "DELETE FROM activitat WHERE id = :id";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+}
