@@ -17,20 +17,15 @@ if (!isset($_SESSION['email'])) {
 require '../Model/consultasbd.php';
 
 if (profeExists($email2)) {
-    if (profeIsAdmin($email) == 1) {
+    if (profeIsAdmin($email2) == 1) {
 
         $_SESSION['rol'] = "admin";
         header('Location: sessio.php');
     } else {
         $_SESSION['rol'] = "profe";
         header('Location: ../Vista/espera.php');
-        
     }
 } else {
     $_SESSION['rol'] = "alumne";
     header('Location: ../Vista/espera.php');
 }
-
-
-
-?>
