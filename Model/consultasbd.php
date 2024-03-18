@@ -579,3 +579,12 @@ function modificarActivitat($activitat)
     $stmt->execute();
 }
 
+function eliminarActivitat($id)
+{
+    $connexio = connexion();
+
+    $query = "DELETE FROM activitat WHERE id = :id";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+}
