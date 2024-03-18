@@ -485,6 +485,15 @@ function llegirConfig($config)
     return $result['value'];
 }
 
+function buscarConfig(){
+    $connexio = connexion();
+
+    $query = "SELECT value FROM config";
+    $stmt = $connexio->prepare($query);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result["value"];
+}
 
 function dadesProfessors()
 {
