@@ -6,12 +6,16 @@ $(document).ready(function () {
             method: 'GET',
             dataType: 'json',
             success: function(response) {
-                console.log('Configuración obtenida:', response.config);
+                if (response != "Aturat"){
+                    alert('El joc acaba de començar');
+                    window.location.href = '../Controlador/alumne.php';
+                }
             },
             error: function(error) {
                 console.error('Error al obtener la configuración:', error);
             }
         });
+        
     }, 5000);
 
 

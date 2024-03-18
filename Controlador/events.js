@@ -2,6 +2,14 @@ $(document).ready(function () {
   let tempsRestant = 600;
   let interval;
   let ronda = 1;
+
+  $.ajax({
+    type: "POST",
+    url: "http://localhost/ProjecteActCohesio/Controlador/definirEvent.php",
+    data: { estat: "Aturat" }
+  });
+
+
   function actualitzarCronometre() {
     let minuts = Math.floor(tempsRestant / 60);
     let segons = tempsRestant % 60;
@@ -76,7 +84,7 @@ alert("Activitat començada");
     $.ajax({
       type: "POST",
       url: "http://localhost/ProjecteActCohesio/Controlador/definirEvent.php",
-      data: { estat: "R" + ronda }
+      data: { estat: "Aturat" }
     });
   });
 

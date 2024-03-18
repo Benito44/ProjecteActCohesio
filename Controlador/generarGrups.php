@@ -74,6 +74,7 @@ function generarGrups()
         for ($i = (count($arrayAlumnes) / 3) * 2; $i < count($arrayAlumnes); $i++) {
             setIdAlumne($grupid3, $arrayAlumnes[$i]['email']);
         }
+        
     }
 
     if (alumnesSMX1_2() < 10) {

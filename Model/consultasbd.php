@@ -303,7 +303,6 @@ function buscarGrup($grup)
 
 function buscarAlumnes($clase)
 {
-
     $connexio = connexion();
 
     $query = "SELECT email FROM alumne WHERE Clase = :clase";
@@ -318,10 +317,33 @@ function buscarAlumnes($clase)
         );
         $alumnes[] = $alumne;
     }
-
+    echo json_encode(array('alumnes' => $alumnes));
     return $alumnes;
 }
 
+function buscarAlumnes2($grup_id){
+    $connexio = connexion();
+
+    $query = "SELECT id, nom, cognoms, email, grup_id, Clase FROM alumne WHERE grup_id = :grup_id";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':grup_id', $grup_id);
+    $stmt->execute();
+
+    $alumnes = array();
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $alumne = array(
+            'id' => $row['id'],
+            'nom' => $row['nom'],
+            'cognoms' => $row['cognoms'],
+            'email' => $row['email'],
+            'grup_id' => $row['grup_id'],
+            'Clase' => $row['Clase']
+        );
+        $alumnes[] = $alumne;
+    }
+
+    return $alumnes;
+}
 function setIdAlumne($grup, $mail)
 {
 
@@ -486,8 +508,7 @@ function buscarConfig(){
     return $result["value"];
 }
 
-function dadesProfessors()
-{
+function dadesProfessors(){
     $connexio = connexion();
 
     $query = "SELECT * FROM professor";
@@ -499,8 +520,7 @@ function dadesProfessors()
     return $professors;
 }
 
-function dadesProfessor($id)
-{
+function dadesProfessor($id){
     $connexio = connexion();
 
     $query = "SELECT * FROM professor WHERE id = :id";
@@ -513,8 +533,7 @@ function dadesProfessor($id)
     return $professor;
 }
 
-function dadesActivitats()
-{
+function dadesActivitats(){
     $connexio = connexion();
 
     $query = "SELECT * FROM activitat";
@@ -540,8 +559,7 @@ function dadesActivitat($id)
     return $activitat;
 }
 
-function afegirActivitat($activitat)
-{
+function afegirActivitat($activitat){
     $connexio = connexion();
 
     // Modifica la consulta para insertar el punto en lugar de las coordenadas directamente
@@ -561,8 +579,7 @@ VALUES (:nom, :descripcio, :professor_puntuador, :professor_assistencia, :locali
     return $connexio->lastInsertId();
 }
 
-function modificarActivitat($activitat)
-{
+function modificarActivitat($activitat){
     $connexio = connexion();
 
     $query = "UPDATE activitat SET nom = :nom, descripcio = :descripcio, professor_puntuador = :professor_puntuador, professor_assistencia = :professor_assistencia, localitzacio = :localitzacio, latitud = :latitud, longitud = :longitud WHERE id = :id";
@@ -579,8 +596,19 @@ function modificarActivitat($activitat)
     $stmt->execute();
 }
 
-function eliminarActivitat($id)
-{
+function buscarGrupId($mail){
+    $connexio = connexion();
+
+    $query = "SELECT grup_id FROM alumne WHERE email = :mail";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':mail', $mail);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result['grup_id'];
+}
+
+function eliminarActivitat($id){
     $connexio = connexion();
 
     $query = "DELETE FROM activitat WHERE id = :id";

@@ -5,4 +5,9 @@ $mail = $_SESSION['email'];
 
 require_once '../Model/consultasbd.php';
 
-//A partir del
+
+$grup_id = buscarGrupId($mail);
+
+$alumnes = buscarAlumnes2($grup_id);
+include '../Vista/alumne.vista.php';
+
