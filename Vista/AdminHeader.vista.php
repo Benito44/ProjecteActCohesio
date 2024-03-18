@@ -8,22 +8,22 @@
                   <div class="collapse navbar-collapse" id="navbarNav">
                       <ul class="navbar-nav ms-auto">
                           <li class="nav-item">
-                              <a class="nav-link" href="sessio.php">Llista de grups</a>
+                              <a class="nav-link" href="../Controlador/sessio.php">Llista de grups</a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link" href="llistaAlumn.php">Llista d'alumness</a>
+                              <a class="nav-link" href="../Controlador/llistaAlumn.php">Llista d'alumness</a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link" href="afegir.php">Afegir alumnes</a>
+                              <a class="nav-link" href="../Controlador/afegir.php">Afegir alumnes</a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link" href="modificarGrupAlumne.php">Modificar grups</a>
+                              <a class="nav-link" href="../Controlador/modificarGrupAlumne.php">Modificar grups</a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link" href="llistaActivitats.php">Llista d'activitats</a>
+                              <a class="nav-link" href="../Controlador/llistaActivitats.php">Llista d'activitats</a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link" href="afegirActivitat.php">Afegir activitat</a>
+                              <a class="nav-link" href="../Controlador/afegirActivitat.php">Afegir activitat</a>
                           </li>
                           <li class="nav-item">
                               <a class="nav-link" href="../Vista/Iniciar.php">Iniciar Joc</a>
