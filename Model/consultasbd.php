@@ -443,3 +443,14 @@ function editarAccio($accio){
     $stmt->execute();
 }
 
+function getEstatRonda(){
+    $connexio = connexion();
+
+    $query = "SELECT value FROM config";
+    $stmt = $connexio->prepare($query);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result['value'];
+}
