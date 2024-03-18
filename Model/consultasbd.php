@@ -440,9 +440,9 @@ function inserirConfig($config, $valor)
 {
     $connexio = connexion();
 
-    $query = "INSERT INTO config (option, value) VALUES (:config, :valor)";
+    $query = "INSERT INTO config (option, value) VALUES (:Estat, :valor)";
     $stmt = $connexio->prepare($query);
-    $stmt->bindParam(':config', $config);
+    $stmt->bindParam(':Estat', $config);
     $stmt->bindParam(':valor', $valor);
     $stmt->execute();
 }
@@ -454,30 +454,21 @@ function guardarConfig($config, $valor)
         inserirConfig($config, "Pausat");
         return;
     }
-    $query = "UPDATE config SET value = :valor WHERE option = :config";
+    $query = "UPDATE config SET value = :valor WHERE option = :Estat";
     $stmt = $connexio->prepare($query);
-    $stmt->bindParam(':config', $config);
+    $stmt->bindParam(':Estat', $config);
     $stmt->bindParam(':valor', $valor);
     $stmt->execute();
 }
 
-function editarConfig($config)
-{
-    $connexio = connexion();
-
-    $query = "UPDATE config SET value = :config";
-    $stmt = $connexio->prepare($query);
-    $stmt->bindParam(':config', $config);
-    $stmt->execute();
-}
 
 function llegirConfig($config)
 {
     $connexio = connexion();
 
-    $query = "SELECT value FROM config WHERE option = :config";
+    $query = "SELECT value FROM config WHERE option = :Estat";
     $stmt = $connexio->prepare($query);
-    $stmt->bindParam(':config', $config);
+    $stmt->bindParam(':Estat', $config);
     $stmt->execute();
 
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -488,7 +479,7 @@ function llegirConfig($config)
 function buscarConfig(){
     $connexio = connexion();
 
-    $query = "SELECT value FROM config";
+    $query = "SELECT value FROM config WHERE option = 'Estat'";
     $stmt = $connexio->prepare($query);
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);

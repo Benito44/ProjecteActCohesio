@@ -20,6 +20,7 @@ if (profeExists($email2)) {
     if (profeIsAdmin($email2) == 1) {
 
         $_SESSION['rol'] = "admin";
+        $_SESSION['email'] = $email2;
         header('Location: sessio.php');
     } else {
         $_SESSION['rol'] = "profe";

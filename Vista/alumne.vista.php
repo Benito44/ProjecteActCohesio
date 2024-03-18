@@ -6,6 +6,6 @@
     <title>Alumnes</title>
 </head>
 <body>
-    
+    <h1>Alumnes</h1>
 </body>
 </html>

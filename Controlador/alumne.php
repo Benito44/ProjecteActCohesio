@@ -1,4 +1,8 @@
 <?php 
 session_start();
 
-$usuari = $_SESSION['usuari'];
+$mail = $_SESSION['email'];
+
+require_once '../Model/consultasbd.php';
+
+//A partir del
