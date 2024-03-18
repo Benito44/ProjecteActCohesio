@@ -15,24 +15,27 @@
     <?php include 'AdminHeader.vista.php'; ?>
     <br>
     <div class="container btn-warning text-center">
-        <button id="btnGenerar" type="button" class="btn btn-secondary">
-            Generar grups
-        </button>
-        <button type="button" class="btn btn-secondary" onclick="window.location.href = 'reiniciar.php'">
-            Reiniciar grups
-        </button>
-
-        <p style="color: red;">S'hi recomana que abans de generar els grups, s'hagin afegit tots els alumnes primer correctament*</p>
+        <a href="afegirActivitat.php" class="btn btn-secondary">Afegir Activitat</a>
     </div>
     <br>
+    <br>
+    <br>
 
-    <br>
-    <br>
-    <?php if (empty($alumnes)) : ?>
+    <!-- Mostrar error si existeix algun i esborrar-lo -->
+    <?php if (isset($_SESSION['error'])) {
+    ?>
+        <div class="alert alert-danger" role="alert">
+            <?= $_SESSION['error']; ?>
+        </div>
+    <?php
+        unset($_SESSION['error']);
+    }
+    ?>
+    <?php if (empty($activitats)) : ?>
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h1>No hi ha alumnes</h1>
+                    <h1>No hi ha activitats</h1>
                 </div>
             </div>
         </div>
@@ -44,18 +47,27 @@
                         <thead>
                             <tr>
                                 <th>Nom</th>
-                                <th>Cognoms</th>
-                                <th>Email</th>
-                                <th>Clase</th>
+                                <th>Descripcio</th>
+                                <th>Prof. Puntuador</th>
+                                <th>Prof. Assistencia</th>
+                                <th>Localitzacio Text</th>
+                                <th>Localitzacio Coord</th>
+                                <th>Accions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($alumnes as $alumne) : ?>
+                            <?php foreach ($activitats as $activitat) : ?>
                                 <tr>
-                                    <td><?= $alumne['nom'] ?></td>
-                                    <td><?= $alumne['cognoms'] ?></td>
-                                    <td><?= $alumne['email'] ?></td>
-                                    <td><?= $alumne['Clase'] ?></td>
+                                    <td><?= $activitat["nom"] ?></td>
+                                    <td><?= $activitat["descripcio"] ?></td>
+                                    <td><?= $activitat["professor_puntuador"] ?></td>
+                                    <td><?= $activitat["professor_assistencia"] ?></td>
+                                    <td><?= $activitat["localitzacio"] ?></td>
+                                    <td><?= $activitat["latitud"] . ", " . $activitat["longitud"] ?></td>
+                                    <td>
+                                        <a href="modificarActivitat.php?id=<?= $activitat['id'] ?>" class="btn btn-primary">Modificar</a>
+                                        <a href="eliminarActivitat.php?id=<?= $activitat['id'] ?>" class="btn btn-danger">Eliminar</a>
+                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
