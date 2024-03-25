@@ -6,7 +6,7 @@ $(document).ready(function () {
             method: 'GET',
             dataType: 'json',
             success: function(response) {
-                if (response != "Aturat"){
+                if (response.config !== "Aturat") {
                     alert('El joc acaba de començar');
                     window.location.href = '../Controlador/alumne.php';
                 }
