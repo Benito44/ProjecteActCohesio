@@ -37,6 +37,23 @@ function nombreDeGrups()
     return $result;
 }
 
+function dadesGrups()
+{
+    $connexio = connexion();
+
+    $query = "SELECT * FROM grup";
+    $stmt = $connexio->prepare($query);
+    $stmt->execute();
+
+    $grups = array();
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $grup = $row['id'];
+        $grups[] = $grup;
+    }
+
+    return $grups;
+}
+
 // Función para generar parejas aleatorias
 function generarParejas($grupos)
 {
@@ -321,7 +338,8 @@ function buscarAlumnes($clase)
     return $alumnes;
 }
 
-function buscarAlumnes2($grup_id){
+function buscarAlumnes2($grup_id)
+{
     $connexio = connexion();
 
     $query = "SELECT id, nom, cognoms, email, grup_id, Clase FROM alumne WHERE grup_id = :grup_id";
@@ -498,7 +516,8 @@ function llegirConfig($config)
     return $result['value'];
 }
 
-function buscarConfig(){
+function buscarConfig()
+{
     $connexio = connexion();
 
     $query = "SELECT value FROM config WHERE option = 'Estat'";
@@ -508,7 +527,8 @@ function buscarConfig(){
     return $result["value"];
 }
 
-function dadesProfessors(){
+function dadesProfessors()
+{
     $connexio = connexion();
 
     $query = "SELECT * FROM professor";
@@ -520,7 +540,8 @@ function dadesProfessors(){
     return $professors;
 }
 
-function dadesProfessor($id){
+function dadesProfessor($id)
+{
     $connexio = connexion();
 
     $query = "SELECT * FROM professor WHERE id = :id";
@@ -533,7 +554,8 @@ function dadesProfessor($id){
     return $professor;
 }
 
-function dadesActivitats(){
+function dadesActivitats()
+{
     $connexio = connexion();
 
     $query = "SELECT * FROM activitat";
@@ -559,7 +581,8 @@ function dadesActivitat($id)
     return $activitat;
 }
 
-function afegirActivitat($activitat){
+function afegirActivitat($activitat)
+{
     $connexio = connexion();
 
     // Modifica la consulta para insertar el punto en lugar de las coordenadas directamente
@@ -579,7 +602,8 @@ VALUES (:nom, :descripcio, :professor_puntuador, :professor_assistencia, :locali
     return $connexio->lastInsertId();
 }
 
-function modificarActivitat($activitat){
+function modificarActivitat($activitat)
+{
     $connexio = connexion();
 
     $query = "UPDATE activitat SET nom = :nom, descripcio = :descripcio, professor_puntuador = :professor_puntuador, professor_assistencia = :professor_assistencia, localitzacio = :localitzacio, latitud = :latitud, longitud = :longitud WHERE id = :id";
@@ -596,7 +620,8 @@ function modificarActivitat($activitat){
     $stmt->execute();
 }
 
-function buscarGrupId($mail){
+function buscarGrupId($mail)
+{
     $connexio = connexion();
 
     $query = "SELECT grup_id FROM alumne WHERE email = :mail";
@@ -608,11 +633,45 @@ function buscarGrupId($mail){
     return $result['grup_id'];
 }
 
-function eliminarActivitat($id){
+function eliminarActivitat($id)
+{
     $connexio = connexion();
 
     $query = "DELETE FROM activitat WHERE id = :id";
     $stmt = $connexio->prepare($query);
     $stmt->bindParam(':id', $id);
     $stmt->execute();
+}
+
+function inserirEnfrontament($grupId, $activitatId)
+{
+    $connexio = connexion();
+
+    $query = "INSERT INTO enfrontament (grup_id, primera_activitat) VALUES (:grup_id, :primera_activitat)";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':grup_id', $grupId);
+    $stmt->bindParam(':primera_activitat', $activitatId);
+    $stmt->execute();
+}
+
+function dadesEnfrontaments()
+{
+    $connexio = connexion();
+
+    $query = "SELECT * FROM enfrontament";
+    $stmt = $connexio->prepare($query);
+    $stmt->execute();
+
+    $enfrontaments = array();
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $enfrontament = array(
+            'id' => $row['id'],
+            'grup_id' => $row['grup_id'],
+            'primera_activitat' => $row['primera_activitat'],
+            'segona_activitat' => $row['segona_activitat']
+        );
+        $enfrontaments[] = $enfrontament;
+    }
+
+    return $enfrontaments;
 }

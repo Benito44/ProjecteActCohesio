@@ -43,7 +43,13 @@ $(document).ready(function () {
     $.ajax({
       type: "POST",
       url: "http://localhost/ProjecteActCohesio/Controlador/definirEvent.php",
-      data: { estat: "R1" }
+      data: { estat: "Iniciat" },
+      success: function (response) {
+        let parsed = JSON.parse(response);
+        if (parsed.error) {
+          alert("S'ha produit un error a l'hora d'iniciar l'activitat:\n" + parsed.error);
+        }
+      }
     });
   });
 
@@ -61,7 +67,7 @@ $(document).ready(function () {
     let segonsStr = segons < 10 ? "0" + segons : segons;
     $("#cronometre").text("Temps restant: " + minutsStr + ":" + segonsStr);
     interval = setInterval(actualitzarCronometre, 1000);
-alert("Activitat començada");
+    alert("Activitat començada");
     $.ajax({
       type: "POST",
       url: "http://localhost/ProjecteActCohesio/Controlador/definirEvent.php",
