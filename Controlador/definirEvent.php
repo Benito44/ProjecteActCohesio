@@ -42,6 +42,42 @@ function generarEnfrontaments()
     return "";
 }
 
+// tenin en compte l'estat inicial:
+// grups = [1, 2, 3, 4, 5, 6]
+// activitats = [1, 2, 3, 1, 2, 3]
+// hem de fer que els grups s'enfrentin entre ells (primera meitat vs segona meitat) 
+// i no es repeteixin ni les activitats ni els grups
+// per exemple, el recorregut del grup 1 seria el seguent
+// ronda 1: grup1 vs grup4 (activitat 1)
+// ronda 2: grup1 vs grup5 (activitat 3)
+// ronda 3: grup1 vs grup6 (activitat 2)
+function obtenirEnfrontamentPerRonda($ronda)
+{
+    $grups = dadesGrups();
+    $activitats = dadesActivitats();
+    $maxRonda = count($grups) / 2;
+    $ronda = max(1, min($ronda, count($grups) / 2));
+
+    $enfrontaments = array();
+    for ($g = 0; $g < $maxRonda; $g++) {
+        $oponent = $maxRonda + (($g + $ronda) % $maxRonda);
+        $activitat = ($g - $ronda) % $maxRonda;
+        if ($activitat < 0) {
+            $activitat += abs($maxRonda);
+        }
+
+        $enfrontament = array(
+            "grup" => $grups[$g],
+            "oponent" => $grups[$oponent],
+            "activitat" => $activitats[$activitat]["id"]
+        );
+
+        array_push($enfrontaments, $enfrontament);
+    }
+
+    return $enfrontaments;
+}
+
 if (isset($_POST['estat'])) {
     $estat = $_POST['estat'];
 
