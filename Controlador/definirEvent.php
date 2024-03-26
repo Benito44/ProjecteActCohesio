@@ -9,8 +9,7 @@ function generarEnfrontaments()
     $enfrontaments = dadesEnfrontaments();
     if (count($enfrontaments) > 0) {
         return "";
-    }
-    ;
+    };
 
     $grups = dadesGrups();
     $activitats = dadesActivitats();
@@ -82,7 +81,23 @@ function obtenirEnfrontamentPerRonda($ronda)
     return $enfrontaments;
 }
 
-if (isset ($_POST['estat'])) {
+function actualitzarEnfrontamentsSeguentRonda()
+{   // comprovem que l'estat es R1, R2, R3, R4
+    if (strpos(buscarConfig(), "R") === false) {
+        return;
+    }
+
+    // obtenir la ronda d'un string com "R1"
+    $ronda = intval(substr(buscarConfig(), 1));
+
+    $enfrontaments = obtenirEnfrontamentPerRonda($ronda);
+    foreach ($enfrontaments as $enfrontament) {
+        actualitzarEnfrontament($enfrontament["grup"], $enfrontament["activitat"]);
+        actualitzarEnfrontament($enfrontament["oponent"], $enfrontament["activitat"]);
+    }
+}
+
+if (isset($_POST['estat'])) {
     $estat = $_POST['estat'];
 
     switch ($estat) {
@@ -104,7 +119,8 @@ if (isset ($_POST['estat'])) {
         case 'Seguent':
             $ronda = $_COOKIE['ronda'] + 1;
             setcookie('ronda', $ronda, time() + 3600);
-            $enfrontaments = obtenirEnfrontamentPerRonda($ronda);
+            actualitzarEnfrontamentsSeguentRonda();
+            $enfrontaments = dadesEnfrontaments();
             echo json_encode(array('enfrontaments' => $enfrontaments));
 
             guardarConfig("estat", "R" . $ronda);
