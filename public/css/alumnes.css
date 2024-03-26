@@ -10,8 +10,8 @@ h1 {
     color: #333;
 }
 
-.container {
-    background-color: #f0f0f0;
+.custom-container {
+    max-width: 80%;
 }
 
 table {

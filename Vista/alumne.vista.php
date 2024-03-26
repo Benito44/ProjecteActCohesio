@@ -15,7 +15,18 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="custom-container container">
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="../Controlador/alumne.php">
+                    <img src="../public/img/logo-institut-sapalomera.png" width="140" height="80"
+                        class="d-inline-block align-top" alt="">
+                </a>
+            </nav>
+
+        </header>
+    </div>
+    <div class="custom-container container">
         <h1 class="mt-5">Alumnes</h1>
 
         <table class="table table-bordered table-striped mt-4">
@@ -69,8 +80,10 @@
         <div class="row mt-5">
             <div class="col-lg-4">
                 <h2>Puntuacio i ranking</h2>
-                <p style="font-size: 18px; color: #333;">El vostre Grup tè una puntuació de: <?php echo $puntuacio; ?> pts</p>
-                    
+                <p style="font-size: 18px; color: #333;">El vostre Grup tè una puntuació de:
+                    <?php echo $puntuacio; ?> pts
+                </p>
+
             </div>
 
             <div class="col-lg-8">
