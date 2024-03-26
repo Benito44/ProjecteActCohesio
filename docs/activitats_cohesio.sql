@@ -1160,11 +1160,11 @@ CREATE TABLE IF NOT EXISTS `professor` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `activitats_cohesio`.`enfrontament` (
   `grup_id` INT NOT NULL,
-  `primera_activitat` INT NOT NULL,
+  `activitat_id` INT NOT NULL,
   INDEX `FK_GRUP_ID_idx` (`grup_id` ASC),
-  INDEX `FK_PRIMERA_ACTIVITAT_ID_idx` (`primera_activitat` ASC),
+  INDEX `FK_ACTIVITAT_ID_idx` (`activitat_id` ASC),
   CONSTRAINT `FK_GRUP_ID` FOREIGN KEY (`grup_id`) REFERENCES `activitats_cohesio`.`grup` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `FK_PRIMERA_ACTIVITAT_ID` FOREIGN KEY (`primera_activitat`) REFERENCES `activitats_cohesio`.`activitat` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `FK_ACTIVITAT_ID` FOREIGN KEY (`activitat_id`) REFERENCES `activitats_cohesio`.`activitat` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE = InnoDB;
 --
 -- Volcado de datos para la tabla `professor`

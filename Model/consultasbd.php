@@ -689,10 +689,10 @@ function inserirEnfrontament($grupId, $activitatId)
 {
     $connexio = connexion();
 
-    $query = "INSERT INTO enfrontament (grup_id, primera_activitat) VALUES (:grup_id, :primera_activitat)";
+    $query = "INSERT INTO enfrontament (grup_id, activitat_id) VALUES (:grup_id, :activitat_id)";
     $stmt = $connexio->prepare($query);
     $stmt->bindParam(':grup_id', $grupId);
-    $stmt->bindParam(':primera_activitat', $activitatId);
+    $stmt->bindParam(':activitat_id', $activitatId);
     $stmt->execute();
 }
 
@@ -707,13 +707,22 @@ function dadesEnfrontaments()
     $enfrontaments = array();
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $enfrontament = array(
-            'id' => $row['id'],
             'grup_id' => $row['grup_id'],
-            'primera_activitat' => $row['primera_activitat'],
-            'segona_activitat' => $row['segona_activitat']
+            'activitat_id' => $row['activitat_id']
         );
         $enfrontaments[] = $enfrontament;
     }
 
     return $enfrontaments;
+}
+
+function actualitzarEnfrontament($grupId, $activitatId)
+{
+    $connexio = connexion();
+
+    $query = "UPDATE enfrontament SET activitat_id = :activitat_id WHERE grup_id = :grup_id";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':grup_id', $grupId);
+    $stmt->bindParam(':activitat_id', $activitatId);
+    $stmt->execute();
 }
