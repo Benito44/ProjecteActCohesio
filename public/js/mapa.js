@@ -1,3 +1,35 @@
+window.onload = function() {
+    let estatRonda;
+
+    $.ajax({
+        url: 'http://localhost/ProjecteActCohesio/Controlador/definirEvent.php',
+        method: 'GET',
+        dataType: 'json',
+        success: function(response) {
+                estatRonda = response.config;
+        },
+        error: function(error) {
+            console.error('Error al obtindre la configuració:', error);
+        }
+    });
+
+
+    setInterval(function() {
+        $.ajax({
+            url: 'http://localhost/ProjecteActCohesio/Controlador/definirEvent.php',
+            method: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                if (estatRonda !== response.config) {
+                    alert("S'ha detectat un canvi de ronda. La pàgina es recarregarà.");
+                    window.location.reload();
+                }
+            }
+        });
+    }, 10000);
+}
+
+
 function crearMapa() {
     var mapaDiv = document.getElementById('mapa');
     var latitud = parseFloat(mapaDiv.getAttribute('data-latitud'));
@@ -21,10 +53,12 @@ function crearMapa() {
         label: {
             text: '1',
             color: '#000',
-            fontSize: '16px',
+            fontSize: '24px',
             fontWeight: 'bold'
         }
     });
 }
 
 window.crearMapa = crearMapa;
+
+

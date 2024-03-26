@@ -34,5 +34,10 @@ if (empty ($grup_id)) {
     $professor_assistencia = buscarProfesor($activitat['professor_assistencia']);
 
 
+    $puntuacio = puntuacioTotalGrup($grup_id);
+    $puntuacions = puntuacionsPerGrup();
+
+
+
     include '../Vista/alumne.vista.php';
 }

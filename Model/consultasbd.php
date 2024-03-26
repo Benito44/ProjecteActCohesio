@@ -318,6 +318,21 @@ function buscarGrup($grup)
     return $result['id'];
 }
 
+function buscarGrupId2($id)
+{
+
+    $connexio = connexion();
+
+    $query = "SELECT nom FROM grup WHERE id = :id";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result['nom'];
+}
+
 function buscarAlumnes($clase)
 {
     $connexio = connexion();
@@ -599,14 +614,14 @@ function buscarActivitat($group_id)
 {
     $connexio = connexion();
 
-    $query = "SELECT primera_activitat FROM enfrontament WHERE grup_id = :group_id";
+    $query = "SELECT activitat_id FROM enfrontament WHERE grup_id = :group_id";
     $stmt = $connexio->prepare($query);
     $stmt->bindParam(':group_id', $group_id);
     $stmt->execute();
 
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     
-    return $result['primera_activitat'];
+    return $result['activitat_id'];
 }
 
 function informacioActivitat($id)
@@ -725,4 +740,38 @@ function actualitzarEnfrontament($grupId, $activitatId)
     $stmt->bindParam(':grup_id', $grupId);
     $stmt->bindParam(':activitat_id', $activitatId);
     $stmt->execute();
+}
+
+function puntuacioTotalGrup($grupId)
+{
+    $connexio = connexion();
+
+    $query = "SELECT SUM(puntuacio) AS total FROM grup_puntua_activitat WHERE grup_id = :grup_id";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':grup_id', $grupId);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result['total'];
+}
+
+function puntuacionsPerGrup()
+{
+    $connexio = connexion();
+
+    $query = "SELECT grup_id, SUM(puntuacio) AS total FROM grup_puntua_activitat GROUP BY grup_id ORDER BY total DESC";
+    $stmt = $connexio->prepare($query);
+    $stmt->execute();
+
+    $puntuacions = array();
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $puntuacio = array(
+            'grup' => buscarGrupId2($row['grup_id']),
+            'puntuacio' => $row['total']
+        );
+        $puntuacions[] = $puntuacio;
+    }
+
+    return $puntuacions;
 }
