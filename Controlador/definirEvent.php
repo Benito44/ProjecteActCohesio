@@ -2,7 +2,7 @@
 require_once '../Model/consultasbd.php';
 session_start();
 
-$ronda = $_COOKIE['ronda'];
+$ronda = isset($_COOKIE['ronda']) ? $_COOKIE['ronda'] : 0;
 
 function generarEnfrontaments()
 {
@@ -116,6 +116,8 @@ if (isset ($_POST['estat'])) {
     }
 }
 
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    $config = buscarConfig();
+    echo json_encode(array('config' => $config));
+}
 
-$config = buscarConfig();
-echo json_encode(array('config' => $config));

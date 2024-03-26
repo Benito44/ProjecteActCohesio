@@ -581,6 +581,48 @@ function dadesActivitat($id)
     return $activitat;
 }
 
+function buscarProfesor($id)
+{
+    $connexio = connexion();
+
+    $query = "SELECT nom, cognoms FROM professor WHERE id = :id";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result['nom'] . " " . $result['cognoms'];
+}
+
+function buscarActivitat($group_id)
+{
+    $connexio = connexion();
+
+    $query = "SELECT primera_activitat FROM enfrontament WHERE grup_id = :group_id";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':group_id', $group_id);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    return $result['primera_activitat'];
+}
+
+function informacioActivitat($id)
+{
+    $connexio = connexion();
+
+    $query = "SELECT * FROM activitat WHERE id = :id";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result;
+}
+
 function afegirActivitat($activitat)
 {
     $connexio = connexion();
