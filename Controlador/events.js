@@ -1,12 +1,12 @@
 $(document).ready(function () {
   let tempsRestant = 600;
   let interval;
-  let ronda = 1;
+
 
   $.ajax({
     type: "POST",
     url: "http://localhost/ProjecteActCohesio/Controlador/definirEvent.php",
-    data: { estat: "Aturat" }
+    data: { estat: "Pausat" }
   });
 
 
@@ -32,6 +32,8 @@ $(document).ready(function () {
     }
   }
 
+
+
   $("#inicii").click(function () {
 
     interval = setInterval(actualitzarCronometre, 1000);
@@ -54,7 +56,7 @@ $(document).ready(function () {
   });
 
   $("#next").click(function () {
-    ronda++;
+
     $("#next").prop("disabled", false);
     $("#end").prop("disabled", false);
     $("#inicii").prop("disabled", true);
@@ -67,11 +69,10 @@ $(document).ready(function () {
     let segonsStr = segons < 10 ? "0" + segons : segons;
     $("#cronometre").text("Temps restant: " + minutsStr + ":" + segonsStr);
     interval = setInterval(actualitzarCronometre, 1000);
-    alert("Activitat començada");
     $.ajax({
       type: "POST",
       url: "http://localhost/ProjecteActCohesio/Controlador/definirEvent.php",
-      data: { estat: "R" + ronda }
+      data: { estat: "Seguent" }
     });
   });
   $("#end").click(function () {
