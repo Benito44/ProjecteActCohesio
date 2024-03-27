@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-03-2024 a las 16:53:02
+-- Tiempo de generación: 27-03-2024 a las 18:46:38
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -45,7 +45,16 @@ CREATE TABLE `activitat` (
 --
 
 INSERT INTO `activitat` (`id`, `nom`, `descripcio`, `professor_puntuador`, `professor_assistencia`, `localitzacio`, `latitud`, `longitud`, `descripcio_material`, `obtenir_material`) VALUES
-(3, 'Activitat', 'wersdtfyhgj', 1, 0, 'Text de la Activitat', 40.7128, -74.006, 'Nou material', 'Comprar');
+(1, 'Ping Pong', 'Activitat de ping pong', 0, 1, 'Gimnàs', 41.3851, 2.1734, '', 'Professorat'),
+(2, 'Futbol', 'Activitat de futbol', 1, 0, 'Pati', 41.3851, 2.1734, '', 'Professorat'),
+(3, 'Bàsquet', 'Activitat de bàsquet', 2, 1, 'Pista exterior', 41.3851, 2.1734, '', 'Professorat'),
+(4, 'Voleibol', 'Activitat de voleibol', 0, 2, 'Pati', 41.3851, 2.1734, '', 'Professorat'),
+(5, 'Escacs', 'Activitat d\'escacs', 1, 0, 'Aula', 41.3851, 2.1734, '', 'Professorat'),
+(6, 'Dansa', 'Activitat de dansa', 2, 1, 'Saló d\'actes', 41.3851, 2.1734, '', 'Professorat'),
+(7, 'Teatre', 'Activitat de teatre', 0, 2, 'Saló d\'actes', 41.3851, 2.1734, '', 'Professorat'),
+(8, 'Arts marcials', 'Activitat d\'arts marcials', 1, 0, 'Gimnàs', 41.3851, 2.1734, '', 'Professorat'),
+(9, 'Ioga', 'Activitat d\'ioga', 2, 1, 'Aula', 41.3851, 2.1734, '', 'Professorat'),
+(10, 'Pintura', 'Activitat de pintura', 0, 2, 'Aula d\'art', 41.3851, 2.1734, '', 'Professorat');
 
 -- --------------------------------------------------------
 
@@ -218,12 +227,16 @@ CREATE TABLE `config` (
   `value` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+-- --------------------------------------------------------
+
 --
--- Volcado de datos para la tabla `config`
+-- Estructura de tabla para la tabla `enfrontament`
 --
 
-INSERT INTO `config` (`option`, `value`) VALUES
-('estat', 'Pausat');
+CREATE TABLE `enfrontament` (
+  `grup_id` int(11) NOT NULL,
+  `activitat_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -292,7 +305,8 @@ CREATE TABLE `professor` (
 
 INSERT INTO `professor` (`id`, `nom`, `cognoms`, `administrador`, `email`) VALUES
 (0, 'Ayman', 'Sbay Zekkari', 1, 'a.sbay@sapalomera.cat'),
-(1, 'Benito', 'Martinez Florido', 1, 'b.martinez2@sapalomera.cat');
+(1, 'Benito', 'Martinez', 1, 'b.martinez2@sapalomera.cat'),
+(2, 'Marc', 'Peral', 1, 'm.peral@sapalomera.cat');
 
 --
 -- Índices para tablas volcadas
@@ -327,6 +341,13 @@ ALTER TABLE `config`
   ADD PRIMARY KEY (`option`);
 
 --
+-- Indices de la tabla `enfrontament`
+--
+ALTER TABLE `enfrontament`
+  ADD KEY `FK_GRUP_ID_idx` (`grup_id`),
+  ADD KEY `FK_ACTIVITAT_ID_idx` (`activitat_id`);
+
+--
 -- Indices de la tabla `grup`
 --
 ALTER TABLE `grup`
@@ -354,7 +375,7 @@ ALTER TABLE `professor`
 -- AUTO_INCREMENT de la tabla `activitat`
 --
 ALTER TABLE `activitat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `alumne`
@@ -385,6 +406,13 @@ ALTER TABLE `activitat`
 ALTER TABLE `alumne_assisteix_activitat`
   ADD CONSTRAINT `fk_alumne_has_activitat_activitat1` FOREIGN KEY (`activitat_id`) REFERENCES `activitat` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_alumne_has_activitat_alumne1` FOREIGN KEY (`alumne_id`) REFERENCES `alumne` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `enfrontament`
+--
+ALTER TABLE `enfrontament`
+  ADD CONSTRAINT `FK_ACTIVITAT_ID` FOREIGN KEY (`activitat_id`) REFERENCES `activitat` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `FK_GRUP_ID` FOREIGN KEY (`grup_id`) REFERENCES `grup` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `grup_puntua_activitat`
