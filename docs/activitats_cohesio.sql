@@ -46,19 +46,138 @@ CREATE TABLE IF NOT EXISTS `activitat` (
 --
 -- Volcado de datos para la tabla `activitat`
 --
-
-INSERT INTO `activitat` (`id`, `nom`, `descripcio`, `professor_puntuador`, `professor_assistencia`, `localitzacio`, `latitud`, `longitud`, `descripcio_material`, `obtenir_material`) VALUES
-(1, 'Ping Pong', 'Activitat de ping pong', 0, 1, 'Gimnàs', 41.3851, 2.1734, '', 'Professorat'),
-(2, 'Futbol', 'Activitat de futbol', 1, 0, 'Pati', 41.3851, 2.1734, '', 'Professorat'),
-(3, 'Bàsquet', 'Activitat de bàsquet', 2, 1, 'Pista exterior', 41.3851, 2.1734, '', 'Professorat'),
-(4, 'Voleibol', 'Activitat de voleibol', 0, 2, 'Pati', 41.3851, 2.1734, '', 'Professorat'),
-(5, 'Escacs', 'Activitat d\'escacs', 1, 0, 'Aula', 41.3851, 2.1734, '', 'Professorat'),
-(6, 'Dansa', 'Activitat de dansa', 2, 1, 'Saló d\'actes', 41.3851, 2.1734, '', 'Professorat'),
-(7, 'Teatre', 'Activitat de teatre', 0, 2, 'Saló d\'actes', 41.3851, 2.1734, '', 'Professorat'),
-(8, 'Arts marcials', 'Activitat d\'arts marcials', 1, 0, 'Gimnàs', 41.3851, 2.1734, '', 'Professorat'),
-(9, 'Ioga', 'Activitat d\'ioga', 2, 1, 'Aula', 41.3851, 2.1734, '', 'Professorat'),
-(10, 'Pintura', 'Activitat de pintura', 0, 2, 'Aula d\'art', 41.3851, 2.1734, '', 'Professorat');
-
+INSERT INTO `activitat` (
+    `id`,
+    `nom`,
+    `descripcio`,
+    `professor_puntuador`,
+    `professor_assistencia`,
+    `localitzacio`,
+    `latitud`,
+    `longitud`,
+    `descripcio_material`,
+    `obtenir_material`
+  )
+VALUES (
+    1,
+    'Ping Pong',
+    'Activitat de ping pong',
+    0,
+    1,
+    'Gimnàs',
+    41.3851,
+    2.1734,
+    '',
+    'Professorat'
+  ),
+  (
+    2,
+    'Futbol',
+    'Activitat de futbol',
+    1,
+    0,
+    'Pati',
+    41.3851,
+    2.1734,
+    '',
+    'Professorat'
+  ),
+  (
+    3,
+    'Bàsquet',
+    'Activitat de bàsquet',
+    2,
+    1,
+    'Pista exterior',
+    41.3851,
+    2.1734,
+    '',
+    'Professorat'
+  ),
+  (
+    4,
+    'Voleibol',
+    'Activitat de voleibol',
+    0,
+    2,
+    'Pati',
+    41.3851,
+    2.1734,
+    '',
+    'Professorat'
+  ),
+  (
+    5,
+    'Escacs',
+    'Activitat d\'escacs',
+    1,
+    0,
+    'Aula',
+    41.3851,
+    2.1734,
+    '',
+    'Professorat'
+  ),
+  (
+    6,
+    'Dansa',
+    'Activitat de dansa',
+    2,
+    1,
+    'Saló d\'actes',
+    41.3851,
+    2.1734,
+    '',
+    'Professorat'
+  ),
+  (
+    7,
+    'Teatre',
+    'Activitat de teatre',
+    0,
+    2,
+    'Saló d\'actes',
+    41.3851,
+    2.1734,
+    '',
+    'Professorat'
+  ),
+  (
+    8,
+    'Arts marcials',
+    'Activitat d\'arts marcials',
+    1,
+    0,
+    'Gimnàs',
+    41.3851,
+    2.1734,
+    '',
+    'Professorat'
+  ),
+  (
+    9,
+    'Ioga',
+    'Activitat d\'ioga',
+    2,
+    1,
+    'Aula',
+    41.3851,
+    2.1734,
+    '',
+    'Professorat'
+  ),
+  (
+    10,
+    'Pintura',
+    'Activitat de pintura',
+    0,
+    2,
+    'Aula d\'art',
+    41.3851,
+    2.1734,
+    '',
+    'Professorat'
+  );
 -- --------------------------------------------------------
 --
 -- Estructura de tabla para la tabla `alumne`
@@ -1114,19 +1233,15 @@ DROP TABLE IF EXISTS `config`;
 CREATE TABLE IF NOT EXISTS `config` (
   `option` varchar(20) NOT NULL,
   `value` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
+) ENGINE = InnoDB DEFAULT CHARSET = utf8 COLLATE = utf8_general_ci;
 -- --------------------------------------------------------
-
 --
 -- Estructura de tabla para la tabla `enfrontament`
 --
-
 CREATE TABLE `enfrontament` (
   `grup_id` int(11) NOT NULL,
   `activitat_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
+) ENGINE = InnoDB DEFAULT CHARSET = utf8 COLLATE = utf8_general_ci;
 -- --------------------------------------------------------
 --
 -- Estructura de tabla para la tabla `grup`
@@ -1199,93 +1314,6 @@ CREATE TABLE IF NOT EXISTS `activitats_cohesio`.`enfrontament` (
 --
 -- Volcado de datos para la tabla `professor`
 --
-
-INSERT INTO `professor` (`id`, `nom`, `cognoms`, `administrador`, `email`) VALUES
-(0, 'Ayman', 'Sbay Zekkari', 1, 'a.sbay@sapalomera.cat'),
-(1, 'Benito', 'Martinez', 1, 'b.martinez2@sapalomera.cat'),
-(2, 'Marc', 'Peral', 1, 'm.peral@sapalomera.cat');
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `activitat`
---
-ALTER TABLE `activitat`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_activitat_professor1_idx` (`professor_puntuador`),
-  ADD KEY `fk_activitat_professor2_idx` (`professor_assistencia`);
-
---
--- Indices de la tabla `alumne`
---
-ALTER TABLE `alumne`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `alumne_assisteix_activitat`
---
-ALTER TABLE `alumne_assisteix_activitat`
-  ADD PRIMARY KEY (`alumne_id`,`activitat_id`),
-  ADD KEY `fk_alumne_has_activitat_activitat1_idx` (`activitat_id`),
-  ADD KEY `fk_alumne_has_activitat_alumne1_idx` (`alumne_id`);
-
---
--- Indices de la tabla `config`
---
-ALTER TABLE `config`
-  ADD PRIMARY KEY (`option`);
-
---
--- Indices de la tabla `enfrontament`
---
-ALTER TABLE `enfrontament`
-  ADD KEY `FK_GRUP_ID_idx` (`grup_id`),
-  ADD KEY `FK_ACTIVITAT_ID_idx` (`activitat_id`);
-
---
--- Indices de la tabla `grup`
---
-ALTER TABLE `grup`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `grup_puntua_activitat`
---
-ALTER TABLE `grup_puntua_activitat`
-  ADD PRIMARY KEY (`grup_id`,`activitat_id`),
-  ADD KEY `fk_grup_has_activitat_activitat1_idx` (`activitat_id`),
-  ADD KEY `fk_grup_has_activitat_grup1_idx` (`grup_id`);
-
---
--- Indices de la tabla `professor`
---
-ALTER TABLE `professor`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `activitat`
---
-ALTER TABLE `activitat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT de la tabla `alumne`
---
-ALTER TABLE `alumne`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=221;
-
---
--- AUTO_INCREMENT de la tabla `grup`
---
-ALTER TABLE `grup`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=492;
-
 INSERT INTO `professor` (`id`, `nom`, `cognoms`, `administrador`, `email`)
 VALUES (
     0,
@@ -1301,137 +1329,36 @@ VALUES (
     1,
     'b.martinez2@sapalomera.cat'
   ),
-  (
-    2,
-    'Marc',
-    'Peral',
-    1,
-    'm.peral@sapalomera.cat'
-  );
--- 
--- Volcado de datos par ala tabla `activitat`
+  (2, 'Marc', 'Peral', 1, 'm.peral@sapalomera.cat');
 --
-INSERT INTO `activitat` (
-    `nom`,
-    `descripcio`,
-    `professor_puntuador`,
-    `professor_assistencia`,
-    `localitzacio`,
-    `latitud`,
-    `longitud`,
-    `descripcio_material`,
-    `obtenir_material`
-  )
-VALUES (
-    "Ping Pong",
-    "Activitat de ping pong",
-    0,
-    1,
-    "Gimnàs",
-    41.3851,
-    2.1734,
-    "Descripció del material",
-    "Professorat"
-  ),
-  (
-    "Futbol",
-    "Activitat de futbol",
-    1,
-    0,
-    "Pati",
-    41.3851,
-    2.1734,
-    "Descripció del material",
-    "Comprar"
-  ),
-  (
-    "Bàsquet",
-    "Activitat de bàsquet",
-    2,
-    1,
-    "Pista exterior",
-    41.3851,
-    2.1734,
-    "Descripció del material",
-    "Professorat"
-  ),
-  (
-    "Voleibol",
-    "Activitat de voleibol",
-    0,
-    2,
-    "Pati",
-    41.3851,
-    2.1734,
-    "Descripció del material",
-    "Comprar"
-  ),
-  (
-    "Escacs",
-    "Activitat d'escacs",
-    1,
-    0,
-    "Aula",
-    41.3851,
-    2.1734,
-    "Descripció del material",
-    "Professorat"
-  ),
-  (
-    "Dansa",
-    "Activitat de dansa",
-    2,
-    1,
-    "Saló d'actes",
-    41.3851,
-    2.1734,
-    "Descripció del material",
-    "Comprar"
-  ),
-  (
-    "Teatre",
-    "Activitat de teatre",
-    0,
-    2,
-    "Saló d'actes",
-    41.3851,
-    2.1734,
-    "Descripció del material",
-    "Professorat"
-  ),
-  (
-    "Arts marcials",
-    "Activitat d'arts marcials",
-    1,
-    0,
-    "Gimnàs",
-    41.3851,
-    2.1734,
-    "Descripció del material",
-    "Comprar"
-  ),
-  (
-    "Ioga",
-    "Activitat d'ioga",
-    2,
-    1,
-    "Aula",
-    41.3851,
-    2.1734,
-    "Descripció del material",
-    "Professorat"
-  ),
-  (
-    "Pintura",
-    "Activitat de pintura",
-    0,
-    2,
-    "Aula d'art",
-    41.3851,
-    2.1734,
-    "Descripció del material",
-    "Comprar"
-  );
+-- Indices de la tabla `config`
+--
+ALTER TABLE `config`
+ADD PRIMARY KEY (`option`);
+--
+-- Indices de la tabla `enfrontament`
+--
+ALTER TABLE `enfrontament`
+ADD KEY `FK_GRUP_ID_idx` (`grup_id`),
+  ADD KEY `FK_ACTIVITAT_ID_idx` (`activitat_id`);
+--
+-- AUTO_INCREMENT de la tabla `activitat`
+--
+ALTER TABLE `activitat`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
+  AUTO_INCREMENT = 11;
+--
+-- AUTO_INCREMENT de la tabla `alumne`
+--
+ALTER TABLE `alumne`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
+  AUTO_INCREMENT = 221;
+--
+-- AUTO_INCREMENT de la tabla `grup`
+--
+ALTER TABLE `grup`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
+  AUTO_INCREMENT = 492;
 --
 -- Restricciones para tablas volcadas
 --
@@ -1451,9 +1378,8 @@ ADD CONSTRAINT `fk_alumne_has_activitat_activitat1` FOREIGN KEY (`activitat_id`)
 -- Filtros para la tabla `enfrontament`
 --
 ALTER TABLE `enfrontament`
-  ADD CONSTRAINT `FK_ACTIVITAT_ID` FOREIGN KEY (`activitat_id`) REFERENCES `activitat` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+ADD CONSTRAINT `FK_ACTIVITAT_ID` FOREIGN KEY (`activitat_id`) REFERENCES `activitat` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `FK_GRUP_ID` FOREIGN KEY (`grup_id`) REFERENCES `grup` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
 --
 -- Filtros para la tabla `grup_puntua_activitat`
 --
