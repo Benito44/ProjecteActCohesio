@@ -3,11 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
-<<<<<<< HEAD
 -- Tiempo de generación: 27-03-2024 a las 18:46:38
-=======
 -- Tiempo de generación: 19-02-2024 a las 16:32:12
->>>>>>> faa22b695df9f1df37a2060de9117f2c2ffcebdf
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -49,7 +46,6 @@ CREATE TABLE IF NOT EXISTS `activitat` (
 --
 -- Volcado de datos para la tabla `activitat`
 --
-<<<<<<< HEAD
 
 INSERT INTO `activitat` (`id`, `nom`, `descripcio`, `professor_puntuador`, `professor_assistencia`, `localitzacio`, `latitud`, `longitud`, `descripcio_material`, `obtenir_material`) VALUES
 (1, 'Ping Pong', 'Activitat de ping pong', 0, 1, 'Gimnàs', 41.3851, 2.1734, '', 'Professorat'),
@@ -63,32 +59,6 @@ INSERT INTO `activitat` (`id`, `nom`, `descripcio`, `professor_puntuador`, `prof
 (9, 'Ioga', 'Activitat d\'ioga', 2, 1, 'Aula', 41.3851, 2.1734, '', 'Professorat'),
 (10, 'Pintura', 'Activitat de pintura', 0, 2, 'Aula d\'art', 41.3851, 2.1734, '', 'Professorat');
 
-=======
-INSERT INTO `activitat` (
-    `id`,
-    `nom`,
-    `descripcio`,
-    `professor_puntuador`,
-    `professor_assistencia`,
-    `localitzacio`,
-    `latitud`,
-    `longitud`,
-    `descripcio_material`,
-    `obtenir_material`
-  )
-VALUES (
-    3,
-    'Activitat',
-    'wersdtfyhgj',
-    1,
-    0,
-    'Text de la Activitat',
-    40.7128,
-    -74.006,
-    'Nou material',
-    'Comprar'
-  );
->>>>>>> faa22b695df9f1df37a2060de9117f2c2ffcebdf
 -- --------------------------------------------------------
 --
 -- Estructura de tabla para la tabla `alumne`
@@ -1143,7 +1113,6 @@ CREATE TABLE IF NOT EXISTS `alumne_assisteix_activitat` (
 DROP TABLE IF EXISTS `config`;
 CREATE TABLE IF NOT EXISTS `config` (
   `option` varchar(20) NOT NULL,
-<<<<<<< HEAD
   `value` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -1158,11 +1127,6 @@ CREATE TABLE `enfrontament` (
   `activitat_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
-=======
-  `value` varchar(45) NOT NULL,
-  PRIMARY KEY (`option`)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8 COLLATE = utf8_general_ci;
->>>>>>> faa22b695df9f1df37a2060de9117f2c2ffcebdf
 -- --------------------------------------------------------
 --
 -- Estructura de tabla para la tabla `grup`
@@ -1235,7 +1199,6 @@ CREATE TABLE IF NOT EXISTS `activitats_cohesio`.`enfrontament` (
 --
 -- Volcado de datos para la tabla `professor`
 --
-<<<<<<< HEAD
 
 INSERT INTO `professor` (`id`, `nom`, `cognoms`, `administrador`, `email`) VALUES
 (0, 'Ayman', 'Sbay Zekkari', 1, 'a.sbay@sapalomera.cat'),
@@ -1323,7 +1286,6 @@ ALTER TABLE `alumne`
 ALTER TABLE `grup`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=492;
 
-=======
 INSERT INTO `professor` (`id`, `nom`, `cognoms`, `administrador`, `email`)
 VALUES (
     0,
@@ -1470,7 +1432,6 @@ VALUES (
     "Descripció del material",
     "Comprar"
   );
->>>>>>> faa22b695df9f1df37a2060de9117f2c2ffcebdf
 --
 -- Restricciones para tablas volcadas
 --
