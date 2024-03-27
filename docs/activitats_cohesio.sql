@@ -37,7 +37,7 @@ CREATE TABLE `activitat` (
   `latitud` double DEFAULT NULL,
   `longitud` double DEFAULT NULL,
   `descripcio_material` text NOT NULL,
-  `obtenir_material` enum('Professorat educació física','Comprar') NOT NULL
+  `obtenir_material` enum('Professorat','Comprar') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -45,7 +45,7 @@ CREATE TABLE `activitat` (
 --
 
 INSERT INTO `activitat` (`id`, `nom`, `descripcio`, `professor_puntuador`, `professor_assistencia`, `localitzacio`, `latitud`, `longitud`, `descripcio_material`, `obtenir_material`) VALUES
-(3, 'Activitat', 'wersdtfyhgj', 1, 0, 'Text de la Activitat', 40.7128, -74.006, 'Pelotudo', 'Comprar');
+(3, 'Activitat', 'wersdtfyhgj', 1, 0, 'Text de la Activitat', 40.7128, -74.006, 'Nou material', 'Comprar');
 
 -- --------------------------------------------------------
 

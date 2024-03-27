@@ -41,6 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
     $activitat = [
         'descripcio_material' => $_POST["descripcio_material"],
         'obtenir_material' => $_POST["obtenir_material"],
+
         'id' => $_POST["id"]
     ];
 

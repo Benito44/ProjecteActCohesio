@@ -12,7 +12,7 @@
 <body>
     <?php include 'AdminHeader.vista.php'; ?>
     <div class="container">
-        <h1><?= isset($modificantActivitat) ? "Editar" : "Afegir" ?> Activitat</h1>
+        <h1><?= isset($modificantActivitat) ? "Editar" : "Afegir" ?> Material</h1>
         <?php
         if ($llistaProfessorsAsistencia == "" || $llistaProfessorsPuntuador == "") {
         ?>
@@ -34,12 +34,15 @@
             ?>
             <form method="POST">
                 <div class="mb-3">
-                    <label for="descripcio_material" class="form-label">Nom</label>
+                    <label for="descripcio_material" class="form-label">Descripcio del material de l'activitat</label>
                     <input type="text" class="form-control" id="descripcio_material" name="descripcio_material" value="<?= isset($activitat) ? $activitat["descripcio_material"] : "" ?>">
                 </div>
                 <div class="mb-3">
-                    <label for="obtenir_material" class="form-label">Descripcio</label>
-                    <textarea class="form-control" id="obtenir_material" name="obtenir_material" rows="3"><?= isset($activitat) ? $activitat["obtenir_material"] : "" ?></textarea>
+                    <label for="obtenir_material">Com obtenim el material</label>
+                    <select id="obtenir_material" name="obtenir_material">
+                        <option value="Comprar">Comprar</option>
+                        <option value="Professorat">Professorat</option>
+                    </select>                
                 </div>
                 
                 <button type="submit" class="btn btn-primary"><?= isset($activitat) ? "Modificar" : "Guardar" ?></button>
