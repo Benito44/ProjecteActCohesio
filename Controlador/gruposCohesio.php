@@ -16,7 +16,7 @@ if ($_SESSION['rol'] != "admin") {
         include '../Vista/gruposCohesio.php';
         // Generar nuevas parejas
         $parejas = generarParejas($grupos);
-        
+        echo $parejas;
         // Mostrar las nuevas parejas
         echo "<br>";
         echo "<div class='centrar'>";

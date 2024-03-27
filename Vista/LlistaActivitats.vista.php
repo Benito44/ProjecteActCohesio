@@ -67,6 +67,7 @@
                                     <td>
                                         <a href="modificarActivitat.php?id=<?= $activitat['id'] ?>" class="btn btn-primary">Modificar</a>
                                         <a href="eliminarActivitat.php?id=<?= $activitat['id'] ?>" class="btn btn-danger">Eliminar</a>
+                                        <a href="afegirMaterial.php?id=<?= $activitat['id'] ?>" class="btn btn-primary">Material</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
