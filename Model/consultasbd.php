@@ -676,6 +676,18 @@ function modificarActivitat($activitat)
 
     $stmt->execute();
 }
+function modificarMaterial($activitat)
+{
+    $connexio = connexion();
+
+    $query = "UPDATE activitat SET descripcio_material = :descripcio_material, obtenir_material = :obtenir_material  WHERE id = :id";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':descripcio_material', $activitat['descripcio_material']);
+    $stmt->bindParam(':obtenir_material', $activitat['obtenir_material']);
+    $stmt->bindParam(':id', $activitat['id']);
+
+    $stmt->execute();
+}
 
 function buscarGrupId($mail)
 {
