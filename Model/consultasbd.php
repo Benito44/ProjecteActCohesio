@@ -37,6 +37,23 @@ function nombreDeGrups()
     return $result;
 }
 
+function dadesGrups()
+{
+    $connexio = connexion();
+
+    $query = "SELECT * FROM grup";
+    $stmt = $connexio->prepare($query);
+    $stmt->execute();
+
+    $grups = array();
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $grup = $row['id'];
+        $grups[] = $grup;
+    }
+
+    return $grups;
+}
+
 // Función para generar parejas aleatorias
 function generarParejas($grupos)
 {
@@ -301,6 +318,21 @@ function buscarGrup($grup)
     return $result['id'];
 }
 
+function buscarGrupId2($id)
+{
+
+    $connexio = connexion();
+
+    $query = "SELECT nom FROM grup WHERE id = :id";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result['nom'];
+}
+
 function buscarAlumnes($clase)
 {
     $connexio = connexion();
@@ -321,7 +353,8 @@ function buscarAlumnes($clase)
     return $alumnes;
 }
 
-function buscarAlumnes2($grup_id){
+function buscarAlumnes2($grup_id)
+{
     $connexio = connexion();
 
     $query = "SELECT id, nom, cognoms, email, grup_id, Clase FROM alumne WHERE grup_id = :grup_id";
@@ -498,7 +531,8 @@ function llegirConfig($config)
     return $result['value'];
 }
 
-function buscarConfig(){
+function buscarConfig()
+{
     $connexio = connexion();
 
     $query = "SELECT value FROM config WHERE option = 'Estat'";
@@ -508,7 +542,8 @@ function buscarConfig(){
     return $result["value"];
 }
 
-function dadesProfessors(){
+function dadesProfessors()
+{
     $connexio = connexion();
 
     $query = "SELECT * FROM professor";
@@ -520,7 +555,8 @@ function dadesProfessors(){
     return $professors;
 }
 
-function dadesProfessor($id){
+function dadesProfessor($id)
+{
     $connexio = connexion();
 
     $query = "SELECT * FROM professor WHERE id = :id";
@@ -533,7 +569,8 @@ function dadesProfessor($id){
     return $professor;
 }
 
-function dadesActivitats(){
+function dadesActivitats()
+{
     $connexio = connexion();
 
     $query = "SELECT * FROM activitat";
@@ -559,7 +596,50 @@ function dadesActivitat($id)
     return $activitat;
 }
 
-function afegirActivitat($activitat){
+function buscarProfesor($id)
+{
+    $connexio = connexion();
+
+    $query = "SELECT nom, cognoms FROM professor WHERE id = :id";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result['nom'] . " " . $result['cognoms'];
+}
+
+function buscarActivitat($group_id)
+{
+    $connexio = connexion();
+
+    $query = "SELECT activitat_id FROM enfrontament WHERE grup_id = :group_id";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':group_id', $group_id);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    return $result['activitat_id'];
+}
+
+function informacioActivitat($id)
+{
+    $connexio = connexion();
+
+    $query = "SELECT * FROM activitat WHERE id = :id";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result;
+}
+
+function afegirActivitat($activitat)
+{
     $connexio = connexion();
 
     // Modifica la consulta para insertar el punto en lugar de las coordenadas directamente
@@ -579,7 +659,8 @@ VALUES (:nom, :descripcio, :professor_puntuador, :professor_assistencia, :locali
     return $connexio->lastInsertId();
 }
 
-function modificarActivitat($activitat){
+function modificarActivitat($activitat)
+{
     $connexio = connexion();
 
     $query = "UPDATE activitat SET nom = :nom, descripcio = :descripcio, professor_puntuador = :professor_puntuador, professor_assistencia = :professor_assistencia, localitzacio = :localitzacio, latitud = :latitud, longitud = :longitud WHERE id = :id";
@@ -596,7 +677,8 @@ function modificarActivitat($activitat){
     $stmt->execute();
 }
 
-function buscarGrupId($mail){
+function buscarGrupId($mail)
+{
     $connexio = connexion();
 
     $query = "SELECT grup_id FROM alumne WHERE email = :mail";
@@ -608,11 +690,88 @@ function buscarGrupId($mail){
     return $result['grup_id'];
 }
 
-function eliminarActivitat($id){
+function eliminarActivitat($id)
+{
     $connexio = connexion();
 
     $query = "DELETE FROM activitat WHERE id = :id";
     $stmt = $connexio->prepare($query);
     $stmt->bindParam(':id', $id);
     $stmt->execute();
+}
+
+function inserirEnfrontament($grupId, $activitatId)
+{
+    $connexio = connexion();
+
+    $query = "INSERT INTO enfrontament (grup_id, activitat_id) VALUES (:grup_id, :activitat_id)";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':grup_id', $grupId);
+    $stmt->bindParam(':activitat_id', $activitatId);
+    $stmt->execute();
+}
+
+function dadesEnfrontaments()
+{
+    $connexio = connexion();
+
+    $query = "SELECT * FROM enfrontament";
+    $stmt = $connexio->prepare($query);
+    $stmt->execute();
+
+    $enfrontaments = array();
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $enfrontament = array(
+            'grup_id' => $row['grup_id'],
+            'activitat_id' => $row['activitat_id']
+        );
+        $enfrontaments[] = $enfrontament;
+    }
+
+    return $enfrontaments;
+}
+
+function actualitzarEnfrontament($grupId, $activitatId)
+{
+    $connexio = connexion();
+
+    $query = "UPDATE enfrontament SET activitat_id = :activitat_id WHERE grup_id = :grup_id";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':grup_id', $grupId);
+    $stmt->bindParam(':activitat_id', $activitatId);
+    $stmt->execute();
+}
+
+function puntuacioTotalGrup($grupId)
+{
+    $connexio = connexion();
+
+    $query = "SELECT SUM(puntuacio) AS total FROM grup_puntua_activitat WHERE grup_id = :grup_id";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':grup_id', $grupId);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result['total'];
+}
+
+function puntuacionsPerGrup()
+{
+    $connexio = connexion();
+
+    $query = "SELECT grup_id, SUM(puntuacio) AS total FROM grup_puntua_activitat GROUP BY grup_id ORDER BY total DESC";
+    $stmt = $connexio->prepare($query);
+    $stmt->execute();
+
+    $puntuacions = array();
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $puntuacio = array(
+            'grup' => buscarGrupId2($row['grup_id']),
+            'puntuacio' => $row['total']
+        );
+        $puntuacions[] = $puntuacio;
+    }
+
+    return $puntuacions;
 }

@@ -1160,11 +1160,11 @@ CREATE TABLE IF NOT EXISTS `professor` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `activitats_cohesio`.`enfrontament` (
   `grup_id` INT NOT NULL,
-  `primera_activitat` INT NOT NULL,
+  `activitat_id` INT NOT NULL,
   INDEX `FK_GRUP_ID_idx` (`grup_id` ASC),
-  INDEX `FK_PRIMERA_ACTIVITAT_ID_idx` (`primera_activitat` ASC),
+  INDEX `FK_ACTIVITAT_ID_idx` (`activitat_id` ASC),
   CONSTRAINT `FK_GRUP_ID` FOREIGN KEY (`grup_id`) REFERENCES `activitats_cohesio`.`grup` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `FK_PRIMERA_ACTIVITAT_ID` FOREIGN KEY (`primera_activitat`) REFERENCES `activitats_cohesio`.`activitat` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `FK_ACTIVITAT_ID` FOREIGN KEY (`activitat_id`) REFERENCES `activitats_cohesio`.`activitat` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE = InnoDB;
 --
 -- Volcado de datos para la tabla `professor`
@@ -1176,6 +1176,133 @@ VALUES (
     'Sbay Zekkari',
     1,
     'a.sbay@sapalomera.cat'
+  ),
+  (
+    1,
+    'Benito',
+    'Martinez',
+    1,
+    'b.martinez2@sapalomera.cat'
+  ),
+  (
+    2,
+    'Marc',
+    'Peral',
+    1,
+    'm.peral@sapalomera.cat'
+  );
+-- 
+-- Volcado de datos par ala tabla `activitat`
+--
+INSERT INTO `activitat` (
+    `id`,
+    `nom`,
+    `descripcio`,
+    `professor_puntuador`,
+    `professor_assistencia`,
+    `localitzacio`,
+    `latitud`,
+    `longitud`
+  )
+VALUES (
+    1,
+    "Ping Pong",
+    "Activitat de ping pong",
+    0,
+    1,
+    "Gimnàs",
+    41.3851,
+    2.1734
+  ),
+  (
+    2,
+    "Futbol",
+    "Activitat de futbol",
+    1,
+    0,
+    "Pati",
+    41.3851,
+    2.1734
+  ),
+  (
+    3,
+    "Bàsquet",
+    "Activitat de bàsquet",
+    2,
+    1,
+    "Pista exterior",
+    41.3851,
+    2.1734
+  ),
+  (
+    4,
+    "Voleibol",
+    "Activitat de voleibol",
+    0,
+    2,
+    "Pati",
+    41.3851,
+    2.1734
+  ),
+  (
+    5,
+    "Escacs",
+    "Activitat d\'escacs",
+    1,
+    0,
+    "Aula",
+    41.3851,
+    2.1734
+  ),
+  (
+    6,
+    "Dansa",
+    "Activitat de dansa",
+    2,
+    1,
+    "Saló d\'actes",
+    41.3851,
+    2.1734
+  ),
+  (
+    7,
+    "Teatre",
+    "Activitat de teatre",
+    0,
+    2,
+    "Saló d\'actes",
+    41.3851,
+    2.1734
+  ),
+  (
+    8,
+    "Arts marcials",
+    "Activitat d\'arts marcials",
+    1,
+    0,
+    "Gimnàs",
+    41.3851,
+    2.1734
+  ),
+  (
+    9,
+    "Ioga",
+    "Activitat d\'ioga",
+    2,
+    1,
+    "Aula",
+    41.3851,
+    2.1734
+  ),
+  (
+    10,
+    "Pintura",
+    "Activitat de pintura",
+    0,
+    2,
+    "Aula d\'art",
+    41.3851,
+    2.1734
   );
 --
 -- Restricciones para tablas volcadas
