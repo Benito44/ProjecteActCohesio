@@ -349,7 +349,6 @@ function buscarAlumnes($clase)
         );
         $alumnes[] = $alumne;
     }
-    echo json_encode(array('alumnes' => $alumnes));
     return $alumnes;
 }
 
