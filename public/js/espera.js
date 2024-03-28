@@ -1,6 +1,9 @@
 $(document).ready(function () {
 
+    
+    
     setInterval(function() {
+        
         $.ajax({
             url: 'http://localhost/ProjecteActCohesio/Controlador/definirEvent.php',
             method: 'GET',
@@ -8,7 +11,14 @@ $(document).ready(function () {
             success: function(response) {
                 if (response.config !== "Pausat") {
                     alert('El joc acaba de començar');
-                    window.location.href = '../Controlador/alumne.php';
+                    let role = $('input[name="role"]').val();
+
+                    if (role === "alumne") {
+                        window.location.href = '../Controlador/alumne.php';
+                    }
+                    else if (role === "profe") {
+                        window.location.href = '../Controlador/professor.php';
+                    }
                 }
             },
             error: function(error) {

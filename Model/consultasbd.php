@@ -786,3 +786,61 @@ function puntuacionsPerGrup()
 
     return $puntuacions;
 }
+
+
+function buscarProfessorId($email){
+    $connexio = connexion();
+
+    $query = "SELECT id FROM professor WHERE email = :email";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':email', $email);
+
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result['id'];
+}
+
+function activitatProfessor($professorId){
+    $connexio = connexion();
+
+    $query = "SELECT id FROM activitat WHERE professor_puntuador = :professorId OR professor_assistencia = :professorId";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':professorId', $professorId);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result;
+}
+
+function grupsEnfrontats($activitat){
+    $connexio = connexion();
+
+    $query = "SELECT grup_id FROM enfrontament WHERE activitat_id = :activitat";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':activitat', $activitat);
+    $stmt->execute();
+
+    $grups = array();
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $grup = $row['grup_id'];
+        $grups[] = $grup;
+    }
+
+    return $grups;
+}
+
+function nomGrup($groupId){
+    $connexio = connexion();
+
+    $query = "SELECT nom FROM grup WHERE id = :groupId";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':groupId', $groupId);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result['nom'];
+}

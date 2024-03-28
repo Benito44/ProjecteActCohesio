@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="es">
 
 <head>
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="../public/css/alumnes.css">
+    <script src="../public/js/redireccio.js"></script>
     <script src="../public/js/mapa.js"></script>
     <script defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCprdU5TR5GHDdY4EuOZb_dKHm2nXmX-EE&callback=crearMapa"></script>
@@ -15,6 +17,7 @@
 </head>
 
 <body>
+    
     <div class="custom-container container">
         <header>
             <nav class="navbar navbar-expand-lg navbar-light">

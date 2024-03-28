@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ca">
 
@@ -32,9 +33,9 @@
 </head>
 
 <body>
-
+  <input type="hidden" name="role" value="<?php echo $role; ?>">
   <div class="missatge">
-    Espera a que l'administrador inici el joc...
+    Espera a que l'administrador et doni accés
   </div>
 
 </body>

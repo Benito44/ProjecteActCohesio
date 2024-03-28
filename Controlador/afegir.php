@@ -32,7 +32,7 @@ if ($_SESSION['rol'] == "admin") {
 
 } else {
     echo "<script>alert('No pots accedir a aquesta pàgina si no ets administrador, espera a que l'administrador inicii el joc.')</script>";
-    header('refresh:0.01;url=../Vista/espera.php');
+    header('refresh:0.01;url=../Controlador/respera.php');
 
 }
 

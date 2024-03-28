@@ -6,7 +6,7 @@ if (!isset($_SESSION)) {
 
 if ($_SESSION['rol'] != "admin") {
     echo "<script type='text/javascript'>alert('No pots accedir a aquesta pàgina si no ets administrador.');</script>";
-    header('refresh:0.01;url=../Vista/espera.php');
+    header('refresh:0.01;url=../Vista/Controlador/respera.php');
     
 } else {
 
