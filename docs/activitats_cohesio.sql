@@ -1308,8 +1308,8 @@ CREATE TABLE IF NOT EXISTS `activitats_cohesio`.`enfrontament` (
   `activitat_id` INT NOT NULL,
   INDEX `FK_GRUP_ID_idx` (`grup_id` ASC),
   INDEX `FK_ACTIVITAT_ID_idx` (`activitat_id` ASC),
-  CONSTRAINT `FK_GRUP_ID` FOREIGN KEY (`grup_id`) REFERENCES `activitats_cohesio`.`grup` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `FK_ACTIVITAT_ID` FOREIGN KEY (`activitat_id`) REFERENCES `activitats_cohesio`.`activitat` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `FK_GRUP_ID` FOREIGN KEY (`grup_id`) REFERENCES `activitats_cohesio`.`grup` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_ACTIVITAT_ID` FOREIGN KEY (`activitat_id`) REFERENCES `activitats_cohesio`.`activitat` (`id`) ON DELETE CASCADE
 ) ENGINE = InnoDB;
 --
 -- Volcado de datos para la tabla `professor`
@@ -1366,26 +1366,26 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
 -- Filtros para la tabla `activitat`
 --
 ALTER TABLE `activitat`
-ADD CONSTRAINT `fk_activitat_professor1` FOREIGN KEY (`professor_puntuador`) REFERENCES `professor` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_activitat_professor2` FOREIGN KEY (`professor_assistencia`) REFERENCES `professor` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ADD CONSTRAINT `fk_activitat_professor1` FOREIGN KEY (`professor_puntuador`) REFERENCES `professor` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_activitat_professor2` FOREIGN KEY (`professor_assistencia`) REFERENCES `professor` (`id`) ON DELETE CASCADE;
 --
 -- Filtros para la tabla `alumne_assisteix_activitat`
 --
 ALTER TABLE `alumne_assisteix_activitat`
-ADD CONSTRAINT `fk_alumne_has_activitat_activitat1` FOREIGN KEY (`activitat_id`) REFERENCES `activitat` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_alumne_has_activitat_alumne1` FOREIGN KEY (`alumne_id`) REFERENCES `alumne` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ADD CONSTRAINT `fk_alumne_has_activitat_activitat1` FOREIGN KEY (`activitat_id`) REFERENCES `activitat` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_alumne_has_activitat_alumne1` FOREIGN KEY (`alumne_id`) REFERENCES `alumne` (`id`) ON DELETE CASCADE;
 --
 -- Filtros para la tabla `enfrontament`
 --
 ALTER TABLE `enfrontament`
-ADD CONSTRAINT `FK_ACTIVITAT_ID` FOREIGN KEY (`activitat_id`) REFERENCES `activitat` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `FK_GRUP_ID` FOREIGN KEY (`grup_id`) REFERENCES `grup` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ADD CONSTRAINT `FK_ACTIVITAT_ID` FOREIGN KEY (`activitat_id`) REFERENCES `activitat` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_GRUP_ID` FOREIGN KEY (`grup_id`) REFERENCES `grup` (`id`) ON DELETE CASCADE;
 --
 -- Filtros para la tabla `grup_puntua_activitat`
 --
 ALTER TABLE `grup_puntua_activitat`
-ADD CONSTRAINT `fk_grup_has_activitat_activitat1` FOREIGN KEY (`activitat_id`) REFERENCES `activitat` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_grup_has_activitat_grup1` FOREIGN KEY (`grup_id`) REFERENCES `grup` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ADD CONSTRAINT `fk_grup_has_activitat_activitat1` FOREIGN KEY (`activitat_id`) REFERENCES `activitat` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_grup_has_activitat_grup1` FOREIGN KEY (`grup_id`) REFERENCES `grup` (`id`) ON DELETE CASCADE;
 COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */
 ;

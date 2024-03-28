@@ -1,6 +1,8 @@
 <?php 
 
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 if ($_SESSION['rol'] != "admin") {
     echo "<script type='text/javascript'>alert('No pots accedir a aquesta pàgina si no ets administrador.');</script>";
