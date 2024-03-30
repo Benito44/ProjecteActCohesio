@@ -19,8 +19,7 @@
         <header>
             <nav class="navbar navbar-expand-lg navbar-light">
                 <a class="navbar-brand" href="../Controlador/professor.php">
-                    <img src="../public/img/logo-institut-sapalomera.png" width="140" height="80"
-                        class="d-inline-block align-top" alt="">
+                    <img src="../public/img/logo-institut-sapalomera.png" width="140" height="80" class="d-inline-block align-top" alt="">
                 </a>
             </nav>
 
@@ -42,7 +41,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($alumnesPrimerGrup as $componente): ?>
+                            <?php foreach ($alumnesPrimerGrup as $componente) : ?>
                                 <tr>
                                     <td>
                                         <?php echo $componente['nom']; ?>
@@ -52,11 +51,9 @@
                                     </td>
                                     <td>
                                         <input type="hidden" name="alumno_id[]" value="<?php echo $componente['id']; ?>">
-                                        <input type="checkbox" name="asistencia[<?php echo $componente['id']; ?>]"
-                                            value="Si">
+                                        <input type="checkbox" name="asistencia[<?php echo $componente['id']; ?>]" value="Si">
                                         <label for="asistencia">Si</label>
-                                        <input class="ml-4" type="checkbox" name="asistencia[<?php echo $componente['id']; ?>]"
-                                            value="No">
+                                        <input class="ml-4" type="checkbox" name="asistencia[<?php echo $componente['id']; ?>]" value="No">
                                         <label for="asistencia_no">No</label>
                                     </td>
                                 </tr>
@@ -80,7 +77,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($alumnesSegonGrup as $componente): ?>
+                            <?php foreach ($alumnesSegonGrup as $componente) : ?>
                                 <tr>
                                     <td>
                                         <?php echo $componente['nom']; ?>
@@ -90,11 +87,9 @@
                                     </td>
                                     <td>
                                         <input type="hidden" name="alumno_id[]" value="<?php echo $componente['id']; ?>">
-                                        <input type="checkbox" name="asistencia[<?php echo $componente['id']; ?>]"
-                                            value="Si">
+                                        <input type="checkbox" name="asistencia[<?php echo $componente['id']; ?>]" value="Si">
                                         <label for="asistencia">Si</label>
-                                        <input class="ml-4" type="checkbox" name="asistencia[<?php echo $componente['id']; ?>]"
-                                            value="No">
+                                        <input class="ml-4" type="checkbox" name="asistencia[<?php echo $componente['id']; ?>]" value="No">
                                         <label for="asistencia_no">No</label>
                                     </td>
                                 </tr>
@@ -107,7 +102,30 @@
         </div>
         <div class="container">
             <h1 class="mt-5">Puntuacions</h1>
-            
+        </div>
+        <div class="<?= (isset($rondaFinal) && $rondaFinal) ? "" : "d-none"; ?>">
+            <h1>Foto grupal</h1>
+            <?php if (isset($_SESSION["fotoGrupalError"])) { ?>
+                <div class="alert alert-danger " role="alert">
+                    <?= $_SESSION["fotoGrupalError"] ?>
+                </div>
+            <?php
+            };
+            unset($_SESSION["fotoGrupalError"]);
+            ?>
+            <form method="POST" action="emmagatzemament-foto-grupal.php" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Foto del grup <?= $primerGrup ?></label>
+                    <input class="form-control" type="file" id="formFile" name="primerGrupFoto">
+                    <input type="hidden" name="primerGrup" value="<?= $primerGrup ?>">
+                </div>
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Foto del grup <?= $segonGrup ?></label>
+                    <input class="form-control" type="file" id="formFile" name="segonGrupFoto">
+                    <input type="hidden" name="segonGrup" value="<?= $segonGrup ?>">
+                </div>
+                <button type="submit" name="submit" class="btn btn-primary">Enviar</button>
+            </form>
         </div>
     </div>
 </body>

@@ -2,7 +2,7 @@
 
 session_start();
 
-if (isset ($_SESSION['email'])) {
+if (isset($_SESSION['email'])) {
     $mail = $_SESSION['email'];
 
     require_once '../Model/consultasbd.php';
@@ -28,12 +28,12 @@ if (isset ($_SESSION['email'])) {
     $alumnesPrimerGrup = buscarAlumnes2($grups[0]);
     $alumnesSegonGrup = buscarAlumnes2($grups[1]);
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset ($_POST['submit'])) {
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
         $connexio = connexion();
 
         foreach ($_POST['asistencia'] as $alumno_id => $asistencia) {
 
-            if (isset ($_POST['asistencia'][$alumno_id]) && $_POST['asistencia'][$alumno_id] == 'Si') {
+            if (isset($_POST['asistencia'][$alumno_id]) && $_POST['asistencia'][$alumno_id] == 'Si') {
                 $asistencia = 'Si';
             } else {
                 $asistencia = 'No';
@@ -60,16 +60,15 @@ if (isset ($_SESSION['email'])) {
                     $stmt_update->bindParam(':asistio', $asistencia);
                     $stmt_update->execute();
                 }
-
-                
             } catch (PDOException $e) {
                 echo "Error: " . $e->getMessage();
             }
         }
         echo "<script>alert('Assistència actualitzada')</script>";
     }
-
-
 }
+
+// Definir aquesta variable en la ronda final per mostrar el formulari de pujada de fotos grupals.
+$rondaFinal = True;
 
 include '../Vista/profe.vista.php';
