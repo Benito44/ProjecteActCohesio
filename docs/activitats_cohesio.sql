@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-03-2024 a las 18:45:29
+-- Tiempo de generación: 01-04-2024 a las 17:21:43
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -39,26 +39,27 @@ CREATE TABLE IF NOT EXISTS `activitat` (
   `localitzacio` varchar(45) DEFAULT NULL,
   `latitud` double DEFAULT NULL,
   `longitud` double DEFAULT NULL,
-  `descripcio_material` text NOT NULL,
-  `obtenir_material` enum('Professorat','Comprar') NOT NULL,
+  `descripcio_material` text NOT NULL DEFAULT '',
+  `obtenir_material` enum('Professorat','Comprar') NOT NULL DEFAULT 'Professorat',
   PRIMARY KEY (`id`),
   KEY `fk_activitat_professor1_idx` (`professor_puntuador`),
   KEY `fk_activitat_professor2_idx` (`professor_assistencia`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `activitat`
 --
 
 INSERT INTO `activitat` (`id`, `nom`, `descripcio`, `professor_puntuador`, `professor_assistencia`, `localitzacio`, `latitud`, `longitud`, `descripcio_material`, `obtenir_material`) VALUES
-(1, 'Ping Pong', 'Activitat de ping pong', 0, 1, 'Gimnàs', 42.3851, 2.1734, '', 'Professorat'),
-(2, 'Futbol', 'Activitat de futbol', 1, 0, 'Pati', 41.3851, 2.1734, '', 'Professorat'),
-(3, 'Bàsquet', 'Activitat de bàsquet', 2, 1, 'Pista exterior', 41.3851, 2.1734, '', 'Professorat'),
-(6, 'Dansa', 'Activitat de dansa', 2, 1, 'Saló d\'actes', 41.3851, 2.1734, '', 'Professorat'),
-(7, 'Teatre', 'Activitat de teatre', 0, 2, 'Saló d\'actes', 41.3851, 2.1734, '', 'Professorat'),
-(8, 'Arts marcials', 'Activitat d\'arts marcials', 1, 0, 'Gimnàs', 41.3851, 2.1734, '', 'Professorat'),
-(9, 'Ioga', 'Activitat d\'ioga', 2, 1, 'Aula', 41.3851, 2.1734, '', 'Professorat'),
-(10, 'Pintura', 'Activitat de pintura', 2, 2, 'Aula d\'art', 41.3851, 2.1734, '', 'Professorat');
+(1, 'Ping Pong', 'Activitat de ping pong', 0, 0, 'Gimnàs', 41.678449, 2.780201, '', 'Professorat'),
+(2, 'Futbol', 'Activitat de futbol', 1, 1, 'Pati', 41.678449, 2.780201, '', 'Professorat'),
+(3, 'Bàsquet', 'Activitat de bàsquet', 2, 2, 'Pista exterior', 41.678449, 2.780201, '', 'Professorat'),
+(6, 'Dansa', 'Activitat de dansa', 22, 22, 'Saló d\'actes', 41.678449, 2.780201, '', 'Professorat'),
+(7, 'Teatre', 'Activitat de teatre', 23, 23, 'Saló d\'actes', 41.678449, 2.780201, '', 'Professorat'),
+(8, 'Arts marcials', 'Activitat d\'arts marcials', 26, 26, 'Gimnàs', 41.678449, 2.780201, '', 'Professorat'),
+(9, 'Ioga', 'Activitat d\'ioga', 27, 27, 'Aula', 41.678449, 2.780201, '', 'Professorat'),
+(10, 'Pintura', 'Activitat de pintura', 32, 32, 'Aula d\'art', 41.678449, 2.780201, '', 'Professorat'),
+(11, 'Voleibol', 'Act Voleibol', 35, 35, 'Pavelló', 41.678449, 2.780201, '', 'Professorat');
 
 -- --------------------------------------------------------
 
@@ -268,20 +269,20 @@ CREATE TABLE IF NOT EXISTS `enfrontament` (
 --
 
 INSERT INTO `enfrontament` (`grup_id`, `activitat_id`) VALUES
-(924, 9),
+(924, 11),
 (925, 1),
 (926, 2),
 (927, 3),
-(930, 6),
-(931, 7),
-(932, 8),
-(933, 8),
-(934, 9),
+(930, 8),
+(931, 9),
+(932, 10),
+(933, 10),
+(934, 11),
 (935, 1),
 (936, 2),
 (937, 3),
-(940, 6),
-(941, 7);
+(940, 8),
+(941, 9);
 
 -- --------------------------------------------------------
 
@@ -350,7 +351,7 @@ CREATE TABLE IF NOT EXISTS `professor` (
   `administrador` tinyint(4) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `professor`
@@ -359,7 +360,25 @@ CREATE TABLE IF NOT EXISTS `professor` (
 INSERT INTO `professor` (`id`, `nom`, `cognoms`, `administrador`, `email`) VALUES
 (0, 'Ayman', 'Sbay Zekkari', 1, 'a.sbay@sapalomera.cat'),
 (1, 'Benito', 'Martinez', 1, 'b.martinez2@sapalomera.cat'),
-(2, 'Marc', 'Peral', 1, 'm.peral@sapalomera.cat');
+(2, 'Marc', 'Peral', 1, 'm.peral@sapalomera.cat'),
+(22, 'Laura', 'Rodriguez', 0, 'l.rodriguez@sapalomera.cat'),
+(23, 'Pedro', 'Fernandez', 0, 'p.fernandez@sapalomera.cat'),
+(24, 'Ana', 'Martinez', 0, 'a.martinez@sapalomera.cat'),
+(25, 'Elena', 'Sanchez', 0, 'e.sanchez@sapalomera.cat'),
+(26, 'Carlos', 'Garcia', 1, 'c.garcia@sapalomera.cat'),
+(27, 'Emily', 'Williams', 1, 'e.williams@example.com'),
+(28, 'Isabel', 'Torres', 1, 'i.torres@sapalomera.cat'),
+(29, 'Michael', 'Johnson', 1, 'm.johnson@example.com'),
+(30, 'Emma', 'Anderson', 1, 'e.anderson@example.com'),
+(31, 'Javier', 'Ramos', 0, 'j.ramos@sapalomera.cat'),
+(32, 'Oliver', 'Miller', 0, 'o.miller@example.com'),
+(33, 'Pablo', 'Gomez', 0, 'p.gomez@sapalomera.cat'),
+(34, 'Sara', 'Lopez', 0, 's.lopez@sapalomera.cat'),
+(35, 'Daniel', 'Brown', 0, 'd.brown@example.com'),
+(36, 'David', 'Ruiz', 1, 'd.ruiz@sapalomera.cat'),
+(37, 'Jane', 'Smith', 1, 'j.smith@example.com'),
+(38, 'Sophia', 'Lee', 0, 's.lee@example.com'),
+(39, 'John', 'Doe', 1, 'j.doe@example.com');
 
 --
 -- Restricciones para tablas volcadas
