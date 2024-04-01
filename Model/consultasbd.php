@@ -619,7 +619,7 @@ function buscarActivitat($group_id)
     $stmt->execute();
 
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    
+
     return $result['activitat_id'];
 }
 
@@ -652,6 +652,7 @@ VALUES (:nom, :descripcio, :professor_puntuador, :professor_assistencia, :locali
     $stmt->bindParam(':localitzacio', $activitat['localitzacio']);
     $stmt->bindParam(':latitud', $activitat['latitud']);
     $stmt->bindParam(':longitud', $activitat['longitud']);
+
 
     $stmt->execute();
 
@@ -804,7 +805,8 @@ function puntuacioGrup($grupId)
     return $result['total'];
 }
 
-function buscarProfessorId($email){
+function buscarProfessorId($email)
+{
     $connexio = connexion();
 
     $query = "SELECT id FROM professor WHERE email = :email";
@@ -818,7 +820,8 @@ function buscarProfessorId($email){
     return $result['id'];
 }
 
-function activitatProfessor($professorId){
+function activitatProfessor($professorId)
+{
     $connexio = connexion();
 
     $query = "SELECT id FROM activitat WHERE professor_puntuador = :professorId OR professor_assistencia = :professorId";
@@ -831,7 +834,8 @@ function activitatProfessor($professorId){
     return $result;
 }
 
-function grupsEnfrontats($activitat){
+function grupsEnfrontats($activitat)
+{
     $connexio = connexion();
 
     $query = "SELECT grup_id FROM enfrontament WHERE activitat_id = :activitat";
@@ -848,7 +852,8 @@ function grupsEnfrontats($activitat){
     return $grups;
 }
 
-function nomGrup($groupId){
+function nomGrup($groupId)
+{
     $connexio = connexion();
 
     $query = "SELECT nom FROM grup WHERE id = :groupId";
@@ -861,7 +866,8 @@ function nomGrup($groupId){
     return $result['nom'];
 }
 
-function puntsGrupActivitat($grup, $activitat){
+function puntsGrupActivitat($grup, $activitat)
+{
     $connexio = connexion();
 
     $query = "SELECT puntuacio FROM grup_puntua_activitat WHERE grup_id = :grup AND activitat_id = :activitat";
@@ -875,7 +881,8 @@ function puntsGrupActivitat($grup, $activitat){
     return $result['puntuacio'];
 }
 
-function insertarPuntsGrup($grup, $activitat, $punts){
+function insertarPuntsGrup($grup, $activitat, $punts)
+{
     $connexio = connexion();
 
     $query = "INSERT INTO grup_puntua_activitat (grup_id, activitat_id, puntuacio) VALUES (:grup, :activitat, :punts)";
@@ -886,7 +893,8 @@ function insertarPuntsGrup($grup, $activitat, $punts){
     $stmt->execute();
 }
 
-function actualitzarPuntsGrup($grup, $activitat, $punts){
+function actualitzarPuntsGrup($grup, $activitat, $punts)
+{
     $connexio = connexion();
 
     $query = "UPDATE grup_puntua_activitat SET puntuacio = :punts WHERE grup_id = :grup AND activitat_id = :activitat";
@@ -924,4 +932,3 @@ function getRondaActual()
 
     return $result['value'];
 }
-
