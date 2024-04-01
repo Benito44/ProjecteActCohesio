@@ -344,7 +344,7 @@ CREATE TABLE IF NOT EXISTS `grup_puntua_activitat` (
 
 DROP TABLE IF EXISTS `professor`;
 CREATE TABLE IF NOT EXISTS `professor` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(45) DEFAULT NULL,
   `cognoms` varchar(45) DEFAULT NULL,
   `administrador` tinyint(4) DEFAULT NULL,

@@ -14,7 +14,7 @@
                               <a class="nav-link" href="../Controlador/llistaAlumn.php">Llista d'alumness</a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link" href="../Controlador/afegir.php">Afegir alumnes</a>
+                              <a class="nav-link" href="../Controlador/afegir.php">Afegir persones</a>
                           </li>
                           <li class="nav-item">
                               <a class="nav-link" href="../Controlador/modificarGrupAlumne.php">Modificar grups</a>

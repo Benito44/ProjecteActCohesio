@@ -36,7 +36,7 @@ $(document).ready(function () {
 
   $("#inicii").click(function () {
 
-    interval = setInterval(actualitzarCronometre, 1000);
+    interval = setInterval(actualitzarCronometre, 10);
     $("#pausa").prop("disabled", false);
     $("#inicii").prop("disabled", true);
     let rol = "<?php echo $_SESSION['rol']; ?>";
@@ -56,7 +56,7 @@ $(document).ready(function () {
 
   $('#inici').click(function () {
     //reanudar el cronometro no desde el principio.. sino desde donde se quedo
-    interval = setInterval(actualitzarCronometre, 1000);
+    interval = setInterval(actualitzarCronometre, 10);
     $("#pausa").prop("disabled", false);
     $("#inici").prop("disabled", true);
 
@@ -74,7 +74,7 @@ $(document).ready(function () {
     let minutsStr = minuts < 10 ? "0" + minuts : minuts;
     let segonsStr = segons < 10 ? "0" + segons : segons;
     $("#cronometre").text("Temps restant: " + minutsStr + ":" + segonsStr);
-    interval = setInterval(actualitzarCronometre, 1000);
+    interval = setInterval(actualitzarCronometre, 10);
     $.ajax({
       type: "POST",
       url: "http://localhost/ProjecteActCohesio/Controlador/definirEvent.php",

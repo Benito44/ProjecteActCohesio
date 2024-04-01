@@ -893,3 +893,18 @@ function actualitzarPuntsGrup($grup, $activitat, $punts){
     $stmt->bindParam(':punts', $punts);
     $stmt->execute();
 }
+
+function afegirProfessor($nom, $cognoms, $email, $administrador)
+{
+    $connexio = connexion();
+
+    if (!profeExists($email)) {
+        $query = "INSERT INTO professor (nom, cognoms, email, administrador) VALUES (:nom, :cognoms, :email, :administrador)";
+        $stmt = $connexio->prepare($query);
+        $stmt->bindParam(':nom', $nom);
+        $stmt->bindParam(':cognoms', $cognoms);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':administrador', $administrador);
+        $stmt->execute();
+    }
+}
