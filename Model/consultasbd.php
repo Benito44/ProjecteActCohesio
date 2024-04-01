@@ -934,7 +934,8 @@ function getRondaActual()
 }
 
 
-function clearAlumnesAssisteixActivitat(){
+function clearAlumnesAssisteixActivitat()
+{
     $connexio = connexion();
 
     $query = "DELETE FROM alumne_assisteix_activitat";
@@ -942,7 +943,8 @@ function clearAlumnesAssisteixActivitat(){
     $stmt->execute();
 }
 
-function clearGrupPuntuacio(){
+function clearGrupPuntuacio()
+{
     $connexio = connexion();
 
     $query = "DELETE FROM grup_puntua_activitat";
@@ -950,7 +952,8 @@ function clearGrupPuntuacio(){
     $stmt->execute();
 }
 
-function clearEnfrotaments(){
+function clearEnfrotaments()
+{
     $connexio = connexion();
 
     $query = "DELETE FROM enfrontament";
@@ -958,3 +961,15 @@ function clearEnfrotaments(){
     $stmt->execute();
 }
 
+function llegirPuntuacio()
+{
+    $connexio = connexion();
+
+    $query = "SELECT * FROM grup_puntua_activitat";
+    $stmt = $connexio->prepare($query);
+    $stmt->execute();
+
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    return $result;
+}

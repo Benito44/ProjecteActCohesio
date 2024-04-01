@@ -18,9 +18,26 @@ if (count($nomFitxers) > 0) {
     $error = "No s'ha trobat cap imatge per al teu grup. Torna-ho a intentar més tard.";
 }
 
-// AQUESTA POSICIO ES LA QUE HAURIA DE VENIR DE LA BASE DE DADES
-// PEL MOMENT ESTA HARDCODEJADA
-$posicio = 1;   // <-------------------
+// Llegim les puntuacions de la base de dades
+$puntuacions = llegirPuntuacio();
+$ranking = [];
+// Sumem les puntuacions dels grups
+for ($i = 0; $i < count($puntuacions); $i++) {
+    $grup = $puntuacions[$i]['grup_id'];
+    $puntuacioActual = $puntuacions[$i]['puntuacio'];
+    if (!isset($ranking[$grup])) {
+        $ranking[$grup] = $puntuacioActual;
+    } else {
+        $ranking[$grup] += $puntuacioActual;
+    }
+}
+arsort($ranking);
+$posicio = array_search($alumneGrupId, array_keys($ranking)) + 1;
+// asignem la posicio al grup en base a la seva puntuacio
+// $posicio = 1;
+// // AQUESTA POSICIO ES LA QUE HAURIA DE VENIR DE LA BASE DE DADES
+// // PEL MOMENT ESTA HARDCODEJADA
+// $posicio = 1;   // <-------------------
 
 switch ($posicio) {
     case 1:
