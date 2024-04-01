@@ -4,6 +4,24 @@ $(document).ready(function () {
     $('#taula1').hide();
     $('#taula2').hide();
 
+    $.ajax({
+        type: "GET",
+        url: "http://localhost/ProjecteActCohesio/Controlador/obtenirInfo.php",
+        success: function (response) {
+          try {
+            estatRonda = JSON.parse(response).ultimaRonda;
+            if (estatRonda == true) {
+                alert("S'ha detectat que aquesta es l'última ronda. Has de premre Una foto dels dos grups i enviar-la.");
+                $('#fotografia').show();
+            }
+          } catch (error) {
+            console.error("Error parsing JSON:", error);
+          }
+        },
+        error: function (xhr, status, error) {
+          console.error("AJAX request failed:", error);
+        }
+      });
 
     $('#toggleAlumnosBtn1').click(function () {
         $('#toggleAlumnosBtn1').hide();
@@ -107,5 +125,5 @@ $(document).ready(function () {
                 }
             }
         });
-    }, 10000);
+    }, 1000);
 });
