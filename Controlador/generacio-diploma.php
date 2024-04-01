@@ -3,7 +3,7 @@ require_once "../Middleware/LoggedIn.php";
 require_once "../Model/consultasbd.php";
 
 if ($_SESSION['rol'] != 'alumne') {
-    header('Location: /');
+    header('Location: ../index.php');
 }
 
 $alumneGrupId = buscarGrupId($_SESSION['email']);

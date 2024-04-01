@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: ./professor.php");
         die();
     }
-    if (!isset($_POST["primerGrupFoto"]) || !isset($_POST["segonGrupFoto"])) {
+    if (!isset($_FILES["primerGrupFoto"]) || !isset($_FILES["segonGrupFoto"])) {
         $_SESSION["fotoGrupalError"] = "Falten fotos. Torna a intentar-ho.";
         header("Location: ./professor.php");
         die();
@@ -23,8 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $segonGrupFotoNom = "../public/temp/" . $segonGrup . "." . pathinfo($segonGrupFoto["name"], PATHINFO_EXTENSION);
 
     if (
-        move_uploaded_file($primerGrupFoto["tmp_name"], $primerGrupFotoNom) &&
-        move_uploaded_file($segonGrupFoto["tmp_name"], $segonGrupFotoNom)
+        !move_uploaded_file($primerGrupFoto["tmp_name"], $primerGrupFotoNom) ||
+        !move_uploaded_file($segonGrupFoto["tmp_name"], $segonGrupFotoNom)
     ) {
         $_SESSION["fotoGrupalError"] = "S'ha produït un error al pujar la foto. Torna a intentar-ho.";
         header("Location: ./professor.php");
