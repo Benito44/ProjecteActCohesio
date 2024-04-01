@@ -9,24 +9,7 @@ $(document).ready(function () {
     data: { estat: "Pausat" }
   });
 
-  $.ajax({
-    type: "GET",
-    url: "http://localhost/ProjecteActCohesio/Controlador/obtenirInfo.php",
-    success: function (response) {
-      try {
-        let parsed = JSON.parse(response);
-        $("#rondasTotals").text(parsed.rondasTotals);
-        $("#rondasRestants").text(parsed.rondasRestants);
-        $("#rondaActual").text(parsed.rondaActual);
-        $("#grupsTotals").text(parsed.grupsTotals);
-      } catch (error) {
-        console.error("Error parsing JSON:", error);
-      }
-    },
-    error: function (xhr, status, error) {
-      console.error("AJAX request failed:", error);
-    }
-  });
+  obtenitInformacio();
 
   function actualitzarCronometre() {
     let minuts = Math.floor(tempsRestant / 60);
@@ -40,7 +23,15 @@ $(document).ready(function () {
     // Decrementar el tiempo restante en 1 segundo
     tempsRestant--;
     if (tempsRestant == 0) {
+      let rondasRestants = parseInt($("#rondasRestants").text());
+      if (rondasRestants == 0) {
+        $("#next").prop("disabled", true);
+        $("#inicii").prop("disabled", true);
+        $("#pausa").prop("disabled", true);
+        $("#end").prop("disabled", false);
+      } else {
       $("#next").prop("disabled", false);
+      }
     }
 
     // Si el tiempo restante llega a cero, detener el intervalo y mostrar una alerta
@@ -68,17 +59,16 @@ $(document).ready(function () {
           interval = setInterval(actualitzarCronometre, 1);
           $("#pausa").prop("disabled", false);
           $("#inicii").prop("disabled", true);
+          obtenitInformacio();
         }
       },
       error: function (error) {
         console.error('Error en la petición AJAX:', error);
       }
     });
-
   });
 
   $('#inici').click(function () {
-    //reanudar el cronometro no desde el principio.. sino desde donde se quedo
     interval = setInterval(actualitzarCronometre, 1);
     $("#pausa").prop("disabled", false);
     $("#inici").prop("disabled", true);
@@ -91,7 +81,7 @@ $(document).ready(function () {
     $("#inicii").prop("disabled", true);
     $("#pausa").prop("disabled", false);
     clearInterval(interval);
-    tempsRestant = 600; // Reiniciar el temporizador a 600 segundos
+    tempsRestant = 600;
     let minuts = Math.floor(tempsRestant / 60);
     let segons = tempsRestant % 60;
     let minutsStr = minuts < 10 ? "0" + minuts : minuts;
@@ -101,8 +91,19 @@ $(document).ready(function () {
     $.ajax({
       type: "POST",
       url: "http://localhost/ProjecteActCohesio/Controlador/definirEvent.php",
-      data: { estat: "Seguent" }
+      data: { estat: "Seguent" },
+      success: function (response) {
+        let parsed = JSON.parse(response);
+        if (parsed.error) {
+          alert("S'ha produit un error a l'hora de passar a la següent ronda:\n" + parsed.error);
+        } else {
+          obtenitInformacio();
+        }
+      }
     });
+
+    
+
   });
   $("#end").click(function () {
     $("#pausa").prop("disabled", true);
@@ -146,34 +147,6 @@ $(document).ready(function () {
 
   }, 5000);
 
-  //en un intervalo de 5 segundos se actualiza la info de la tabla
-
-  setInterval(function () {
-    $.ajax({
-      type: "GET",
-      url: "http://localhost/ProjecteActCohesio/Controlador/obtenirInfo.php",
-      success: function (response) {
-        try {
-          let parsed = JSON.parse(response);
-          $("#rondasTotals").text(parsed.rondasTotals);
-          $("#rondasRestants").text(parsed.rondasRestants);
-          $("#rondaActual").text(parsed.rondaActual);
-          $("#grupsTotals").text(parsed.grupsTotals);
-          if (parsed.rondaActual == parsed.rondasTotals) {
-            $("#next").prop("disabled", true);
-            $("#inicii").prop("disabled", true);
-            $("#pausa").prop("disabled", true);
-            $("#end").prop("disabled", false);
-          }
-        } catch (error) {
-          console.error("Error parsing JSON:", error);
-        }
-      },
-      error: function (xhr, status, error) {
-        console.error("AJAX request failed:", error);
-      }
-    });
-  }, 5000);
 
 });
 
@@ -184,3 +157,30 @@ $(window).on("beforeunload", function () {
   });
   return null;
 });
+
+function obtenitInformacio(){
+  $.ajax({
+    type: "GET",
+    url: "http://localhost/ProjecteActCohesio/Controlador/obtenirInfo.php",
+    success: function (response) {
+      try {
+        let parsed = JSON.parse(response);
+        $("#rondasTotals").text(parsed.rondasTotals);
+        $("#rondasRestants").text(parsed.rondasRestants);
+        $("#rondaActual").text(parsed.rondaActual);
+        $("#grupsTotals").text(parsed.grupsTotals);
+        if (parsed.rondaActual == parsed.rondasTotals) {
+          $("#next").prop("disabled", true);
+          $("#inicii").prop("disabled", true);
+          $("#pausa").prop("disabled", true);
+          $("#end").prop("disabled", false);
+        }
+      } catch (error) {
+        console.error("Error parsing JSON:", error);
+      }
+    },
+    error: function (xhr, status, error) {
+      console.error("AJAX request failed:", error);
+    }
+  });
+}
