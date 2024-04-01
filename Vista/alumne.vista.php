@@ -10,20 +10,18 @@
     <link rel="stylesheet" href="../public/css/alumnes.css">
     <script src="../public/js/redireccio.js"></script>
     <script src="../public/js/mapa.js"></script>
-    <script defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCprdU5TR5GHDdY4EuOZb_dKHm2nXmX-EE&callback=crearMapa"></script>
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCprdU5TR5GHDdY4EuOZb_dKHm2nXmX-EE&callback=crearMapa"></script>
 
     <title>Alumnes</title>
 </head>
 
 <body>
-    
+
     <div class="custom-container container">
         <header>
             <nav class="navbar navbar-expand-lg navbar-light">
                 <a class="navbar-brand" href="../Controlador/alumne.php">
-                    <img src="../public/img/logo-institut-sapalomera.png" width="140" height="80"
-                        class="d-inline-block align-top" alt="">
+                    <img src="../public/img/logo-institut-sapalomera.png" width="140" height="80" class="d-inline-block align-top" alt="">
                 </a>
             </nav>
 
@@ -41,7 +39,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($alumnes as $alumne): ?>
+                <?php foreach ($alumnes as $alumne) : ?>
                     <tr>
                         <td>
                             <?php echo $alumne['nom']; ?>
@@ -98,7 +96,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($puntuacions as $puntuacio): ?>
+                        <?php foreach ($puntuacions as $puntuacio) : ?>
                             <tr>
                                 <td>
                                     <?php echo $puntuacio['grup']; ?>
@@ -112,7 +110,25 @@
                 </table>
 
             </div>
+            <div class="col-lg-12 d-flex justify-content-center my-5" id=" contenidorGenerarDiploma" style="display: none;">
+                <a href="../Controlador/generacio-diploma.php" class="btn btn-primary w-50 py-2">Generar diploma</a>
+            </div>
         </div>
+
+        <script>
+            $(document).ready(function() {
+                $.ajax({
+                    url: 'obtenirInfo.php',
+                    type: 'GET',
+                    success: function(response) {
+                        let parsed = JSON.parse(response);
+                        if (parsed?.ultimaRonda) {
+                            $('#contenidorGenerarDiploma').show();
+                        }
+                    }
+                });
+            });
+        </script>
 </body>
 
 </html>
