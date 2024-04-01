@@ -9,8 +9,7 @@ function generarEnfrontaments()
     $enfrontaments = dadesEnfrontaments();
     if (count($enfrontaments) > 0) {
         return "";
-    }
-    ;
+    };
 
     $grups = dadesGrups();
     $activitats = dadesActivitats();
@@ -27,7 +26,7 @@ function generarEnfrontaments()
         return "El nombre de grups ha de ser parell.";
     }
 
-    if (count($activitats) <= count($grups) / 2) {
+    if ((count($activitats) / count($grups)) < 0.5) {
         return "No hi ha suficients activitats per generar enfrontaments.";
     }
     // assigna una activitat a cada grup
@@ -136,4 +135,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $config = buscarConfig();
     echo json_encode(array('config' => $config));
 }
-

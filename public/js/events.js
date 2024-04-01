@@ -54,7 +54,7 @@ $(document).ready(function () {
 
   $("#inicii").click(function () {
 
-    interval = setInterval(actualitzarCronometre, 1000);
+    interval = setInterval(actualitzarCronometre, 1);
     $("#pausa").prop("disabled", false);
     $("#inicii").prop("disabled", true);
     let rol = "<?php echo $_SESSION['rol']; ?>";
@@ -74,7 +74,7 @@ $(document).ready(function () {
 
   $('#inici').click(function () {
     //reanudar el cronometro no desde el principio.. sino desde donde se quedo
-    interval = setInterval(actualitzarCronometre, 1000);
+    interval = setInterval(actualitzarCronometre, 1);
     $("#pausa").prop("disabled", false);
     $("#inici").prop("disabled", true);
 
@@ -92,7 +92,7 @@ $(document).ready(function () {
     let minutsStr = minuts < 10 ? "0" + minuts : minuts;
     let segonsStr = segons < 10 ? "0" + segons : segons;
     $("#cronometre").text("Temps restant: " + minutsStr + ":" + segonsStr);
-    interval = setInterval(actualitzarCronometre, 1000);
+    interval = setInterval(actualitzarCronometre, 1);
     $.ajax({
       type: "POST",
       url: "http://localhost/ProjecteActCohesio/Controlador/definirEvent.php",
@@ -154,6 +154,12 @@ $(document).ready(function () {
           $("#rondasRestants").text(parsed.rondasRestants);
           $("#rondaActual").text(parsed.rondaActual);
           $("#grupsTotals").text(parsed.grupsTotals);
+          if (parsed.rondaActual == parsed.rondasTotals) {
+            $("#next").prop("disabled", true);
+            $("#inicii").prop("disabled", true);
+            $("#pausa").prop("disabled", true);
+            $("#end").prop("disabled", false);
+          }
         } catch (error) {
           console.error("Error parsing JSON:", error);
         }
