@@ -14,12 +14,15 @@
 </head>
 
 <body>
-
+    <?php if(!empty($error)) {?>
+        <script>alert('No s\'ha seleccionat cap alumne')</script>
+    <?php } ?>
     <div class="custom-container container">
         <header>
             <nav class="navbar navbar-expand-lg navbar-light">
                 <a class="navbar-brand" href="../Controlador/professor.php">
-                    <img src="../public/img/logo-institut-sapalomera.png" width="140" height="80" class="d-inline-block align-top" alt="">
+                    <img src="../public/img/logo-institut-sapalomera.png" width="140" height="80"
+                        class="d-inline-block align-top" alt="">
                 </a>
             </nav>
 
@@ -42,7 +45,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($alumnesPrimerGrup as $componente) : ?>
+                            <?php foreach ($alumnesPrimerGrup as $componente): ?>
                                 <tr>
                                     <td>
                                         <?php echo $componente['nom']; ?>
@@ -52,9 +55,11 @@
                                     </td>
                                     <td>
                                         <input type="hidden" name="alumno_id[]" value="<?php echo $componente['id']; ?>">
-                                        <input type="checkbox" name="asistencia[<?php echo $componente['id']; ?>]" value="Si">
+                                        <input class="check-row" type="checkbox"
+                                            name="asistencia[<?php echo $componente['id']; ?>]" value="Si">
                                         Si
-                                        <input class="ml-4" type="checkbox" name="asistencia[<?php echo $componente['id']; ?>]" value="No">
+                                        <input class="check-row ml-4" type="checkbox"
+                                            name="asistencia[<?php echo $componente['id']; ?>]" value="No">
                                         No
                                     </td>
                                 </tr>
@@ -78,7 +83,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($alumnesSegonGrup as $componente) : ?>
+                            <?php foreach ($alumnesSegonGrup as $componente): ?>
                                 <tr>
                                     <td>
                                         <?php echo $componente['nom']; ?>
@@ -88,9 +93,11 @@
                                     </td>
                                     <td>
                                         <input type="hidden" name="alumno_id[]" value="<?php echo $componente['id']; ?>">
-                                        <input type="checkbox" name="asistencia[<?php echo $componente['id']; ?>]" value="Si">
+                                        <input type="checkbox" name="asistencia[<?php echo $componente['id']; ?>]"
+                                            value="Si">
                                         Si
-                                        <input class="ml-4" type="checkbox" name="asistencia[<?php echo $componente['id']; ?>]" value="No">
+                                        <input class="ml-4" type="checkbox"
+                                            name="asistencia[<?php echo $componente['id']; ?>]" value="No">
                                         No
                                     </td>
                                 </tr>
@@ -131,7 +138,8 @@
                             <?php if (!isset($puntuacioSegon) || $puntuacioSegon === '') {
                                 $puntuacioSegon = 0;
                             } ?>
-                            <input type="text" class="form-control" id="punts2" name="punts2" value="<?= $puntuacioSegon ?>">
+                            <input type="text" class="form-control" id="punts2" name="punts2"
+                                value="<?= $puntuacioSegon ?>">
                             <button type="button" name="grup2incr" id="grup2incr" class="btn btn-secondary">+</button>
                         </div>
                         <input type="hidden" name="grup2" value="<?= $segonGrupId ?>">
@@ -148,18 +156,23 @@
                     <div class="alert alert-danger " role="alert">
                         <?= $_SESSION["fotoGrupalError"] ?>
                     </div>
-                <?php
-                };
+                    <?php
+                }
+                ;
                 unset($_SESSION["fotoGrupalError"]);
                 ?>
                 <form method="POST" action="emmagatzemament-foto-grupal.php" enctype="multipart/form-data">
                     <div class="mb-3">
-                        <label for="formFile" class="form-label">Foto del grup <?= $primerGrup ?></label>
+                        <label for="formFile" class="form-label">Foto del grup
+                            <?= $primerGrup ?>
+                        </label>
                         <input class="form-control" type="file" id="formFile" name="primerGrupFoto">
                         <input type="hidden" name="primerGrup" value="<?= $primerGrup ?>">
                     </div>
                     <div class="mb-3">
-                        <label for="formFile" class="form-label">Foto del grup <?= $segonGrup ?></label>
+                        <label for="formFile" class="form-label">Foto del grup
+                            <?= $segonGrup ?>
+                        </label>
                         <input class="form-control" type="file" id="formFile" name="segonGrupFoto">
                         <input type="hidden" name="segonGrup" value="<?= $segonGrup ?>">
                     </div>

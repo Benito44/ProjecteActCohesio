@@ -1,6 +1,10 @@
 $(document).ready(function () {
     let estatRonda;
 
+    $('.check-row').change(function() {
+        $(this).closest('tr').find('.check-row').not(this).prop('checked', false);
+    });
+
     $.ajax({
         type: "GET",
         url: "http://localhost/ProjecteActCohesio/Controlador/obtenirInfo.php",
