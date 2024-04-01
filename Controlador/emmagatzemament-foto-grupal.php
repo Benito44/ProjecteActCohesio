@@ -33,5 +33,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     echo "<script>alert('" . $_SESSION["fotoGrupalError"] . "')</script>";
 
-    header("Location: ./generacio-diploma.php");
+    header("Location: ./professor.php");
 }
