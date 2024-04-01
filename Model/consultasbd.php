@@ -857,3 +857,39 @@ function nomGrup($groupId){
 
     return $result['nom'];
 }
+
+function puntsGrupActivitat($grup, $activitat){
+    $connexio = connexion();
+
+    $query = "SELECT puntuacio FROM grup_puntua_activitat WHERE grup_id = :grup AND activitat_id = :activitat";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':grup', $grup);
+    $stmt->bindParam(':activitat', $activitat);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result['puntuacio'];
+}
+
+function insertarPuntsGrup($grup, $activitat, $punts){
+    $connexio = connexion();
+
+    $query = "INSERT INTO grup_puntua_activitat (grup_id, activitat_id, puntuacio) VALUES (:grup, :activitat, :punts)";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':grup', $grup);
+    $stmt->bindParam(':activitat', $activitat);
+    $stmt->bindParam(':punts', $punts);
+    $stmt->execute();
+}
+
+function actualitzarPuntsGrup($grup, $activitat, $punts){
+    $connexio = connexion();
+
+    $query = "UPDATE grup_puntua_activitat SET puntuacio = :punts WHERE grup_id = :grup AND activitat_id = :activitat";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':grup', $grup);
+    $stmt->bindParam(':activitat', $activitat);
+    $stmt->bindParam(':punts', $punts);
+    $stmt->execute();
+}

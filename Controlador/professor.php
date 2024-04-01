@@ -22,6 +22,8 @@ if (isset($_SESSION['email'])) {
     $activitat = $activitat['id'];
     $grups = grupsEnfrontats($activitat);
 
+    $primerGrupId = $grups[0];
+    $segonGrupId = $grups[1];
     $primerGrup = nomGrup($grups[0]);
     $segonGrup = nomGrup($grups[1]);
 

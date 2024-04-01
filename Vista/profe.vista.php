@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="../public/css/alumnes.css">
     <script src="../public/js/redireccio.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/alumnes.css">
 
 
     <title>Profesors</title>
@@ -114,28 +114,39 @@
                     <div class="mb-3">
                         <div class="input-group">
                             <button type="button" name="grup1decr" class="btn btn-secondary">-</button>
-                            <input type="text" class="form-control" id="punts1" name="punts1" value="0">
+                            <?php if (!isset($puntuacioPrimer) || $puntuacioPrimer === '') {
+                                $puntuacioPrimer = 0;
+                            } ?>
+                            <input type="text" class="form-control" id="punts1" name="punts1" value=<?= $puntuacioPrimer ?>>
                             <button type="button" name="grup1incr" class="btn btn-secondary">+</button>
                         </div>
-                        <input type="hidden" name="grup" value="<?= $primerGrup ?>">
+                        <input type="hidden" name="grup1" value="<?= $primerGrupId ?>">
+                        <input type="hidden" name="activitat" value="<?= $activitat ?>">
                     </div>
 
                 </div>
                 <div class="col-lg-6">
-                    <h3 class="mt-4">Punts actuals del grup</h3>
-                    <?php echo $segonGrup ?>
+                    <h3 class="mt-4">Punts actuals del grup
+                        <?php echo $segonGrup ?>
+                    </h3>
                     <div class="mb-3">
                         <div class="input-group">
                             <button type="button" name="grup2decr" id="grup2decr" class="btn btn-secondary">-</button>
-                            <input type="text" class="form-control" id="punts2" name="punts2" value="0">
+                            <?php if (!isset($puntuacioSegon) || $puntuacioSegon === '') {
+                                $puntuacioSegon = 0;
+                            } ?>
+                            <input type="text" class="form-control" id="punts2" name="punts2"
+                                value="<?= $puntuacioSegon ?>">
                             <button type="button" name="grup2incr" id="grup2incr" class="btn btn-secondary">+</button>
                         </div>
-                        <input type="hidden" name="grup" value="<?= $primerGrup ?>">
+                        <input type="hidden" name="grup2" value="<?= $segonGrupId ?>">
                     </div>
 
 
                 </div>
             </div>
+        </div>
+        <div class="mt-5">
             <div class="<?= (isset($rondaFinal) && $rondaFinal) ? "" : "d-none"; ?>">
                 <h1>Foto grupal</h1>
                 <?php if (isset($_SESSION["fotoGrupalError"])) { ?>
@@ -149,9 +160,7 @@
                 ?>
                 <form method="POST" action="emmagatzemament-foto-grupal.php" enctype="multipart/form-data">
                     <div class="mb-3">
-                        <label for="formFile" class="form-label">Foto del grup
-                            <?= $primerGrup ?>
-                        </label>
+
                         <input class="form-control" type="file" id="formFile" name="primerGrupFoto">
                         <input type="hidden" name="primerGrup" value="<?= $primerGrup ?>">
                     </div>
@@ -166,6 +175,7 @@
                 </form>
             </div>
         </div>
+    </div>
 </body>
 
 </html>
