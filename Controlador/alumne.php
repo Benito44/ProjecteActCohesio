@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (isset ($_SESSION['email'])) {
+if (isset($_SESSION['email'])) {
     $mail = $_SESSION['email'];
 
     require_once '../Model/consultasbd.php';
@@ -9,13 +9,12 @@ if (isset ($_SESSION['email'])) {
     $grup_id = buscarGrupId($mail);
 }
 
-if (empty ($grup_id)) {
+if (empty($grup_id)) {
     session_unset();
     session_destroy();
     echo "No pertanys a cap grup." . "<br> <a href='../index.php'>Tornar a l'inici de sessió</a>";
 
     exit();
-
 } else {
     $alumnes = buscarAlumnes2($grup_id);
 
