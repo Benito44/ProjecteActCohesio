@@ -110,8 +110,8 @@
                 </table>
 
             </div>
-            <div class="col-lg-12 d-flex justify-content-center my-5" id=" contenidorGenerarDiploma" style="display: none;">
-                <a href="../Controlador/generacio-diploma.php" class="btn btn-primary w-50 py-2">Generar diploma</a>
+            <div class="col-lg-12 my-5 d-none" id="contenidorGenerarDiploma">
+                <a href="../Controlador/generacio-diploma.php" class="btn btn-primary w-50 mx-auto py-2">Generar diploma</a>
             </div>
         </div>
 
@@ -123,7 +123,7 @@
                     success: function(response) {
                         let parsed = JSON.parse(response);
                         if (parsed?.ultimaRonda) {
-                            $('#contenidorGenerarDiploma').show();
+                            $('#contenidorGenerarDiploma').addClass('d-flex').removeClass('d-none');
                         }
                     }
                 });
