@@ -698,7 +698,10 @@ function buscarGrupId($mail)
     $stmt->execute();
 
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    return $result['grup_id'];
+    if ($result !== false) {
+        return $result['grup_id'];
+    }
+    return null;
 }
 
 function eliminarActivitat($id)
@@ -908,3 +911,17 @@ function afegirProfessor($nom, $cognoms, $email, $administrador)
         $stmt->execute();
     }
 }
+
+function getRondaActual()
+{
+    $connexio = connexion();
+
+    $query = "SELECT value FROM config";
+    $stmt = $connexio->prepare($query);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result['value'];
+}
+

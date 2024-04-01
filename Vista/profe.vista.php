@@ -145,7 +145,7 @@
                 </div>
             </div>
         </div>
-        <div class="mt-5">
+        <div class="mt-5" id="fotografia" style="display: none;">
             <div class="<?= (isset($rondaFinal) && $rondaFinal) ? "" : "d-none"; ?>">
                 <h1>Foto grupal</h1>
                 <?php if (isset($_SESSION["fotoGrupalError"])) { ?>

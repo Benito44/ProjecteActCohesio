@@ -25,7 +25,8 @@
 
                     <div class="row justify-content-center">
                         <div class="col-12 text-center">
-                            <button id="inicii" name="inicii" class="buttons btn-primary btn-lg custom-btn">Iniciar jornada
+                            <button id="inicii" name="inicii" class="buttons btn-primary btn-lg custom-btn">Iniciar
+                                jornada
                                 de
                                 cohesió</button>
                         </div>
@@ -42,7 +43,8 @@
                                 ronda</button>
                         </div>
                         <div class="col-12 text-center">
-                            <button id="end" name="end" class="buttons btn-primary btn-lg custom-btn">Finalitzar jornada de
+                            <button id="end" name="end" class="buttons btn-primary btn-lg custom-btn">Finalitzar jornada
+                                de
                                 cohesió</button>
                         </div>
                     </div>
@@ -50,17 +52,32 @@
                 <div class="col-lg-6">
                     <div class="row">
                         <div class="col-12">
-                           <p>Grups que s'enfronten i la activitat</p>
-                            
+                            <p>Grups que s'enfronten i la activitat</p>
+                            <table class="table table-bordered table-striped mt-4">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>Nombre de rondas totals</th>
+                                        <th>Nombre de rondas restants</th>
+                                        <th>Ronda actual</th>
+                                        <th>Nombre de grups totals</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td id="rondasTotals"></td>
+                                        <td id="rondasRestants"></td>
+                                        <td id="rondaActual"></td>
+                                        <td id="grupsTotals"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
+                </div>
             </div>
-        </div>
-
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+                crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -9,6 +9,24 @@ $(document).ready(function () {
     data: { estat: "Pausat" }
   });
 
+  $.ajax({
+    type: "GET",
+    url: "http://localhost/ProjecteActCohesio/Controlador/obtenirInfo.php",
+    success: function (response) {
+      try {
+        let parsed = JSON.parse(response);
+        $("#rondasTotals").text(parsed.rondasTotals);
+        $("#rondasRestants").text(parsed.rondasRestants);
+        $("#rondaActual").text(parsed.rondaActual);
+        $("#grupsTotals").text(parsed.grupsTotals);
+      } catch (error) {
+        console.error("Error parsing JSON:", error);
+      }
+    },
+    error: function (xhr, status, error) {
+      console.error("AJAX request failed:", error);
+    }
+  });
 
   function actualitzarCronometre() {
     let minuts = Math.floor(tempsRestant / 60);
@@ -122,4 +140,28 @@ $(document).ready(function () {
   setInterval(function () {
 
   }, 5000);
+
+  //en un intervalo de 5 segundos se actualiza la info de la tabla
+
+  setInterval(function () {
+    $.ajax({
+      type: "GET",
+      url: "http://localhost/ProjecteActCohesio/Controlador/obtenirInfo.php",
+      success: function (response) {
+        try {
+          let parsed = JSON.parse(response);
+          $("#rondasTotals").text(parsed.rondasTotals);
+          $("#rondasRestants").text(parsed.rondasRestants);
+          $("#rondaActual").text(parsed.rondaActual);
+          $("#grupsTotals").text(parsed.grupsTotals);
+        } catch (error) {
+          console.error("Error parsing JSON:", error);
+        }
+      },
+      error: function (xhr, status, error) {
+        console.error("AJAX request failed:", error);
+      }
+    });
+  }, 5000);
+
 });
