@@ -787,6 +787,19 @@ function puntuacionsPerGrup()
     return $puntuacions;
 }
 
+function puntuacioGrup($grupId)
+{
+    $connexio = connexion();
+
+    $query = "SELECT SUM(puntuacio) AS total FROM grup_puntua_activitat WHERE grup_id = :grup_id";
+    $stmt = $connexio->prepare($query);
+    $stmt->bindParam(':grup_id', $grupId);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result['total'];
+}
 
 function buscarProfessorId($email){
     $connexio = connexion();

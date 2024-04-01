@@ -25,6 +25,9 @@ if (isset($_SESSION['email'])) {
     $primerGrup = nomGrup($grups[0]);
     $segonGrup = nomGrup($grups[1]);
 
+    $puntuacioPrimer = puntuacioGrup($grups[0]);
+    $puntuacioSegon = puntuacioGrup($grups[1]);
+
     $alumnesPrimerGrup = buscarAlumnes2($grups[0]);
     $alumnesSegonGrup = buscarAlumnes2($grups[1]);
 
@@ -65,7 +68,11 @@ if (isset($_SESSION['email'])) {
             }
         }
         echo "<script>alert('Assistència actualitzada')</script>";
+    } else if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit2'])) {
+        $connexio = connexion();
+
     }
+
 }
 
 // Definir aquesta variable en la ronda final per mostrar el formulari de pujada de fotos grupals.

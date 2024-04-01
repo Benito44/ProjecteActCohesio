@@ -48,6 +48,7 @@ $(document).ready(function () {
       data: { estat: "Iniciat" },
       success: function (response) {
         let parsed = JSON.parse(response);
+        console.log(parsed);
         if (parsed.error) {
           alert("S'ha produit un error a l'hora d'iniciar l'activitat:\n" + parsed.error);
         }

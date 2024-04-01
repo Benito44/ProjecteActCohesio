@@ -9,7 +9,8 @@ function generarEnfrontaments()
     $enfrontaments = dadesEnfrontaments();
     if (count($enfrontaments) > 0) {
         return "";
-    };
+    }
+    ;
 
     $grups = dadesGrups();
     $activitats = dadesActivitats();
@@ -111,7 +112,6 @@ if (isset($_POST['estat'])) {
                 echo json_encode(array('error' => $resultat));
                 die();
             }
-
             $ronda = 1;
             setcookie('ronda', $ronda, time() + 3600);
             guardarConfig("estat", "R" . $ronda);
