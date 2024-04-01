@@ -15,7 +15,7 @@ if (count($nomFitxers) > 0) {
     $nomFitxer = $nomFitxers[0];
 } else {
     $nomFitxer = "";
-    $error = "No s'ha trobat cap imatge per al teu grup.";
+    $error = "No s'ha trobat cap imatge per al teu grup. Torna-ho a intentar més tard.";
 }
 
 // AQUESTA POSICIO ES LA QUE HAURIA DE VENIR DE LA BASE DE DADES

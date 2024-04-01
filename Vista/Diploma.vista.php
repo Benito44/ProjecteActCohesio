@@ -54,12 +54,13 @@
         <h2 class="subtitol mt-2">activitat de cohesió de cicles d'informàtica <?= $any ?> </h2>
     </div>
 
-    <div class="d-print-none">
-        <h1>Generacio de diploma</h1>
+    <div class="d-print-none d-flex flex-column align-items-center w-50 mx-auto pt-5">
+        <h1 class="">Generacio de diploma</h1>
         <?php if (isset($error)) { ?>
             <p><?= $error ?></p>
         <?php } else { ?>
-            <button onclick="window.print()">Imprimir</button>
+            <p>Imprimir diploma del grup <?= $nomGrup ?></p>
+            <button class="btn btn-primary w-50" onclick="window.print()">Imprimir</button>
         <?php }; ?>
     </div>
 </body>
