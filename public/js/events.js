@@ -38,8 +38,6 @@ $(document).ready(function () {
 
     interval = setInterval(actualitzarCronometre, 1000);
     $("#pausa").prop("disabled", false);
-    $("#end").prop("disabled", false);
-    $("#next").prop("disabled", false);
     $("#inicii").prop("disabled", true);
     let rol = "<?php echo $_SESSION['rol']; ?>";
     $.ajax({
@@ -56,10 +54,17 @@ $(document).ready(function () {
     });
   });
 
+  $('#inici').click(function () {
+    //reanudar el cronometro no desde el principio.. sino desde donde se quedo
+    interval = setInterval(actualitzarCronometre, 1000);
+    $("#pausa").prop("disabled", false);
+    $("#inici").prop("disabled", true);
+
+  });
+
   $("#next").click(function () {
 
-    $("#next").prop("disabled", false);
-    $("#end").prop("disabled", false);
+    $("#next").prop("disabled", true);
     $("#inicii").prop("disabled", true);
     $("#pausa").prop("disabled", false);
     clearInterval(interval);
@@ -100,7 +105,7 @@ $(document).ready(function () {
   $("#pausa").click(function () {
     // Pausar el intervalo
     clearInterval(interval);
-    $("#inicii").prop("disabled", false);
+    $("#inici").prop("disabled", false);
     $("#pausa").prop("disabled", true);
 
     $.ajax({
@@ -110,7 +115,7 @@ $(document).ready(function () {
     });
   });
 
-
+  $("#inici").prop("disabled", true);
   $("#next").prop("disabled", true);
   $("#pausa").prop("disabled", true);
   $("#end").prop("disabled", true);

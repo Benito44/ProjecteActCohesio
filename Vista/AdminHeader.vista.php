@@ -28,12 +28,9 @@
                           <li class="nav-item">
                               <a class="nav-link" href="../Vista/Iniciar.php">Iniciar Joc</a>
                           </li>
-                          <li class="nav-item">
-                              <a class="nav-link" href="../Controlador/gruposCohesio.php">Enfrontaments</a>
-                          </li>
-                          <li class="nav-item">
-                              <a class="nav-link sessio" href="../Controlador/cerrar_session.php">Tancar Sessió</a>
-                          </li>
+                        <li class="nav-item">
+                            <a class="nav-link sessio" href="../Controlador/cerrar_session.php" onclick="return confirm('Estas segur que vols tancar la sessió?')">Tancar sessió</a>
+                        </li>
                       </ul>
                   </div>
               </div>

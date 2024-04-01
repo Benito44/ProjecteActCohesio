@@ -1,45 +1,68 @@
 header {
-    background: #5f5397;
+  background: #5f5397;
 }
+
 h1 {
-    text-align: center;
+  text-align: center;
 }
 
 .group-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px; 
-  }
-  .group-box {
-    border: 1px solid #ccc;
-    padding: 10px;
-    width: 270px;
-  }
-  .group-title {
-    margin: 0;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ccc; 
-  }
-  .student-list {
-    list-style-type: none;
-    padding: 0; 
-    margin-top: 10px;
-  }
-  .student-list li {
-    padding: 5px 0;
-    border-bottom: 1px solid #eee; 
-  }
-  .student-list li:last-child {
-    border-bottom: none; 
-  }
-
-  .custom-btn {
-    width: 300px; 
-    margin-bottom: 10px; 
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
- .centrar {
+
+.group-box {
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 270px;
+}
+
+.group-title {
+  margin: 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.student-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.student-list li {
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.student-list li:last-child {
+  border-bottom: none;
+}
+
+.custom-btn {
+  width: 300px;
+  margin-bottom: 10px;
+}
+
+.centrar {
   text-align: center;
- }
- .sessio {
-  color: red !important;
- }
+}
+
+.buttons {
+  background-color: #5f5397;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.buttons:hover {
+  background-color: #4b3d7c;
+}
+
+.buttons:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
