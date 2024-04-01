@@ -108,12 +108,13 @@ if (isset($_POST['estat'])) {
         case 'Iniciat':
             $resultat = generarEnfrontaments();
             if ($resultat != "") {
-                echo json_encode(array('error' => $resultat));
-                die();
-            }
+                echo json_encode(array('error' => $resultat, 'redirect' => 'afegir.php'));
+                exit();
+            }            
             $ronda = 1;
             setcookie('ronda', $ronda, time() + 3600);
             guardarConfig("estat", "R" . $ronda);
+            echo json_encode(array('redirect' => 'professor.php'));
             break;
         case 'Seguent':
             $ronda = $_COOKIE['ronda'] + 1;

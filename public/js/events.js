@@ -54,9 +54,6 @@ $(document).ready(function () {
 
   $("#inicii").click(function () {
 
-    interval = setInterval(actualitzarCronometre, 1);
-    $("#pausa").prop("disabled", false);
-    $("#inicii").prop("disabled", true);
     let rol = "<?php echo $_SESSION['rol']; ?>";
     $.ajax({
       type: "POST",
@@ -67,9 +64,17 @@ $(document).ready(function () {
         console.log(parsed);
         if (parsed.error) {
           alert("S'ha produit un error a l'hora d'iniciar l'activitat:\n" + parsed.error);
+        } else{
+          interval = setInterval(actualitzarCronometre, 1);
+          $("#pausa").prop("disabled", false);
+          $("#inicii").prop("disabled", true);
         }
+      },
+      error: function (error) {
+        console.error('Error en la petición AJAX:', error);
       }
     });
+
   });
 
   $('#inici').click(function () {

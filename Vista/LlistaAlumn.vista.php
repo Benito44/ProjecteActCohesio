@@ -18,9 +18,17 @@
         <button id="btnGenerar" type="button" class="btn btn-secondary">
             Generar grups
         </button>
-        <button type="button" class="btn btn-secondary" onclick="window.location.href = 'reiniciar.php'">
+        <button type="button" class="btn btn-secondary" onclick="confirmReiniciar()">
             Reiniciar grups
         </button>
+
+        <script>
+            function confirmReiniciar() {
+                if (confirm("Estàs segur que vols reiniciar els grups?")) {
+                    window.location.href = 'reiniciar.php';
+                }
+            }
+        </script>
 
         <p style="color: red;">S'hi recomana que abans de generar els grups, s'hagin afegit tots els alumnes primer correctament*</p>
     </div>

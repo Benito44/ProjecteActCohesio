@@ -1,9 +1,6 @@
 $(document).ready(function () {
     let estatRonda;
 
-    $('#taula1').hide();
-    $('#taula2').hide();
-
     $.ajax({
         type: "GET",
         url: "http://localhost/ProjecteActCohesio/Controlador/obtenirInfo.php",
@@ -23,15 +20,6 @@ $(document).ready(function () {
         }
       });
 
-    $('#toggleAlumnosBtn1').click(function () {
-        $('#toggleAlumnosBtn1').hide();
-        $('#taula1').slideDown();
-    });
-
-    $('#toggleAlumnosBtn2').click(function () {
-        $('#toggleAlumnosBtn2').hide();
-        $('#taula2').slideDown();
-    });
 
     $('button[name="grup1decr"]').click(function () {
         let punts = parseInt($('#punts1').val());
