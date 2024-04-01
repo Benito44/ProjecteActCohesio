@@ -932,3 +932,29 @@ function getRondaActual()
 
     return $result['value'];
 }
+
+
+function clearAlumnesAssisteixActivitat(){
+    $connexio = connexion();
+
+    $query = "DELETE FROM alumne_assisteix_activitat";
+    $stmt = $connexio->prepare($query);
+    $stmt->execute();
+}
+
+function clearGrupPuntuacio(){
+    $connexio = connexion();
+
+    $query = "DELETE FROM grup_puntua_activitat";
+    $stmt = $connexio->prepare($query);
+    $stmt->execute();
+}
+
+function clearEnfrotaments(){
+    $connexio = connexion();
+
+    $query = "DELETE FROM enfrontament";
+    $stmt = $connexio->prepare($query);
+    $stmt->execute();
+}
+

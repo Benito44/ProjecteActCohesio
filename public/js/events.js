@@ -171,3 +171,11 @@ $(document).ready(function () {
   }, 5000);
 
 });
+
+$(window).on("beforeunload", function () {
+  $.ajax({
+    type: "POST",
+    url: "http://localhost/ProjecteActCohesio/Controlador/clearBD.php",
+  });
+  return null;
+});

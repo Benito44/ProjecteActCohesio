@@ -9,8 +9,8 @@ $(document).ready(function () {
         url: "http://localhost/ProjecteActCohesio/Controlador/obtenirInfo.php",
         success: function (response) {
           try {
-            estatRonda = JSON.parse(response).ultimaRonda;
-            if (estatRonda == true) {
+            rr = JSON.parse(response).ultimaRonda;
+            if (rr == true) {
                 alert("S'ha detectat que aquesta es l'última ronda. Has de premre Una foto dels dos grups i enviar-la.");
                 $('#fotografia').show();
             }

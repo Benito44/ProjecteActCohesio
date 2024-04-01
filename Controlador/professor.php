@@ -19,6 +19,14 @@ if (isset($_SESSION['email'])) {
     }
 
     $activitat = activitatProfessor($professorId);
+
+    if (!$activitat) {
+        echo "<script>alert('No hi ha grups disponibles')</script>";
+        session_unset();
+        session_destroy();
+        header('refresh:0.01;url=../index.php');
+        exit;
+    }
     $activitat = $activitat['id'];
     $grups = grupsEnfrontats($activitat);
 
