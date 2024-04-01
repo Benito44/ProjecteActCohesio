@@ -61,16 +61,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: afegirActivitat.php");
         die();
     }
+    $activitat['latitud'] = $coordenades[0];
+    $activitat['longitud'] = $coordenades[1];
 
-    $activitat = [
-        'nom' => $_POST['nomActivitat'],
-        'descripcio' => $_POST['descripcioActivitat'],
-        'professor_puntuador' => $_POST['profPuntuador'],
-        'professor_assistencia' => $_POST['profAssistencia'],
-        'localitzacio' => $_POST['locText'],
-        'latitud' => $coordenades[0],
-        'longitud' => $coordenades[1]
-    ];
+    // finalment comprovem si el professor puntuador i el professor d'assistencia no son en altre activitat al mateix temps
+    $activitatsProfessorPuntuador = activitatProfessor($activitat['professor_puntuador']);
+    $activitatsProfessorAssistencia = activitatProfessor($activitat['professor_assistencia']);
+    if ($activitatsProfessorPuntuador && count($activitatsProfessorPuntuador) > 0) {
+        $professor = dadesProfessor($activitat["professor_puntuador"]);
+        // en cas de tenir conflicte de professors, guardem l'error en una variable de sessio i tornem a la vista
+        $_SESSION['error'] = "Els professor " . $professor["nom"] . " " . $professor["cognoms"] . " seleccionat ja te un altre activitat assignada.";
+        header("Location: afegirActivitat.php");
+        die();
+    }
+
+    if ($activitatsProfessorAssistencia && count($activitatsProfessorAssistencia) > 0) {
+        $professor = dadesProfessor($activitat["professor_assistencia"]);
+        // en cas de tenir conflicte de professors, guardem l'error en una variable de sessio i tornem a la vista
+        $_SESSION['error'] = "Els professor " . $professor["nom"] . " " . $professor["cognoms"] . " seleccionat ja te un altre activitat assignada.";
+        header("Location: afegirActivitat.php");
+        die();
+    }
+
+
+    // $activitat = [
+    //     'nom' => $_POST['nomActivitat'],
+    //     'descripcio' => $_POST['descripcioActivitat'],
+    //     'professor_puntuador' => $_POST['profPuntuador'],
+    //     'professor_assistencia' => $_POST['profAssistencia'],
+    //     'localitzacio' => $_POST['locText'],
+    //     'latitud' => $coordenades[0],
+    //     'longitud' => $coordenades[1]
+    // ];
 
     unset($_SESSION['activitat']);
     afegirActivitat($activitat);
