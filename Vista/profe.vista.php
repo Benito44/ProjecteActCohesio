@@ -27,8 +27,11 @@
         </header>
     </div>
     <div class="custom-container container">
+    <button id="toggleAlumnosBtn1" class="btn btn-primary">Mostrar els alumnes del grup <?= $primerGrup ?></button>
+        <button id="hideAlumnosBtn1" class="btn btn-primary d-none">Amagar els alumnes del grup <?= $primerGrup ?></button>
         <div class="row mt-5">
-            <div class="col-lg-6">
+
+            <div class="col-lg-6" id="taula1">
                 <h3 class="mt-4">Llista del grup
                     <?php echo $primerGrup ?>
                 </h3>
@@ -66,7 +69,9 @@
                     <button type="submit" name="submit" class="btn btn-primary">Enviar</button>
                 </form>
             </div>
-            <div class="col-lg-6">
+            <button id="toggleAlumnosBtn2" class="btn btn-primary">Mostrar els alumnes del grup <?= $segonGrup ?></button>
+            <button id="hideAlumnosBtn2" class="btn btn-primary d-none">Amagar els alumnes del grup <?= $segonGrup ?></button>
+            <div class="col-lg-6" id="taula2">
                 <h3 class="mt-4">Llista del grup
                     <?php echo $segonGrup ?>
                 </h3>

@@ -1,6 +1,20 @@
 $(document).ready(function () {
     let estatRonda;
 
+    $('#taula1').hide();
+    $('#taula2').hide();
+
+
+    $('#toggleAlumnosBtn1').click(function () {
+        $('#toggleAlumnosBtn1').hide();
+        $('#taula1').slideDown();
+    });
+
+    $('#toggleAlumnosBtn2').click(function () {
+        $('#toggleAlumnosBtn2').hide();
+        $('#taula2').slideDown();
+    });
+
     $('button[name="grup1decr"]').click(function () {
         let punts = parseInt($('#punts1').val());
         if (confirm("Estàs segur que vols restar punts?")) {
