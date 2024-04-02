@@ -12,9 +12,9 @@ if (isset($_SESSION['email'])) {
 
     if (!$professorId) {
         echo "<script>alert('No ets professor')</script>";
+        echo '<script>window.location.href = "../index.php";</script>';
         session_unset();
         session_destroy();
-        header('refresh:0.01;url=../index.php');
         exit;
     }
 
@@ -22,9 +22,9 @@ if (isset($_SESSION['email'])) {
 
     if (!$activitat) {
         echo "<script>alert('No hi ha grups disponibles')</script>";
+        echo '<script>window.location.href = "../index.php";</script>';
         session_unset();
         session_destroy();
-        header('refresh:0.01;url=../index.php');
         exit;
     }
     $activitat = $activitat['id'];
@@ -44,7 +44,7 @@ if (isset($_SESSION['email'])) {
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
         $connexio = connexion();
 
-        
+
         if (isset($_POST['asistencia'])) {
             foreach ($_POST['asistencia'] as $alumno_id => $asistencia) {
                 if (isset($_POST['asistencia'][$alumno_id]) && $_POST['asistencia'][$alumno_id] == 'Si') {
@@ -79,14 +79,12 @@ if (isset($_SESSION['email'])) {
                 }
             }
             echo "<script>alert('Assistència actualitzada')</script>";
-        }else {
+        } else {
             $error = "No s'ha seleccionat cap alumne";
         }
     } else if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit2'])) {
         $connexio = connexion();
-
     }
-
 }
 
 // Definir aquesta variable en la ronda final per mostrar el formulari de pujada de fotos grupals.

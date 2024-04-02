@@ -31,7 +31,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die();
     }
 
-    echo "<script>alert('" . $_SESSION["fotoGrupalError"] . "')</script>";
-
-    header("Location: ./professor.php");
+    if (isset($_SESSION["fotoGrupalError"])) {
+        echo "<script>alert('" . $_SESSION["fotoGrupalError"] . "')</script>";
+        echo "<script>window.location.href = './professor.php'</script>";
+    } else {
+        header("Location: ./professor.php");
+    }
 }

@@ -1,28 +1,28 @@
 $(document).ready(function () {
     let estatRonda;
 
-    $('.check-row').change(function() {
+    $('.check-row').change(function () {
         $(this).closest('tr').find('.check-row').not(this).prop('checked', false);
     });
 
     $.ajax({
         type: "GET",
-        url: "http://localhost/ProjecteActCohesio/Controlador/obtenirInfo.php",
+        url: "../Controlador/obtenirInfo.php",
         success: function (response) {
-          try {
-            rr = JSON.parse(response).ultimaRonda;
-            if (rr == true) {
-                alert("S'ha detectat que aquesta es l'última ronda. Has de premre Una foto dels dos grups i enviar-la.");
-                $('#fotografia').show();
+            try {
+                rr = JSON.parse(response).ultimaRonda;
+                if (rr == true) {
+                    alert("S'ha detectat que aquesta es l'última ronda. Has de premre Una foto dels dos grups i enviar-la.");
+                    $('#fotografia').show();
+                }
+            } catch (error) {
+                console.error("Error parsing JSON:", error);
             }
-          } catch (error) {
-            console.error("Error parsing JSON:", error);
-          }
         },
         error: function (xhr, status, error) {
-          console.error("AJAX request failed:", error);
+            console.error("AJAX request failed:", error);
         }
-      });
+    });
 
 
     $('button[name="grup1decr"]').click(function () {
@@ -32,13 +32,13 @@ $(document).ready(function () {
             $('#punts1').val(punts).trigger('input');
         }
     });
-    
+
     $('button[name="grup1incr"]').click(function () {
         let punts = parseInt($('#punts1').val());
         punts++;
         $('#punts1').val(punts).trigger('input');
     });
-    
+
     $('button[name="grup2decr"]').click(function () {
         let punts = parseInt($('#punts2').val());
         if (confirm("Estàs segur que vols restar punts?")) {
@@ -46,20 +46,20 @@ $(document).ready(function () {
             $('#punts2').val(punts).trigger('input');
         }
     });
-    
+
     $('button[name="grup2incr"]').click(function () {
         let punts = parseInt($('#punts2').val());
         punts++;
         $('#punts2').val(punts).trigger('input');
     });
-    
-    
+
+
     $('#punts1').on('input', function () {
         let punts = parseInt($(this).val());
         let grup = $('input[name="grup1"]').val();
         let activitat = $('input[name="activitat"]').val();
         $.ajax({
-            url: 'http://localhost/ProjecteActCohesio/Controlador/definirPunts.php',
+            url: '../Controlador/definirPunts.php',
             method: 'POST',
             data: { grup: grup, punts: punts, activitat: activitat },
             success: function (response) {
@@ -76,7 +76,7 @@ $(document).ready(function () {
         let grup = $('input[name="grup2"]').val();
         let activitat = $('input[name="activitat"]').val();
         $.ajax({
-            url: 'http://localhost/ProjecteActCohesio/Controlador/definirPunts.php',
+            url: '../Controlador/definirPunts.php',
             method: 'POST',
             data: { grup: grup, punts: punts, activitat: activitat },
             success: function (response) {
@@ -90,7 +90,7 @@ $(document).ready(function () {
 
 
     $.ajax({
-        url: 'http://localhost/ProjecteActCohesio/Controlador/definirEvent.php',
+        url: '../Controlador/definirEvent.php',
         method: 'GET',
         dataType: 'json',
         success: function (response) {
@@ -104,7 +104,7 @@ $(document).ready(function () {
 
     setInterval(function () {
         $.ajax({
-            url: 'http://localhost/ProjecteActCohesio/Controlador/definirEvent.php',
+            url: '../Controlador/definirEvent.php',
             method: 'GET',
             dataType: 'json',
             success: function (response) {

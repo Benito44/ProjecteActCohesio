@@ -5,7 +5,7 @@ $(document).ready(function () {
 
   $.ajax({
     type: "POST",
-    url: "http://localhost/ProjecteActCohesio/Controlador/definirEvent.php",
+    url: "../Controlador/definirEvent.php",
     data: { estat: "Pausat" }
   });
 
@@ -30,7 +30,7 @@ $(document).ready(function () {
         $("#pausa").prop("disabled", true);
         $("#end").prop("disabled", false);
       } else {
-      $("#next").prop("disabled", false);
+        $("#next").prop("disabled", false);
       }
     }
 
@@ -48,14 +48,14 @@ $(document).ready(function () {
     let rol = "<?php echo $_SESSION['rol']; ?>";
     $.ajax({
       type: "POST",
-      url: "http://localhost/ProjecteActCohesio/Controlador/definirEvent.php",
+      url: "../Controlador/definirEvent.php",
       data: { estat: "Iniciat" },
       success: function (response) {
         let parsed = JSON.parse(response);
         console.log(parsed);
         if (parsed.error) {
           alert("S'ha produit un error a l'hora d'iniciar l'activitat:\n" + parsed.error);
-        } else{
+        } else {
           interval = setInterval(actualitzarCronometre, 1);
           $("#pausa").prop("disabled", false);
           $("#inicii").prop("disabled", true);
@@ -90,7 +90,7 @@ $(document).ready(function () {
     interval = setInterval(actualitzarCronometre, 1);
     $.ajax({
       type: "POST",
-      url: "http://localhost/ProjecteActCohesio/Controlador/definirEvent.php",
+      url: "../Controlador/definirEvent.php",
       data: { estat: "Seguent" },
       success: function (response) {
         let parsed = JSON.parse(response);
@@ -102,7 +102,7 @@ $(document).ready(function () {
       }
     });
 
-    
+
 
   });
   $("#end").click(function () {
@@ -120,7 +120,7 @@ $(document).ready(function () {
 
     $.ajax({
       type: "POST",
-      url: "http://localhost/ProjecteActCohesio/Controlador/definirEvent.php",
+      url: "../Controlador/definirEvent.php",
       data: { estat: "Aturat" }
     });
   });
@@ -134,7 +134,7 @@ $(document).ready(function () {
 
     $.ajax({
       type: "POST",
-      url: "http://localhost/ProjecteActCohesio/Controlador/definirEvent.php",
+      url: "../Controlador/definirEvent.php",
       data: { estat: "Pausa" }
     });
   });
@@ -153,15 +153,15 @@ $(document).ready(function () {
 $(window).on("beforeunload", function () {
   $.ajax({
     type: "POST",
-    url: "http://localhost/ProjecteActCohesio/Controlador/clearBD.php",
+    url: "../Controlador/clearBD.php",
   });
   return null;
 });
 
-function obtenitInformacio(){
+function obtenitInformacio() {
   $.ajax({
     type: "GET",
-    url: "http://localhost/ProjecteActCohesio/Controlador/obtenirInfo.php",
+    url: "../Controlador/obtenirInfo.php",
     success: function (response) {
       try {
         let parsed = JSON.parse(response);
