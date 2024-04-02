@@ -33,9 +33,9 @@ Primer entra en la llista de grups, després anirà a la llista d'alumnes i aqu�
 
 
 # Requisits d'entorn
-- PHP 8.2.4
-- MariaDB x.x.x
-- Apache2 x.x.x
+- PHP 8.1.10
+- MariaDB 11.2
+- Apache2 2.4.58
 
 # Desplegament
 Generar imatge
@@ -47,33 +47,3 @@ Iniciar contenidors
 ```bash
 docker-compose up -d
 ```
-
-# Controladors
-- **afegir.php** Afegir
-**afegirActivitat.php** Activitat
-**afegirMaterial.php**
-**alumne.php**
-**autentificacion.php**
-**cerrar_session.php**
-**clearBD.php**
-**configuracion.php**
-**definirEvent.php**
-**definirPunts.php**
-**eliminarActivitat.php**
-**emmagatzemament-foto-grupal.php**
-**estat.php**
-**generacio-diploma.php**
-**generarGrups.php**
-**gruposCohesio.php**
-**llista.php**
-**llistaActivitats.php**
-**llistaAlumn.php**
-**loginn.php**
-**modificarActivitat.php**
-**modificarGrupAlumne.php**
-**obtenirInfo.php**
-**professor.php**
-**reiniciar.php**
-**respera.php**
-**sessio.php**
-**testRonda.php**
