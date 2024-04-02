@@ -36,6 +36,9 @@ Primer entra en la llista de grups, després anirà a la llista d'alumnes i aqu�
 - PHP 8.1.10
 - MariaDB 11.2
 - Apache2 2.4.58
+- Composer 2.5.1 o superior
+
+Executar la comanda `composer install` per instal·lar les dependències del projecte especificades en `composer.json`.
 
 # Desplegament
 Generar imatge
