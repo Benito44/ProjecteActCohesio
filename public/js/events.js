@@ -56,7 +56,7 @@ $(document).ready(function () {
         if (parsed.error) {
           alert("S'ha produit un error a l'hora d'iniciar l'activitat:\n" + parsed.error);
         } else {
-          interval = setInterval(actualitzarCronometre, 1);
+          interval = setInterval(actualitzarCronometre, 1000);
           $("#pausa").prop("disabled", false);
           $("#inicii").prop("disabled", true);
           obtenitInformacio();
@@ -69,7 +69,7 @@ $(document).ready(function () {
   });
 
   $('#inici').click(function () {
-    interval = setInterval(actualitzarCronometre, 1);
+    interval = setInterval(actualitzarCronometre, 1000);
     $("#pausa").prop("disabled", false);
     $("#inici").prop("disabled", true);
 
@@ -87,7 +87,7 @@ $(document).ready(function () {
     let minutsStr = minuts < 10 ? "0" + minuts : minuts;
     let segonsStr = segons < 10 ? "0" + segons : segons;
     $("#cronometre").text("Temps restant: " + minutsStr + ":" + segonsStr);
-    interval = setInterval(actualitzarCronometre, 1);
+    interval = setInterval(actualitzarCronometre, 1000);
     $.ajax({
       type: "POST",
       url: "../Controlador/definirEvent.php",
