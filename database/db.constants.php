@@ -1,6 +1,6 @@
 <?php
 
-$HOST = getenv('DB_HOST') ?: "db";
+$HOST = getenv('DB_HOST') ?: "localhost";
 $USER = getenv('DB_USER') ?: "root";
-$PASS = getenv('DB_PASSW') ?: "cohesio";
+$PASS = getenv('DB_PASSW') ?: "";
 $DB = getenv('DB_NAME') ?: "activitats_cohesio";
